@@ -1,0 +1,999 @@
+fileFormatVersion: 2
+guid: 397df9c3ce4b9b54486f112ddd2a7563
+timeCreated: 1479389644
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: _3D_Object3
+    100002: _3D_Object3 1
+    100004: _3D_Object3 2
+    100006: _3D_Object3 3
+    100008: group_0
+    100010: group_1
+    100012: group_2
+    100014: group_3
+    100016: group_4
+    100018: group_5
+    100020: group_6
+    100022: group_7
+    100024: Gruppe_2
+    100026: Gruppe_2 1
+    100028: Gruppe_2 2
+    100030: Gruppe_2 3
+    100032: Gruppe_4
+    100034: Gruppe_4 1
+    100036: Gruppe_5
+    100038: Gruppe_5 1
+    100040: Gruppe_5 2
+    100042: Gruppe_5 3
+    100044: ID1000
+    100046: ID1006
+    100048: ID1014
+    100050: ID103
+    100052: ID116
+    100054: ID124
+    100056: ID132
+    100058: ID140
+    100060: ID148
+    100062: ID158
+    100064: ID166
+    100066: ID179
+    100068: ID187
+    100070: ID193
+    100072: ID201
+    100074: ID209
+    100076: ID217
+    100078: ID225
+    100080: ID233
+    100082: ID241
+    100084: ID249
+    100086: ID257
+    100088: ID265
+    100090: ID273
+    100092: ID28
+    100094: ID281
+    100096: ID289
+    100098: ID293
+    100100: ID297
+    100102: ID301
+    100104: ID305
+    100106: ID34
+    100108: ID342
+    100110: ID342 1
+    100112: ID342 2
+    100114: ID342 3
+    100116: ID355
+    100118: ID355 1
+    100120: ID355 2
+    100122: ID355 3
+    100124: ID368
+    100126: ID368 1
+    100128: ID368 2
+    100130: ID368 3
+    100132: ID382
+    100134: ID382 1
+    100136: ID396
+    100138: ID396 1
+    100140: ID404
+    100142: ID404 1
+    100144: ID422
+    100146: ID422 1
+    100148: ID422 2
+    100150: ID422 3
+    100152: ID441
+    100154: ID441 1
+    100156: ID449
+    100158: ID449 1
+    100160: ID467
+    100162: ID473
+    100164: ID488
+    100166: ID49
+    100168: ID511
+    100170: ID511 1
+    100172: ID517
+    100174: ID517 1
+    100176: ID523
+    100178: ID523 1
+    100180: ID541
+    100182: ID547
+    100184: ID563
+    100186: ID569
+    100188: ID57
+    100190: ID577
+    100192: ID583
+    100194: ID591
+    100196: ID599
+    100198: ID607
+    100200: ID613
+    100202: ID617
+    100204: ID621
+    100206: ID625
+    100208: ID629
+    100210: ID65
+    100212: ID656
+    100214: ID656 1
+    100216: ID656 2
+    100218: ID656 3
+    100220: ID656 4
+    100222: ID676
+    100224: ID699
+    100226: ID705
+    100228: ID73
+    100230: ID757
+    100232: ID770
+    100234: ID776
+    100236: ID784
+    100238: ID79
+    100240: ID792
+    100242: ID800
+    100244: ID808
+    100246: ID816
+    100248: ID824
+    100250: ID832
+    100252: ID840
+    100254: ID848
+    100256: ID856
+    100258: ID864
+    100260: ID87
+    100262: ID872
+    100264: ID880
+    100266: ID896
+    100268: ID902
+    100270: ID910
+    100272: ID916
+    100274: ID922
+    100276: ID928
+    100278: ID934
+    100280: ID940
+    100282: ID946
+    100284: ID95
+    100286: ID952
+    100288: ID958
+    100290: ID964
+    100292: ID970
+    100294: ID976
+    100296: ID982
+    100298: ID988
+    100300: ID994
+    100302: image_0
+    100304: image_1
+    100306: image_2
+    100308: image_3
+    100310: image_4
+    100312: image_5
+    100314: image_6
+    100316: instance_0
+    100318: instance_1
+    100320: instance_1 1
+    100322: instance_1 2
+    100324: instance_1 3
+    100326: instance_10
+    100328: instance_11
+    100330: instance_12
+    100332: instance_13
+    100334: instance_14
+    100336: instance_15
+    100338: instance_16
+    100340: instance_17
+    100342: instance_18
+    100344: instance_19
+    100346: instance_2
+    100348: instance_20
+    100350: instance_21
+    100352: instance_22
+    100354: instance_23
+    100356: instance_24
+    100358: instance_25
+    100360: instance_26
+    100362: instance_27
+    100364: instance_28
+    100366: instance_29
+    100368: instance_3
+    100370: instance_30
+    100372: instance_31
+    100374: instance_32
+    100376: instance_33
+    100378: instance_34
+    100380: instance_35
+    100382: instance_36
+    100384: instance_37
+    100386: instance_38
+    100388: instance_39
+    100390: instance_4
+    100392: instance_40
+    100394: instance_41
+    100396: instance_5
+    100398: instance_5 1
+    100400: instance_6
+    100402: instance_6 1
+    100404: instance_7
+    100406: instance_8
+    100408: instance_9
+    100410: Komponente_1
+    100412: Komponente_1 1
+    100414: Komponente_4
+    100416: Komponente_5
+    100418: Komponente_5 1
+    100420: Komponente_5 2
+    100422: Komponente_5 3
+    100424: Komponente_5 4
+    100426: Lenkrad
+    100428: Markisenelement
+    100430: Markisenelement 1
+    100432: Markisenelement 10
+    100434: Markisenelement 11
+    100436: Markisenelement 12
+    100438: Markisenelement 13
+    100440: Markisenelement 14
+    100442: Markisenelement 2
+    100444: Markisenelement 3
+    100446: Markisenelement 4
+    100448: Markisenelement 5
+    100450: Markisenelement 6
+    100452: Markisenelement 7
+    100454: Markisenelement 8
+    100456: Markisenelement 9
+    100458: minifridge
+    100460: Rad
+    100462: Rad 1
+    100464: Rad 2
+    100466: Rad 3
+    100468: Regal
+    100470: Sitz
+    100472: Sitz 1
+    100474: Tiny_House_Fridge_61x24x28
+    100476: //RootNode
+    400000: _3D_Object3
+    400002: _3D_Object3 1
+    400004: _3D_Object3 2
+    400006: _3D_Object3 3
+    400008: group_0
+    400010: group_1
+    400012: group_2
+    400014: group_3
+    400016: group_4
+    400018: group_5
+    400020: group_6
+    400022: group_7
+    400024: Gruppe_2
+    400026: Gruppe_2 1
+    400028: Gruppe_2 2
+    400030: Gruppe_2 3
+    400032: Gruppe_4
+    400034: Gruppe_4 1
+    400036: Gruppe_5
+    400038: Gruppe_5 1
+    400040: Gruppe_5 2
+    400042: Gruppe_5 3
+    400044: ID1000
+    400046: ID1006
+    400048: ID1014
+    400050: ID103
+    400052: ID116
+    400054: ID124
+    400056: ID132
+    400058: ID140
+    400060: ID148
+    400062: ID158
+    400064: ID166
+    400066: ID179
+    400068: ID187
+    400070: ID193
+    400072: ID201
+    400074: ID209
+    400076: ID217
+    400078: ID225
+    400080: ID233
+    400082: ID241
+    400084: ID249
+    400086: ID257
+    400088: ID265
+    400090: ID273
+    400092: ID28
+    400094: ID281
+    400096: ID289
+    400098: ID293
+    400100: ID297
+    400102: ID301
+    400104: ID305
+    400106: ID34
+    400108: ID342
+    400110: ID342 1
+    400112: ID342 2
+    400114: ID342 3
+    400116: ID355
+    400118: ID355 1
+    400120: ID355 2
+    400122: ID355 3
+    400124: ID368
+    400126: ID368 1
+    400128: ID368 2
+    400130: ID368 3
+    400132: ID382
+    400134: ID382 1
+    400136: ID396
+    400138: ID396 1
+    400140: ID404
+    400142: ID404 1
+    400144: ID422
+    400146: ID422 1
+    400148: ID422 2
+    400150: ID422 3
+    400152: ID441
+    400154: ID441 1
+    400156: ID449
+    400158: ID449 1
+    400160: ID467
+    400162: ID473
+    400164: ID488
+    400166: ID49
+    400168: ID511
+    400170: ID511 1
+    400172: ID517
+    400174: ID517 1
+    400176: ID523
+    400178: ID523 1
+    400180: ID541
+    400182: ID547
+    400184: ID563
+    400186: ID569
+    400188: ID57
+    400190: ID577
+    400192: ID583
+    400194: ID591
+    400196: ID599
+    400198: ID607
+    400200: ID613
+    400202: ID617
+    400204: ID621
+    400206: ID625
+    400208: ID629
+    400210: ID65
+    400212: ID656
+    400214: ID656 1
+    400216: ID656 2
+    400218: ID656 3
+    400220: ID656 4
+    400222: ID676
+    400224: ID699
+    400226: ID705
+    400228: ID73
+    400230: ID757
+    400232: ID770
+    400234: ID776
+    400236: ID784
+    400238: ID79
+    400240: ID792
+    400242: ID800
+    400244: ID808
+    400246: ID816
+    400248: ID824
+    400250: ID832
+    400252: ID840
+    400254: ID848
+    400256: ID856
+    400258: ID864
+    400260: ID87
+    400262: ID872
+    400264: ID880
+    400266: ID896
+    400268: ID902
+    400270: ID910
+    400272: ID916
+    400274: ID922
+    400276: ID928
+    400278: ID934
+    400280: ID940
+    400282: ID946
+    400284: ID95
+    400286: ID952
+    400288: ID958
+    400290: ID964
+    400292: ID970
+    400294: ID976
+    400296: ID982
+    400298: ID988
+    400300: ID994
+    400302: image_0
+    400304: image_1
+    400306: image_2
+    400308: image_3
+    400310: image_4
+    400312: image_5
+    400314: image_6
+    400316: instance_0
+    400318: instance_1
+    400320: instance_1 1
+    400322: instance_1 2
+    400324: instance_1 3
+    400326: instance_10
+    400328: instance_11
+    400330: instance_12
+    400332: instance_13
+    400334: instance_14
+    400336: instance_15
+    400338: instance_16
+    400340: instance_17
+    400342: instance_18
+    400344: instance_19
+    400346: instance_2
+    400348: instance_20
+    400350: instance_21
+    400352: instance_22
+    400354: instance_23
+    400356: instance_24
+    400358: instance_25
+    400360: instance_26
+    400362: instance_27
+    400364: instance_28
+    400366: instance_29
+    400368: instance_3
+    400370: instance_30
+    400372: instance_31
+    400374: instance_32
+    400376: instance_33
+    400378: instance_34
+    400380: instance_35
+    400382: instance_36
+    400384: instance_37
+    400386: instance_38
+    400388: instance_39
+    400390: instance_4
+    400392: instance_40
+    400394: instance_41
+    400396: instance_5
+    400398: instance_5 1
+    400400: instance_6
+    400402: instance_6 1
+    400404: instance_7
+    400406: instance_8
+    400408: instance_9
+    400410: Komponente_1
+    400412: Komponente_1 1
+    400414: Komponente_4
+    400416: Komponente_5
+    400418: Komponente_5 1
+    400420: Komponente_5 2
+    400422: Komponente_5 3
+    400424: Komponente_5 4
+    400426: Lenkrad
+    400428: Markisenelement
+    400430: Markisenelement 1
+    400432: Markisenelement 10
+    400434: Markisenelement 11
+    400436: Markisenelement 12
+    400438: Markisenelement 13
+    400440: Markisenelement 14
+    400442: Markisenelement 2
+    400444: Markisenelement 3
+    400446: Markisenelement 4
+    400448: Markisenelement 5
+    400450: Markisenelement 6
+    400452: Markisenelement 7
+    400454: Markisenelement 8
+    400456: Markisenelement 9
+    400458: minifridge
+    400460: Rad
+    400462: Rad 1
+    400464: Rad 2
+    400466: Rad 3
+    400468: Regal
+    400470: Sitz
+    400472: Sitz 1
+    400474: Tiny_House_Fridge_61x24x28
+    400476: //RootNode
+    2300000: _3D_Object3
+    2300002: _3D_Object3 1
+    2300004: _3D_Object3 2
+    2300006: _3D_Object3 3
+    2300008: group_0
+    2300010: group_1
+    2300012: group_2
+    2300014: group_3
+    2300016: group_4
+    2300018: group_5
+    2300020: group_6
+    2300022: group_7
+    2300024: Gruppe_2
+    2300026: Gruppe_2 1
+    2300028: Gruppe_2 2
+    2300030: Gruppe_2 3
+    2300032: Gruppe_5
+    2300034: Gruppe_5 1
+    2300036: Gruppe_5 2
+    2300038: Gruppe_5 3
+    2300040: ID103
+    2300042: ID116
+    2300044: ID124
+    2300046: ID132
+    2300048: ID140
+    2300050: ID148
+    2300052: ID158
+    2300054: ID166
+    2300056: ID179
+    2300058: ID187
+    2300060: ID193
+    2300062: ID201
+    2300064: ID209
+    2300066: ID217
+    2300068: ID225
+    2300070: ID233
+    2300072: ID241
+    2300074: ID249
+    2300076: ID257
+    2300078: ID265
+    2300080: ID273
+    2300082: ID28
+    2300084: ID34
+    2300086: ID342
+    2300088: ID342 1
+    2300090: ID342 2
+    2300092: ID342 3
+    2300094: ID355
+    2300096: ID355 1
+    2300098: ID355 2
+    2300100: ID355 3
+    2300102: ID368
+    2300104: ID368 1
+    2300106: ID368 2
+    2300108: ID368 3
+    2300110: ID396
+    2300112: ID396 1
+    2300114: ID404
+    2300116: ID404 1
+    2300118: ID422
+    2300120: ID422 1
+    2300122: ID422 2
+    2300124: ID422 3
+    2300126: ID441
+    2300128: ID441 1
+    2300130: ID449
+    2300132: ID449 1
+    2300134: ID467
+    2300136: ID473
+    2300138: ID488
+    2300140: ID49
+    2300142: ID511
+    2300144: ID511 1
+    2300146: ID517
+    2300148: ID517 1
+    2300150: ID523
+    2300152: ID523 1
+    2300154: ID541
+    2300156: ID547
+    2300158: ID563
+    2300160: ID569
+    2300162: ID57
+    2300164: ID577
+    2300166: ID583
+    2300168: ID591
+    2300170: ID599
+    2300172: ID607
+    2300174: ID65
+    2300176: ID656
+    2300178: ID656 1
+    2300180: ID656 2
+    2300182: ID656 3
+    2300184: ID656 4
+    2300186: ID676
+    2300188: ID73
+    2300190: ID757
+    2300192: ID770
+    2300194: ID776
+    2300196: ID784
+    2300198: ID79
+    2300200: ID792
+    2300202: ID800
+    2300204: ID808
+    2300206: ID816
+    2300208: ID824
+    2300210: ID832
+    2300212: ID840
+    2300214: ID848
+    2300216: ID856
+    2300218: ID864
+    2300220: ID87
+    2300222: ID872
+    2300224: ID880
+    2300226: ID896
+    2300228: ID902
+    2300230: ID910
+    2300232: ID916
+    2300234: ID922
+    2300236: ID928
+    2300238: ID934
+    2300240: ID940
+    2300242: ID946
+    2300244: ID95
+    2300246: ID952
+    2300248: ID958
+    2300250: ID964
+    2300252: ID970
+    2300254: ID976
+    2300256: ID982
+    2300258: ID988
+    2300260: ID994
+    2300262: image_0
+    2300264: image_1
+    2300266: image_2
+    2300268: image_3
+    2300270: image_4
+    2300272: image_5
+    2300274: image_6
+    2300276: Komponente_1
+    2300278: Komponente_1 1
+    2300280: Komponente_4
+    2300282: Komponente_5
+    2300284: Komponente_5 1
+    2300286: Komponente_5 2
+    2300288: Komponente_5 3
+    2300290: Komponente_5 4
+    2300292: Lenkrad
+    2300294: Markisenelement
+    2300296: Markisenelement 1
+    2300298: Markisenelement 10
+    2300300: Markisenelement 11
+    2300302: Markisenelement 12
+    2300304: Markisenelement 13
+    2300306: Markisenelement 14
+    2300308: Markisenelement 2
+    2300310: Markisenelement 3
+    2300312: Markisenelement 4
+    2300314: Markisenelement 5
+    2300316: Markisenelement 6
+    2300318: Markisenelement 7
+    2300320: Markisenelement 8
+    2300322: Markisenelement 9
+    2300324: minifridge
+    2300326: Regal
+    2300328: Sitz
+    2300330: Sitz 1
+    3300000: _3D_Object3
+    3300002: _3D_Object3 1
+    3300004: _3D_Object3 2
+    3300006: _3D_Object3 3
+    3300008: group_0
+    3300010: group_1
+    3300012: group_2
+    3300014: group_3
+    3300016: group_4
+    3300018: group_5
+    3300020: group_6
+    3300022: group_7
+    3300024: Gruppe_2
+    3300026: Gruppe_2 1
+    3300028: Gruppe_2 2
+    3300030: Gruppe_2 3
+    3300032: Gruppe_5
+    3300034: Gruppe_5 1
+    3300036: Gruppe_5 2
+    3300038: Gruppe_5 3
+    3300040: ID103
+    3300042: ID116
+    3300044: ID124
+    3300046: ID132
+    3300048: ID140
+    3300050: ID148
+    3300052: ID158
+    3300054: ID166
+    3300056: ID179
+    3300058: ID187
+    3300060: ID193
+    3300062: ID201
+    3300064: ID209
+    3300066: ID217
+    3300068: ID225
+    3300070: ID233
+    3300072: ID241
+    3300074: ID249
+    3300076: ID257
+    3300078: ID265
+    3300080: ID273
+    3300082: ID28
+    3300084: ID34
+    3300086: ID342
+    3300088: ID342 1
+    3300090: ID342 2
+    3300092: ID342 3
+    3300094: ID355
+    3300096: ID355 1
+    3300098: ID355 2
+    3300100: ID355 3
+    3300102: ID368
+    3300104: ID368 1
+    3300106: ID368 2
+    3300108: ID368 3
+    3300110: ID396
+    3300112: ID396 1
+    3300114: ID404
+    3300116: ID404 1
+    3300118: ID422
+    3300120: ID422 1
+    3300122: ID422 2
+    3300124: ID422 3
+    3300126: ID441
+    3300128: ID441 1
+    3300130: ID449
+    3300132: ID449 1
+    3300134: ID467
+    3300136: ID473
+    3300138: ID488
+    3300140: ID49
+    3300142: ID511
+    3300144: ID511 1
+    3300146: ID517
+    3300148: ID517 1
+    3300150: ID523
+    3300152: ID523 1
+    3300154: ID541
+    3300156: ID547
+    3300158: ID563
+    3300160: ID569
+    3300162: ID57
+    3300164: ID577
+    3300166: ID583
+    3300168: ID591
+    3300170: ID599
+    3300172: ID607
+    3300174: ID65
+    3300176: ID656
+    3300178: ID656 1
+    3300180: ID656 2
+    3300182: ID656 3
+    3300184: ID656 4
+    3300186: ID676
+    3300188: ID73
+    3300190: ID757
+    3300192: ID770
+    3300194: ID776
+    3300196: ID784
+    3300198: ID79
+    3300200: ID792
+    3300202: ID800
+    3300204: ID808
+    3300206: ID816
+    3300208: ID824
+    3300210: ID832
+    3300212: ID840
+    3300214: ID848
+    3300216: ID856
+    3300218: ID864
+    3300220: ID87
+    3300222: ID872
+    3300224: ID880
+    3300226: ID896
+    3300228: ID902
+    3300230: ID910
+    3300232: ID916
+    3300234: ID922
+    3300236: ID928
+    3300238: ID934
+    3300240: ID940
+    3300242: ID946
+    3300244: ID95
+    3300246: ID952
+    3300248: ID958
+    3300250: ID964
+    3300252: ID970
+    3300254: ID976
+    3300256: ID982
+    3300258: ID988
+    3300260: ID994
+    3300262: image_0
+    3300264: image_1
+    3300266: image_2
+    3300268: image_3
+    3300270: image_4
+    3300272: image_5
+    3300274: image_6
+    3300276: Komponente_1
+    3300278: Komponente_1 1
+    3300280: Komponente_4
+    3300282: Komponente_5
+    3300284: Komponente_5 1
+    3300286: Komponente_5 2
+    3300288: Komponente_5 3
+    3300290: Komponente_5 4
+    3300292: Lenkrad
+    3300294: Markisenelement
+    3300296: Markisenelement 1
+    3300298: Markisenelement 10
+    3300300: Markisenelement 11
+    3300302: Markisenelement 12
+    3300304: Markisenelement 13
+    3300306: Markisenelement 14
+    3300308: Markisenelement 2
+    3300310: Markisenelement 3
+    3300312: Markisenelement 4
+    3300314: Markisenelement 5
+    3300316: Markisenelement 6
+    3300318: Markisenelement 7
+    3300320: Markisenelement 8
+    3300322: Markisenelement 9
+    3300324: minifridge
+    3300326: Regal
+    3300328: Sitz
+    3300330: Sitz 1
+    4300000: group_0
+    4300002: ID563
+    4300004: ID569
+    4300006: ID577
+    4300008: ID583
+    4300010: ID591
+    4300012: ID599
+    4300014: ID607
+    4300016: group_1
+    4300018: group_2
+    4300020: ID28
+    4300022: ID34
+    4300024: ID49
+    4300026: ID57
+    4300028: ID65
+    4300030: ID73
+    4300032: ID79
+    4300034: ID87
+    4300036: ID95
+    4300038: ID103
+    4300040: ID116
+    4300042: ID124
+    4300044: ID132
+    4300046: ID140
+    4300048: ID148
+    4300050: ID158
+    4300052: ID166
+    4300054: ID179
+    4300056: ID187
+    4300058: ID193
+    4300060: ID201
+    4300062: ID209
+    4300064: ID217
+    4300066: ID225
+    4300068: ID233
+    4300070: ID241
+    4300072: ID249
+    4300074: ID257
+    4300076: ID265
+    4300078: ID273
+    4300080: group_3
+    4300082: group_4
+    4300084: _3D_Object3
+    4300086: ID342
+    4300088: ID355
+    4300090: ID368
+    4300092: Gruppe_2
+    4300094: ID396
+    4300096: ID404
+    4300098: Komponente_1
+    4300100: ID441
+    4300102: ID449
+    4300104: Gruppe_5
+    4300106: ID422
+    4300108: Gruppe_2
+    4300110: ID467
+    4300112: ID473
+    4300114: Lenkrad
+    4300116: group_5
+    4300118: ID488
+    4300120: Sitz
+    4300122: ID511
+    4300124: ID517
+    4300126: ID523
+    4300128: Gruppe_2
+    4300130: ID541
+    4300132: ID547
+    4300134: group_6
+    4300136: group_7
+    4300138: ID676
+    4300140: Komponente_5
+    4300142: ID656
+    4300144: Regal
+    4300146: Komponente_4
+    4300148: ID757
+    4300150: ID770
+    4300152: ID776
+    4300154: ID784
+    4300156: ID792
+    4300158: ID800
+    4300160: ID808
+    4300162: ID816
+    4300164: ID824
+    4300166: ID832
+    4300168: ID840
+    4300170: ID848
+    4300172: ID856
+    4300174: ID864
+    4300176: ID872
+    4300178: ID880
+    4300180: Markisenelement
+    4300182: Markisenelement
+    4300184: minifridge
+    4300186: ID896
+    4300188: ID902
+    4300190: ID910
+    4300192: ID916
+    4300194: ID922
+    4300196: ID928
+    4300198: ID934
+    4300200: ID940
+    4300202: ID946
+    4300204: ID952
+    4300206: ID958
+    4300208: ID964
+    4300210: ID970
+    4300212: ID976
+    4300214: ID982
+    4300216: ID988
+    4300218: ID994
+    4300220: image_0
+    4300222: image_1
+    4300224: image_2
+    4300226: image_3
+    4300228: image_4
+    4300230: image_5
+    4300232: image_6
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
