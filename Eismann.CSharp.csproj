@@ -116,6 +116,7 @@
     <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRIntegration.cs" />
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\IceAttachWaffle.cs" />
     <Compile Include="Assets\Scripts\MovePassant.cs" />
     <Compile Include="Assets\Scripts\WaffleExample.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
