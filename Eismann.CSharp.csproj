@@ -114,11 +114,15 @@
     <Compile Include="Assets\NewtonVR\Oculus\NVROculusIntegration.cs" />
     <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRInputDevice.cs" />
     <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRIntegration.cs" />
+    <Compile Include="Assets\Scripts\CostumerMovement.cs" />
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\IceAttachIce.cs" />
     <Compile Include="Assets\Scripts\IceAttachWaffle.cs" />
     <Compile Include="Assets\Scripts\MovePassant.cs" />
+    <Compile Include="Assets\Scripts\MoveToTheOtherSide.cs" />
     <Compile Include="Assets\Scripts\WaffleExample.cs" />
+    <Compile Include="Assets\Scripts\signBehavior.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
