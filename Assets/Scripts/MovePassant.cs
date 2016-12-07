@@ -11,4 +11,16 @@ public class MovePassant : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.right * -speed;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("wallLeft"))
+        {
+            rb.velocity = transform.right * speed;
+        }
+        if(other.gameObject.CompareTag("wallRight"))
+        {
+            rb.velocity = transform.right * -speed;
+        }
+    }
 }
