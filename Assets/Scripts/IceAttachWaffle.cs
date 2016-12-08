@@ -6,11 +6,7 @@ public class IceAttachWaffle : MonoBehaviour {
     //private GameController gameController;
 
 	void Start () {
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> master
 	}
 	
 
