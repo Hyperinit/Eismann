@@ -4,12 +4,9 @@ using System.Collections;
 public class IceAttachIce : MonoBehaviour
 {
 
-    private GameController gameController;
-
     void Start()
     {
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        gameController = gameControllerObject.GetComponent<GameController>();
+        
     }
 
 
@@ -18,8 +15,6 @@ public class IceAttachIce : MonoBehaviour
         if (other.gameObject.CompareTag("Ice"))
         {
             transform.SetParent(other.transform);
-            //transform.parent = other.transform;
-            gameController.AddScore(1);
 
         }
     }

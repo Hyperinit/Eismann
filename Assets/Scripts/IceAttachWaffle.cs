@@ -4,7 +4,7 @@ using System.Collections;
 public class IceAttachWaffle : MonoBehaviour {
 
     //private GameController gameController;
-	private gameObject waffle;
+
 
 	void Start () {
 
@@ -18,7 +18,7 @@ public class IceAttachWaffle : MonoBehaviour {
             Debug.Log("Compare Tag: " + other.gameObject.CompareTag(other.tag).ToString());
 
             Debug.Log("Transform Tag is " + tag);
-            waffle.transform.SetParent(other.transform);
+            transform.SetParent(other.transform);
 
             //transform.parent = other.transform;
             //gameController.AddScore(1);
