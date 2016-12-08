@@ -17,7 +17,9 @@ public class GameController : MonoBehaviour {
 
     //waffle
     public GameObject waffle;
+    private GameObject waffleClone;
     private bool waffleIsComplete;
+    private WaffleBehavior waffleBehaviorScript;
 
     private ArrayList auftrag;
 
@@ -28,8 +30,9 @@ public class GameController : MonoBehaviour {
         StartCoroutine(SpawnPassasnts());
 
         waffleIsComplete = false;
-
+        //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
         auftrag = new ArrayList();
+        createWaffle();
     }
 
     IEnumerator SpawnPassasnts()
@@ -60,11 +63,22 @@ public class GameController : MonoBehaviour {
         --counterPassants;
     }
 
+    void createWaffle()
+    {
+        Vector3 position = new Vector3(0, 0.77f, 0.34f);
+        waffleClone = (GameObject)Instantiate(waffle, position, transform.rotation);
+        waffleBehaviorScript = (WaffleBehavior)waffleClone.GetComponent(typeof(WaffleBehavior));
+    }
+
     public void IceIsInDelivery()
     {
-        if(waffleIsComplete)
+        Debug.Log("IceIsInDelivery()");
+        if(true)
         {
             score += getScoreValue();
+            //waffleClone.DestroyWaffle();
+            waffleBehaviorScript.DestroyWaffle();
+            createWaffle();
         }
     }
 

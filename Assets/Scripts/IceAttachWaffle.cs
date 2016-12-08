@@ -4,7 +4,7 @@ using System.Collections;
 public class IceAttachWaffle : MonoBehaviour {
 
     //private GameController gameController;
-
+	private GameObject waffle;
 
 	void Start () {
 
