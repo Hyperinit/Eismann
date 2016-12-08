@@ -1,0 +1,69 @@
+Initialize engine version: 5.4.2f2 (b7e030c65c9b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K6000 (ID=0x103a)
+    Vendor:   NVIDIA
+    VRAM:     12241 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.049 seconds
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2016_12_08_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 2560x1440 59Hz; virtual: 2560x1440 at 0,0
+<RI> Initialized touch support.
+OpenVR initialized!
+ 
+(Filename:  Line: 353)
+
+UnloadTime: 0.589917 ms
+Connected to lighthouse:LHR-A2CE53B0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 3490 -> priority: 1 
+  Thread -> id: 2e20 -> priority: 1 
+  Thread -> id: 2c40 -> priority: 1 
+  Thread -> id: 2b88 -> priority: 1 
+  Thread -> id: 2f74 -> priority: 1 
+  Thread -> id: c68 -> priority: 1 
+  Thread -> id: 20b8 -> priority: 1 
+  Thread -> id: 2e8c -> priority: 1 
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.623833 ms
+
+Unloading 89 unused Assets to reduce memory usage. Loaded Objects now: 2175.
+Total: 0.537386 ms (FindLiveObjects: 0.080607 ms CreateObjectMapping: 0.028378 ms MarkObjects: 0.338432 ms  DeleteObjects: 0.089665 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.049110 ms
+
+Unloading 82 unused Assets to reduce memory usage. Loaded Objects now: 2223.
+Total: 0.554292 ms (FindLiveObjects: 0.068833 ms CreateObjectMapping: 0.031095 ms MarkObjects: 0.396699 ms  DeleteObjects: 0.057361 ms)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 707)
+
