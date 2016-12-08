@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IceAttachIce : MonoBehaviour
-{
+public class DroppointBehavior : MonoBehaviour {
 
     private GameController gameController;
 
@@ -11,16 +10,16 @@ public class IceAttachIce : MonoBehaviour
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         gameController = gameControllerObject.GetComponent<GameController>();
     }
-
+    // Update is called once per frame
+    void Update () {
+	
+	}
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ice"))
+        if (other.gameObject.CompareTag("waffle"))
         {
-            transform.SetParent(other.transform);
-            //transform.parent = other.transform;
-            gameController.AddScore(1);
-
+            gameController.IceIsInDelivery();
         }
     }
 }

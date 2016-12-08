@@ -15,11 +15,21 @@ public class GameController : MonoBehaviour {
     public GUIText scoreText;
     private int score;
 
+    //waffle
+    public GameObject waffle;
+    private bool waffleIsComplete;
+
+    private ArrayList auftrag;
+
     void Start()
     {
         score = 0;
         UpdateScore();
         StartCoroutine(SpawnPassasnts());
+
+        waffleIsComplete = false;
+
+        auftrag = new ArrayList();
     }
 
     IEnumerator SpawnPassasnts()
@@ -48,5 +58,18 @@ public class GameController : MonoBehaviour {
     void ReduceCounterPassants()
     {
         --counterPassants;
+    }
+
+    public void IceIsInDelivery()
+    {
+        if(waffleIsComplete)
+        {
+            score += getScoreValue();
+        }
+    }
+
+    private int getScoreValue()
+    {
+        return 0;
     }
 }

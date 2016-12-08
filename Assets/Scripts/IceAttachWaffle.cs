@@ -7,9 +7,6 @@ public class IceAttachWaffle : MonoBehaviour {
 
 	void Start () {
 
-
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        gameController = gameControllerObject.GetComponent<GameController>();
 	}
 	
 
