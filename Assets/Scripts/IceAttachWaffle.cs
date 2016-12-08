@@ -3,29 +3,34 @@ using System.Collections;
 
 public class IceAttachWaffle : MonoBehaviour {
 
-    private GameController gameController;
+    //private GameController gameController;
 
 	void Start () {
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> master
 	}
 	
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("waffle"))
+        if (other.gameObject.CompareTag("Ice"))
         {
-            Debug.Log("Compare Tag: waffle" + other.gameObject.CompareTag(other.tag).ToString());
+            Debug.Log("Compare Tag: " + other.gameObject.CompareTag(other.tag).ToString());
 
             Debug.Log("Transform Tag is " + tag);
-            //transform.SetParent(other.transform);
+            transform.SetParent(other.transform);
+
             //transform.parent = other.transform;
             //gameController.AddScore(1);
 
-        } else if (other.gameObject.CompareTag("Ice"))
+        } /*else if (other.gameObject.CompareTag("Ice"))
              {
-            Debug.Log("Compare Tag : ICE" + other.gameObject.CompareTag(other.tag).ToString());
+            Debug.Log("Compare Tag : ICE " + other.gameObject.CompareTag(other.tag).ToString());
 
             Debug.Log("Transform Tag is from Ice " + tag);
-        }
+        }*/
     }
 }
