@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CostumerMovement : MonoBehaviour {
+public class CustomerMovement : MonoBehaviour {
     //DIESES SCRIPT IST NICHT GETESTET
     //Es fehlt insbesondere die Naviagation und das hochhalten des Schildes, sowie der Input des Schildes.
 

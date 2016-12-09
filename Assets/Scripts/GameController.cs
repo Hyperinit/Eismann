@@ -23,6 +23,11 @@ public class GameController : MonoBehaviour {
 
     private ArrayList auftrag;
 
+    //Customer
+    public GameObject customer;
+    private GameObject customerClone;
+    private CustomerMovement customerMovementScript;
+
     void Start()
     {
         score = 0;
@@ -33,6 +38,8 @@ public class GameController : MonoBehaviour {
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
         auftrag = new ArrayList();
         createWaffle();
+        createCustomer();
+
     }
 
     IEnumerator SpawnPassasnts()
@@ -70,6 +77,13 @@ public class GameController : MonoBehaviour {
         waffleBehaviorScript = (WaffleBehavior)waffleClone.GetComponent(typeof(WaffleBehavior));
     }
 
+    void createCustomer()
+    {
+        Vector3 position = new Vector3(0.09f, 1.0f, 10.0f);
+        customerClone = (GameObject)Instantiate(customer, position, transform.rotation);
+        customerMovementScript = (CustomerMovement)customerClone.GetComponent(typeof(CustomerMovement));
+    }
+
     public void IceIsInDelivery()
     {
         Debug.Log("IceIsInDelivery()");
@@ -78,7 +92,9 @@ public class GameController : MonoBehaviour {
             score += getScoreValue();
             //waffleClone.DestroyWaffle();
             waffleBehaviorScript.DestroyWaffle();
+            customerMovementScript.setServed();
             createWaffle();
+            createCustomer();
         }
     }
 

@@ -114,7 +114,7 @@
     <Compile Include="Assets\NewtonVR\Oculus\NVROculusIntegration.cs" />
     <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRInputDevice.cs" />
     <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRIntegration.cs" />
-    <Compile Include="Assets\Scripts\CostumerMovement.cs" />
+    <Compile Include="Assets\Scripts\CustomerMovement.cs" />
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
     <Compile Include="Assets\Scripts\DroppointBehavior.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
