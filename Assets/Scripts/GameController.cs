@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour {
     {
         scoreText.text = "Score: " + score;
     }
-    void ReduceCounterPassants()
+    public void ReduceCounterPassants() //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
     {
         --counterPassants;
     }
