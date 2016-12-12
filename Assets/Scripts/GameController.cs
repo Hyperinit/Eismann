@@ -21,7 +21,9 @@ public class GameController : MonoBehaviour {
     private bool waffleIsComplete;
     private WaffleBehavior waffleBehaviorScript;
 
-    private ArrayList auftrag;
+    private int[] auftrag;
+    private int auftragGroesse;
+    private int iceSorten;
 
     //Customer
     public GameObject customer;
@@ -36,7 +38,11 @@ public class GameController : MonoBehaviour {
 
         waffleIsComplete = false;
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
-        auftrag = new ArrayList();
+        auftrag = new int[0];
+        auftragGroesse = 1;
+        iceSorten = 1;
+
+        createAuftrag();
         createWaffle();
         createCustomer();
 
@@ -60,6 +66,12 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void ReduceCounterPassants() //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
+    {
+        --counterPassants;
+        Debug.Log("Passantenanzahl: " + counterPassants);
+    }
+
     public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
@@ -70,10 +82,15 @@ public class GameController : MonoBehaviour {
     {
         scoreText.text = "Score: " + score;
     }
-    public void ReduceCounterPassants() //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
+
+    void createAuftrag()
     {
-        --counterPassants;
-        Debug.Log("Passantenanzahl: " + counterPassants);
+        auftrag = new int[0];//Array leeren
+        auftrag = new int[auftragGroesse];//Array auf die aktuelle Autragsgroesse anpassen
+        for (int i=0;i<auftragGroesse;i++)
+        {
+            auftrag[i] = (int)Random.Range(0, iceSorten);
+        }
     }
 
     void createWaffle()
