@@ -45,13 +45,18 @@ public class GameController : MonoBehaviour {
     IEnumerator SpawnPassasnts()
     {
         yield return new WaitForSeconds(startWait);
-        while (maxPassants>counterPassants)
+
+        while (true)
         {
-            Vector3 spawnPosition = new Vector3(spawnValues.x+Random.Range(-spawnRange.x, spawnRange.x), spawnValues.y, spawnValues.z + Random.Range(-spawnRange.z, spawnRange.z));
-            Quaternion spawnRotation = Quaternion.identity;
-            Instantiate(passant, spawnPosition, spawnRotation);
+            if (maxPassants > counterPassants)//workaround to enable respawn
+            {
+                Vector3 spawnPosition = new Vector3(spawnValues.x + Random.Range(-spawnRange.x, spawnRange.x), spawnValues.y, spawnValues.z + Random.Range(-spawnRange.z, spawnRange.z));
+                Quaternion spawnRotation = Quaternion.identity;
+                Instantiate(passant, spawnPosition, spawnRotation);
+                counterPassants++;
+                Debug.Log("Passantenanzahl: "+counterPassants);
+            }
             yield return new WaitForSeconds(startWait);
-            counterPassants++;
         }
     }
 
@@ -68,6 +73,7 @@ public class GameController : MonoBehaviour {
     public void ReduceCounterPassants() //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
     {
         --counterPassants;
+        Debug.Log("Passantenanzahl: " + counterPassants);
     }
 
     void createWaffle()
