@@ -96,13 +96,16 @@
      <Compile Include="Assets\NewtonVR\Oculus\NVROculusIntegration.cs" />
      <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRInputDevice.cs" />
      <Compile Include="Assets\NewtonVR\SteamVR\NVRSteamVRIntegration.cs" />
-     <Compile Include="Assets\Scripts\CostumerMovement.cs" />
+     <Compile Include="Assets\Scripts\CustomerMovement.cs" />
      <Compile Include="Assets\Scripts\DestroyByTime.cs" />
+     <Compile Include="Assets\Scripts\DroppointBehavior.cs" />
+     <Compile Include="Assets\Scripts\ExitGame.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\IceAttachIce.cs" />
      <Compile Include="Assets\Scripts\IceAttachWaffle.cs" />
      <Compile Include="Assets\Scripts\MovePassant.cs" />
      <Compile Include="Assets\Scripts\MoveToTheOtherSide.cs" />
+     <Compile Include="Assets\Scripts\WaffleBehavior.cs" />
      <Compile Include="Assets\Scripts\WaffleExample.cs" />
      <Compile Include="Assets\Scripts\signBehavior.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
@@ -146,11 +149,11 @@
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
      <None Include="Assets\SteamVR\readme.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
