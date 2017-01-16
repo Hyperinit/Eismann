@@ -8,7 +8,7 @@ public class CustomerMovement : MonoBehaviour {
     //navigation
     Transform waitingAreaTransform;
     Transform disengageWall;
-    NavMeshAgent nav;
+    UnityEngine.AI.NavMeshAgent nav;
 
     //gamemechanics
     bool served;
@@ -28,7 +28,7 @@ public class CustomerMovement : MonoBehaviour {
     void Awake()
     {
         waitingAreaTransform = GameObject.FindGameObjectWithTag("waitingArea").transform;
-        nav = GetComponent<NavMeshAgent>();
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         served = false;
         allowDisappear = false;
         walking = true;
