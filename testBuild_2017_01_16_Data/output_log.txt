@@ -1,0 +1,146 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K6000 (ID=0x103a)
+    Vendor:   NVIDIA
+    VRAM:     12241 MB
+    Driver:   21.21.13.7563
+Begin MonoManager ReloadAssembly
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+- Completed reload, in  0.284 seconds
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_01_16_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 2560x1440 59Hz; virtual: 2560x1440 at 0,0
+<RI> Initialized touch support.
+OpenVR initialized!
+ 
+(Filename:  Line: 381)
+
+UnloadTime: 0.663883 ms
+Connected to lighthouse:LHR-A2CE53B0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 35a8 -> priority: 1 
+  Thread -> id: 35b8 -> priority: 1 
+  Thread -> id: 35b0 -> priority: 1 
+  Thread -> id: 35b4 -> priority: 1 
+  Thread -> id: 35ac -> priority: 1 
+  Thread -> id: 35bc -> priority: 1 
+  Thread -> id: 35c0 -> priority: 1 
+  Thread -> id: 35c4 -> priority: 1 
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Passantenanzahl: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is Ice
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 815)
+

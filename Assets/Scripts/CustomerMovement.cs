@@ -10,6 +10,9 @@ public class CustomerMovement : MonoBehaviour {
     Transform disengageWall;
     UnityEngine.AI.NavMeshAgent nav;
 
+	//animator
+	Animator anim;
+
     //gamemechanics
     bool served;
     bool allowDisappear;
@@ -27,6 +30,7 @@ public class CustomerMovement : MonoBehaviour {
 
     void Awake()
     {
+		anim = GetComponent <Animator> ();
         waitingAreaTransform = GameObject.FindGameObjectWithTag("waitingArea").transform;
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         served = false;
@@ -43,7 +47,7 @@ public class CustomerMovement : MonoBehaviour {
         else if (!served) //walking wurde durch trigger auf false gestellt. Bei served=false wartet der Kunde an der Theke. Bei true verlässt er das Spiel
         {
 
-        }
+		}
         else
         {
             walking = true;
@@ -52,6 +56,7 @@ public class CustomerMovement : MonoBehaviour {
 
     public void setServed()
     {
+		//anim.SetBool ("walking", true);
         served = true;
         allowDisappear = true;
         if(Random.value>0.5f)
@@ -69,6 +74,7 @@ public class CustomerMovement : MonoBehaviour {
         if (other.gameObject.CompareTag("waitingArea")&&(!served)) //Kunde erreicht die Theke und wartet, bis er bedient wird.
         {
             walking = false;
+			//anim.SetBool ("walking", false);
             serveMe();
             
         }
