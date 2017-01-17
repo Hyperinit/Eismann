@@ -24,11 +24,13 @@ public class MovePassant : MonoBehaviour {
         {
             disappearDecision();
             rb.velocity = transform.right * speed;
+            transform.RotateAround(transform.position, transform.up, 180f);//umdrehen der Blickrichtung
         }
         if(other.gameObject.CompareTag("wallRight"))
         {
             disappearDecision();
-            rb.velocity = transform.right * -speed;
+            rb.velocity = transform.right * speed;
+            transform.RotateAround(transform.position, transform.up, 180f);//umdrehen der Blickrichtung
         }
     }
 
