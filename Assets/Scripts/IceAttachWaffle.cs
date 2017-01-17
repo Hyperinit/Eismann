@@ -58,6 +58,8 @@ public class IceAttachWaffle : MonoBehaviour {
             Debug.Log("Compare Tag: " + collision.gameObject.CompareTag(collision.gameObject.tag).ToString());
 
             Debug.Log("Transform Tag is " + tag);
+=======
+>>>>>>> master
             transform.SetParent(collision.transform);
 
             //transform.parent = other.transform;
