@@ -1,27 +1,9 @@
-<<<<<<< Updated upstream
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{47B1E82B-C077-CB6D-5892-E872737DD537}") = "Eismann", "Assembly-CSharp.csproj", "{4E735285-4AE1-D3BC-0D1E-F823C7593354}"
-EndProject
-Project("{47B1E82B-C077-CB6D-5892-E872737DD537}") = "Eismann", "Assembly-CSharp-Editor.csproj", "{6BAF0236-4A25-ADEB-93BE-2D1D4E2EA458}"
-=======
-<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eismann", "Eismann.csproj", "{830C8325-C629-AE57-1CD2-9B00A5DFDC57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eismann.CSharp", "Eismann.CSharp.csproj", "{FC656B31-3933-F977-4AE7-6D43D1B5EA37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eismann.Editor", "Eismann.Editor.csproj", "{7ECA98EA-D4D3-A16E-3FF9-FA230B92B064}"
-=======
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{47B1E82B-C077-CB6D-5892-E872737DD537}") = "Eismann", "Assembly-CSharp.csproj", "{4E735285-4AE1-D3BC-0D1E-F823C7593354}"
-EndProject
-Project("{47B1E82B-C077-CB6D-5892-E872737DD537}") = "Eismann", "Assembly-CSharp-Editor.csproj", "{6BAF0236-4A25-ADEB-93BE-2D1D4E2EA458}"
->>>>>>> master
->>>>>>> Stashed changes
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eismann.CSharp.Editor", "Eismann.CSharp.Editor.csproj", "{7AA096C0-16BE-D1B8-894E-422BA8414D61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,36 +11,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-		{830C8325-C629-AE57-1CD2-9B00A5DFDC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{830C8325-C629-AE57-1CD2-9B00A5DFDC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{830C8325-C629-AE57-1CD2-9B00A5DFDC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{830C8325-C629-AE57-1CD2-9B00A5DFDC57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7ECA98EA-D4D3-A16E-3FF9-FA230B92B064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7ECA98EA-D4D3-A16E-3FF9-FA230B92B064}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7ECA98EA-D4D3-A16E-3FF9-FA230B92B064}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7ECA98EA-D4D3-A16E-3FF9-FA230B92B064}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
->>>>>>> Stashed changes
-		{4E735285-4AE1-D3BC-0D1E-F823C7593354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E735285-4AE1-D3BC-0D1E-F823C7593354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E735285-4AE1-D3BC-0D1E-F823C7593354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E735285-4AE1-D3BC-0D1E-F823C7593354}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BAF0236-4A25-ADEB-93BE-2D1D4E2EA458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BAF0236-4A25-ADEB-93BE-2D1D4E2EA458}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BAF0236-4A25-ADEB-93BE-2D1D4E2EA458}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BAF0236-4A25-ADEB-93BE-2D1D4E2EA458}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< Updated upstream
-=======
->>>>>>> master
->>>>>>> Stashed changes
+		{FC656B31-3933-F977-4AE7-6D43D1B5EA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC656B31-3933-F977-4AE7-6D43D1B5EA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC656B31-3933-F977-4AE7-6D43D1B5EA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC656B31-3933-F977-4AE7-6D43D1B5EA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA096C0-16BE-D1B8-894E-422BA8414D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA096C0-16BE-D1B8-894E-422BA8414D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA096C0-16BE-D1B8-894E-422BA8414D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA096C0-16BE-D1B8-894E-422BA8414D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

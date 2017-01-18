@@ -18,13 +18,13 @@ public class CustomerMovement : MonoBehaviour {
     bool allowDisappear;
     bool walking;
 
-    //sign
-    public GameObject sign;
+    //speechbubble
+    public GameObject speechbubble;
 
 
     // Use this for initialization
     void Start () {
-        serveMe();
+        //serveMe();
 
     }
 
@@ -71,12 +71,13 @@ public class CustomerMovement : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("waitingArea")&&(!served)) //Kunde erreicht die Theke und wartet, bis er bedient wird.
+        Debug.Log(other + " Customer");
+        if (other.gameObject.CompareTag("waitingArea")) //Kunde erreicht die Theke und wartet, bis er bedient wird.
         {
             walking = false;
-			//anim.SetBool ("walking", false);
+            //anim.SetBool ("walking", false);
+            Debug.Log("serveMe() wird aufgerufen");
             serveMe();
-            
         }
         if ((other.gameObject.CompareTag("wallLeft")|| other.gameObject.CompareTag("wallRight")) && allowDisappear) //Kunde darf das Spiel verlassen und verschwindet, sobald er mit einer der Spielgrenzen kollidiert
         {
@@ -86,8 +87,9 @@ public class CustomerMovement : MonoBehaviour {
 
     void serveMe() //wird aufgerufen, wenn Kunde die Theke erreicht.
     {
+        Debug.Log("serveMe() wurde aufgerufen");
         //halte das Schild hoch
         Vector3 offset=new Vector3(0f,0.2f,0f);
-        Instantiate(sign, transform.position+offset, transform.rotation);
+        Instantiate(speechbubble, transform.position+offset, transform.rotation);
     }
 }
