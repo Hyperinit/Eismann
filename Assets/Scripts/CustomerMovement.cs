@@ -20,12 +20,17 @@ public class CustomerMovement : MonoBehaviour {
 
     //speechbubble
     public GameObject speechbubble;
+    GameObject speechbubbleClone;
+    float speechbubbleTimer;
+    bool speechbubbleTimerActive;
+    SpeechbubbleBehavior SpeechbubbleBehaviorScript;
 
 
     // Use this for initialization
     void Start () {
         //serveMe();
-
+        speechbubbleTimer = 2f;
+        speechbubbleTimerActive = false;
     }
 
     void Awake()
@@ -52,6 +57,17 @@ public class CustomerMovement : MonoBehaviour {
         {
             walking = true;
         }
+
+        if(speechbubbleTimerActive) //wird mit serveMe() gestartet. Nach speechbubbleTimer wird die Speechbubble erzeugt 
+        {
+            speechbubbleTimer -= Time.deltaTime;
+            if(speechbubbleTimer<=0)
+            {
+                spawnSpeechbubble();
+                speechbubbleTimerActive = false;
+            }
+        }
+
     }
 
     public void setServed()
@@ -67,6 +83,7 @@ public class CustomerMovement : MonoBehaviour {
         {
             waitingAreaTransform = GameObject.FindGameObjectWithTag("wallRight").transform;
         }
+        SpeechbubbleBehaviorScript.destroySpeechbubble();
     }
 
     void OnTriggerEnter(Collider other)
@@ -75,7 +92,7 @@ public class CustomerMovement : MonoBehaviour {
         if (other.gameObject.CompareTag("waitingArea")) //Kunde erreicht die Theke und wartet, bis er bedient wird.
         {
             walking = false;
-            //anim.SetBool ("walking", false);
+            //anim.SetInteger ("state", 1);
             Debug.Log("serveMe() wird aufgerufen");
             serveMe();
         }
@@ -88,8 +105,13 @@ public class CustomerMovement : MonoBehaviour {
     void serveMe() //wird aufgerufen, wenn Kunde die Theke erreicht.
     {
         Debug.Log("serveMe() wurde aufgerufen");
-        //halte das Schild hoch
-        Vector3 offset=new Vector3(0f,0.2f,0f);
-        Instantiate(speechbubble, transform.position+offset, transform.rotation);
+        speechbubbleTimerActive = true;//starte Timer, damit die Speechbubble erzeugt und angezeigt wird.
+    }
+
+    void spawnSpeechbubble()
+    {
+        Vector3 offset = new Vector3(-0.79f, 1.52f, 0f);//SpawnPosition der Speechbubble in relation zu Customer
+        speechbubbleClone = (GameObject)Instantiate(speechbubble, transform.position + offset, transform.rotation);
+        SpeechbubbleBehaviorScript = (SpeechbubbleBehavior)speechbubbleClone.GetComponent(typeof(SpeechbubbleBehavior));
     }
 }

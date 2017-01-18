@@ -135,6 +135,7 @@
     <Compile Include="Assets\Scripts\IceAttachWaffle.cs" />
     <Compile Include="Assets\Scripts\MovePassant.cs" />
     <Compile Include="Assets\Scripts\MoveToTheOtherSide.cs" />
+    <Compile Include="Assets\Scripts\SpeechbubbleBehavior.cs" />
     <Compile Include="Assets\Scripts\WaffleBehavior.cs" />
     <Compile Include="Assets\Scripts\WaffleExample.cs" />
     <Compile Include="Assets\Scripts\signBehavior.cs" />

@@ -21,9 +21,11 @@ public class GameController : MonoBehaviour {
     private bool waffleIsComplete;
     private WaffleBehavior waffleBehaviorScript;
 
-    private int[] auftrag;
-    private int auftragGroesse;
+    private int[] order;
+    private int orderSize;
     private int iceSorten;
+    private int maxOrderSize;//not used yet
+    private int maxIceSorten;//not used yet
 
     //Customer
     public GameObject customer;
@@ -38,11 +40,12 @@ public class GameController : MonoBehaviour {
 
         waffleIsComplete = false;
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
-        auftrag = new int[0];
-        auftragGroesse = 1;
-        iceSorten = 1;
+        order = new int[0];
+        orderSize = 5;
+        iceSorten = 3;
+        
 
-        createAuftrag();
+        createOrder();
         createWaffle();
         createCustomer();
 
@@ -83,13 +86,13 @@ public class GameController : MonoBehaviour {
         scoreText.text = "Score: " + score;
     }
 
-    void createAuftrag()
+    void createOrder()
     {
-        auftrag = new int[0];//Array leeren
-        auftrag = new int[auftragGroesse];//Array auf die aktuelle Autragsgroesse anpassen
-        for (int i=0;i<auftragGroesse;i++)
+        order = new int[0];//Array leeren
+        order = new int[orderSize];//Array auf die aktuelle Autragsgroesse anpassen
+        for (int i=0;i<orderSize;i++)
         {
-            auftrag[i] = (int)Random.Range(0, iceSorten);
+            order[i] = (int)Random.Range(0, iceSorten);
         }
     }
 
@@ -118,11 +121,17 @@ public class GameController : MonoBehaviour {
             customerMovementScript.setServed();
             createWaffle();
             createCustomer();
+            createOrder();//TODO diese Zeile noch testen
         }
     }
 
     private int getScoreValue()
     {
         return 0;
+    }
+
+    public int[] getOrder()
+    {
+        return order;
     }
 }
