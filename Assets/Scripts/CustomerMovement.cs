@@ -72,10 +72,10 @@ public class CustomerMovement : MonoBehaviour {
 
     public void setServed()
     {
-		//anim.SetBool ("walking", true);
         served = true;
         allowDisappear = true;
-        if(Random.value>0.5f)
+        anim.SetInteger("state", 0);
+        if (Random.value>0.5f)
         {
             waitingAreaTransform = GameObject.FindGameObjectWithTag("wallLeft").transform;
         }
@@ -92,7 +92,8 @@ public class CustomerMovement : MonoBehaviour {
         if (other.gameObject.CompareTag("waitingArea")) //Kunde erreicht die Theke und wartet, bis er bedient wird.
         {
             walking = false;
-            //anim.SetInteger ("state", 1);
+            Debug.Log("anim.SetInteger (state, 1)");
+            anim.SetInteger ("state", 1);
             Debug.Log("serveMe() wird aufgerufen");
             serveMe();
         }
