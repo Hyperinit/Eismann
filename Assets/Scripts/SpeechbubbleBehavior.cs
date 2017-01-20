@@ -31,7 +31,7 @@ public class SpeechbubbleBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (fadeOutbool)
+        if (fadeOutbool)//TODO let this happen in a coroutine
             fadeOut();
     }
 

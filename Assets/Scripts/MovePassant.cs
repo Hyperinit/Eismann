@@ -7,6 +7,7 @@ public class MovePassant : MonoBehaviour {
     public float speed;
     public bool disappear;
     public float disappearProbability;
+    //public int path { get; set; }
 
     private GameController gameController;
 
@@ -16,6 +17,11 @@ public class MovePassant : MonoBehaviour {
         gameController = gameControllerObject.GetComponent<GameController>();
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.right * -speed;
+    }
+
+    public void AddRotation(float extraRotation)
+    {
+        transform.RotateAround(transform.position, transform.up, extraRotation);
     }
 
     void OnTriggerEnter(Collider other)

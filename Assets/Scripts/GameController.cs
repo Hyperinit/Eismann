@@ -7,10 +7,13 @@ public class GameController : MonoBehaviour {
     public Vector3 spawnValues;
     public Vector3 spawnRange;
 
+    //passants
     public float spawnWait;
     public float startWait;
     public int maxPassants;
     private int counterPassants;
+    private Vector3[] spawnPositionsPassants;
+    private float[] spawnRotationPassants;
 
     public GUIText scoreText;
     private int score;
@@ -34,9 +37,12 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
+        spawnPositionsPassants = new Vector3[] { new Vector3(10f,1f,3.3f),new Vector3(10f,1f,5.3f), new Vector3(10f,1f,6.2f), new Vector3(10f, 1f, 7.4f) , new Vector3(10f, 1f, 8.6f) };
+        spawnRotationPassants =new float[]{ 0f,-2.862f,0f, 0f, 0f };
         score = 0;
         UpdateScore();
-        StartCoroutine(SpawnPassasnts());
+        StartCoroutine(SpawnPassants());
+        //PassantsTest();
 
         waffleIsComplete = false;
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
@@ -51,7 +57,25 @@ public class GameController : MonoBehaviour {
 
     }
 
-    IEnumerator SpawnPassasnts()
+    void PassantsTest()
+    {
+        for (int i = 0; i < spawnPositionsPassants.GetLength(0); i++)
+        {
+            if(Random.value>0.5)
+            {
+                spawnPositionsPassants[i].x *= -1;
+                spawnRotationPassants[i] = 180-spawnRotationPassants[i];
+            }
+            Quaternion spawnRotation = Quaternion.identity;
+
+            var tempPassant = (GameObject)Instantiate(passant, spawnPositionsPassants[i], Quaternion.identity);
+            MovePassant MovePassantScript = (MovePassant)tempPassant.GetComponent(typeof(MovePassant));
+            MovePassantScript.AddRotation(spawnRotationPassants[i]);
+           //MovePassantScript.path = i;
+        }
+    }
+
+    IEnumerator SpawnPassants()
     {
         yield return new WaitForSeconds(startWait);
 
