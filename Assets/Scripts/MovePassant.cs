@@ -7,7 +7,7 @@ public class MovePassant : MonoBehaviour {
     public float speed;
     public bool disappear;
     public float disappearProbability;
-    //public int path { get; set; }
+    private int lane;
 
     private GameController gameController;
 
@@ -22,6 +22,11 @@ public class MovePassant : MonoBehaviour {
     public void AddRotation(float extraRotation)
     {
         transform.RotateAround(transform.position, transform.up, extraRotation);
+    }
+
+    public void AddLaneDescription(int nLane)
+    {
+        lane = nLane;
     }
 
     void OnTriggerEnter(Collider other)
@@ -46,7 +51,7 @@ public class MovePassant : MonoBehaviour {
         {
             if(disappearProbability>=Random.Range(0.0f,1.0f))
             {
-                gameController.ReduceCounterPassants();
+                gameController.ReduceCounterPassants(lane);
                 Destroy(gameObject, 0);
             }
         }

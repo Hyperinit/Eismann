@@ -66,18 +66,23 @@ public class GameController : MonoBehaviour {
         int searchedLanes = 0;
         int lanes = spawnPositionsPassants.GetLength(0);
         int run = 0;
-        //for (; freeLane < spawnPositionsPassants.GetLength(0); freeLane++)
-        while (true)
+
+        while (true)//risky risky
         {
+            //Debug.Log("freeLane: " + freeLane + " searchedLanes: " + searchedLanes + " lanes: " + lanes + " run: " + run);
+            //Debug.Log("GiveFreeLane while");
             for(;searchedLanes<lanes;searchedLanes++)
             {
                 if(freeLane==lanes) //wir zählen nicht beginnend bei 0, daher überprüfen, ob wir noch im gültigen Bereich sind
                 {
+                    //Debug.Log("GiveFreeLane if 1");
                     freeLane = 0;
                 }
 
                 if (laneAssignments[freeLane]==run)
                 {
+                    //Debug.Log("GiveFreeLane if 2");
+                    //Debug.Log("return " + freeLane);
                     return freeLane;
                 }
                 else
@@ -85,14 +90,17 @@ public class GameController : MonoBehaviour {
                     freeLane++;
                 }
             }
+            searchedLanes = 0;
             run++;//wenn es nicht anders geht, dann setzen wir halt mehr als einen Passanten auf eine Lane
         }
-        return -1;
+        //Debug.Log("return -1");
+        return 0;//this should not happen
     }
 
     IEnumerator PassantsTest()
     {
-        while(true)
+        yield return new WaitForSeconds(startWait);
+        while (true)
         {
             if (maxPassants > counterPassants)
             {
@@ -108,13 +116,15 @@ public class GameController : MonoBehaviour {
                 MovePassant MovePassantScript = (MovePassant)tempPassant.GetComponent(typeof(MovePassant));
                 MovePassantScript.AddRotation(spawnRotationPassants[freeLane]);
 
+                MovePassantScript.AddLaneDescription(freeLane);
                 counterPassants++;
                 laneAssignments[freeLane]++;//jetzt ist einer mehr unterwegs :)
             }
+            yield return new WaitForSeconds(startWait);//TODO ersetzen durch spawnWait
 
         }
 
-        for (int i = 0; i < spawnPositionsPassants.GetLength(0); i++)
+        /*for (int i = 0; i < spawnPositionsPassants.GetLength(0); i++)
         {
             if (Random.value > 0.5)
             {
@@ -130,7 +140,7 @@ public class GameController : MonoBehaviour {
             //yield return new WaitForSeconds(startWait);
             yield return new WaitForSeconds(0.5f);
         }
-        //yield return null;
+        //yield return null;*/
     }
 
     IEnumerator SpawnPassants()
@@ -147,13 +157,14 @@ public class GameController : MonoBehaviour {
                 counterPassants++;
                 Debug.Log("Passantenanzahl: "+counterPassants);
             }
-            yield return new WaitForSeconds(startWait);//TODO ersetzen durch spawnWait
+            yield return new WaitForSeconds(spawnWait);//TODO ersetzen durch spawnWait
         }
     }
 
-    public void ReduceCounterPassants() //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
+    public void ReduceCounterPassants(int lane) //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
     {
-        --counterPassants;
+        counterPassants--;
+        laneAssignments[lane]--;
         Debug.Log("Passantenanzahl: " + counterPassants);
     }
 
