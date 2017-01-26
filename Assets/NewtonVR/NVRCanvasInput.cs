@@ -51,6 +51,7 @@ namespace NewtonVR
                 ControllerCamera.transform.parent = Player.transform;
                 ControllerCamera.clearFlags = CameraClearFlags.Nothing;
                 ControllerCamera.cullingMask = 0; // 1 << LayerMask.NameToLayer("UI"); 
+                ControllerCamera.stereoTargetEye = StereoTargetEyeMask.None;
 
                 Cursors = new RectTransform[Player.Hands.Length];
                 Lasers = new LineRenderer[Cursors.Length];
@@ -80,8 +81,8 @@ namespace NewtonVR
                         Lasers[index] = cursor.AddComponent<LineRenderer>();
                         Lasers[index].material = new Material(Shader.Find("Standard"));
                         Lasers[index].material.color = LaserColor;
-                        Lasers[index].SetColors(LaserColor, LaserColor);
-                        Lasers[index].SetWidth(LaserStartWidth, LaserEndWidth);
+                        NVRHelpers.LineRendererSetColor(Lasers[index], LaserColor, LaserColor);
+                        NVRHelpers.LineRendererSetWidth(Lasers[index], LaserStartWidth, LaserEndWidth);
                         Lasers[index].useWorldSpace = true;
                         Lasers[index].enabled = false;
                     }
@@ -149,8 +150,8 @@ namespace NewtonVR
                 if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingPlane, pointData.position, pointData.enterEventCamera, out globalLookPos))
                 {
                     //do real physics raycast.
-                    Vector3 origin = Player.Hands[index].transform.position;
-                    Vector3 direction = Player.Hands[index].transform.forward;
+                    Vector3 origin = Player.Hands[index].CurrentPosition;
+                    Vector3 direction = Player.Hands[index].CurrentForward;
                     Vector3 endPoint = globalLookPos;
                     float distance = Vector3.Distance(origin, endPoint);
 
@@ -215,12 +216,13 @@ namespace NewtonVR
 
         private void UpdateCameraPosition(int index)
         {
-            ControllerCamera.transform.position = Player.Hands[index].transform.position;
-            ControllerCamera.transform.forward = Player.Hands[index].transform.forward;
+            ControllerCamera.transform.position = Player.Hands[index].CurrentPosition;
+            ControllerCamera.transform.forward = Player.Hands[index].CurrentForward;
         }
 
         // Process is called by UI system to process events
-        public override void Process()
+        public override void Process() { } //seems to be broken in unity 5.5.0f3  //todo: Assess
+        private void Update()
         {
             OnCanvas = false;
             CanvasUsed = false;

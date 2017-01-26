@@ -15,11 +15,11 @@ namespace NewtonVR
 
         private OVRInput.Controller Controller;
 
-        private Dictionary<NVRButtons, OVRInput.Button> ButtonMapping = new Dictionary<NVRButtons, OVRInput.Button>(new EnumEqualityComparer<NVRButtons>());
-        private Dictionary<NVRButtons, OVRInput.Touch> TouchMapping = new Dictionary<NVRButtons, OVRInput.Touch>(new EnumEqualityComparer<NVRButtons>());
-        private Dictionary<NVRButtons, OVRInput.NearTouch> NearTouchMapping = new Dictionary<NVRButtons, OVRInput.NearTouch>(new EnumEqualityComparer<NVRButtons>());
-        private Dictionary<NVRButtons, OVRInput.Axis1D> TriggerMapping = new Dictionary<NVRButtons, OVRInput.Axis1D>(new EnumEqualityComparer<NVRButtons>());
-        private Dictionary<NVRButtons, OVRInput.Axis2D> StickMapping = new Dictionary<NVRButtons, OVRInput.Axis2D>(new EnumEqualityComparer<NVRButtons>());
+        private Dictionary<NVRButtons, OVRInput.Button> ButtonMapping = new Dictionary<NVRButtons, OVRInput.Button>(new NVRButtonsComparer());
+        private Dictionary<NVRButtons, OVRInput.Touch> TouchMapping = new Dictionary<NVRButtons, OVRInput.Touch>(new NVRButtonsComparer());
+        private Dictionary<NVRButtons, OVRInput.NearTouch> NearTouchMapping = new Dictionary<NVRButtons, OVRInput.NearTouch>(new NVRButtonsComparer());
+        private Dictionary<NVRButtons, OVRInput.Axis1D> TriggerMapping = new Dictionary<NVRButtons, OVRInput.Axis1D>(new NVRButtonsComparer());
+        private Dictionary<NVRButtons, OVRInput.Axis2D> StickMapping = new Dictionary<NVRButtons, OVRInput.Axis2D>(new NVRButtonsComparer());
 
         public override void Initialize(NVRHand hand)
         {
@@ -121,98 +121,62 @@ namespace NewtonVR
 
         public override float GetAxis1D(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.Get(GetTriggerMap(button), Controller);
-
-            return 0;
         }
 
         public override Vector2 GetAxis2D(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.Get(GetStickMap(button), Controller);
-
-            return Vector2.zero;
         }
 
         public override bool GetPressDown(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.GetDown(GetButtonMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetPressUp(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.GetUp(GetButtonMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetPress(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.Get(GetButtonMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetTouchDown(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.GetDown(GetTouchMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetTouchUp(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.GetUp(GetTouchMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetTouch(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.Get(GetTouchMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetNearTouchDown(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.GetDown(GetNearTouchMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetNearTouchUp(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.GetUp(GetNearTouchMap(button), Controller);
-
-            return false;
         }
 
         public override bool GetNearTouch(NVRButtons button)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
                 return OVRInput.Get(GetNearTouchMap(button), Controller);
-
-            return false;
         }
 
         public override void TriggerHapticPulse(ushort durationMicroSec = 500, NVRButtons button = NVRButtons.Touchpad)
         {
-            if (OVRInput.GetActiveController() == OVRInput.Controller.Touch)
-            {
                 StartCoroutine(DoHapticPulse(durationMicroSec));
-            }
         }
 
         private IEnumerator DoHapticPulse(ushort durationMicroSec)
@@ -230,7 +194,7 @@ namespace NewtonVR
         {
             get
             {
-                return OVRInput.GetActiveController() == OVRInput.Controller.Touch;
+                return OVRInput.GetControllerPositionTracked(Controller);
             }
         }
 

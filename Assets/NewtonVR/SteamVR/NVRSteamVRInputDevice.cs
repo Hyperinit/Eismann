@@ -19,22 +19,20 @@ namespace NewtonVR
 
         private bool RenderModelInitialized = false;
 
-        private Dictionary<NVRButtons, EVRButtonId> ButtonMapping = new Dictionary<NVRButtons, EVRButtonId>(new EnumEqualityComparer<NVRButtons>());
+        private Dictionary<NVRButtons, EVRButtonId> ButtonMapping = new Dictionary<NVRButtons, EVRButtonId>(new NVRButtonsComparer());
 
         public override void Initialize(NVRHand hand)
         {
             SetupButtonMapping();
 
             base.Initialize(hand);
-            
-            SteamVR_Utils.Event.Listen("render_model_loaded", RenderModelLoaded);
-            SteamVR_Utils.Event.Listen("new_poses_applied", OnNewPosesApplied);
+
+            SteamVR_Events.RenderModelLoaded.Listen(RenderModelLoaded);
         }
 
         private void OnDestroy()
         {
-            SteamVR_Utils.Event.Remove("render_model_loaded", RenderModelLoaded);
-            SteamVR_Utils.Event.Remove("new_poses_applied", OnNewPosesApplied);
+            SteamVR_Events.RenderModelLoaded.Remove(RenderModelLoaded);
         }
 
         protected virtual void SetupButtonMapping()
@@ -170,17 +168,6 @@ namespace NewtonVR
             }
         }
 
-        private void OnNewPosesApplied(params object[] args)
-        {
-            if (args != null && args.Length > 0)
-            {
-                return;
-            }
-
-            if (Controller == null)
-                return;
-        }
-
         public override GameObject SetupDefaultRenderModel()
         {
             GameObject renderModel = new GameObject("Render Model for " + Hand.gameObject.name);
@@ -199,13 +186,15 @@ namespace NewtonVR
             return (RenderModelInitialized || Hand.HasCustomModel) && DeviceIndex != -1;
         }
 
-        private void RenderModelLoaded(params object[] args)
+        private void RenderModelLoaded(SteamVR_RenderModel renderModel, bool success)
         {
-            SteamVR_RenderModel renderModel = (SteamVR_RenderModel)args[0];
-            bool success = (bool)args[1];
-
             if ((int)renderModel.index == DeviceIndex)
                 RenderModelInitialized = success;
+
+            if (Hand != null && Hand.CurrentHandState != HandState.Uninitialized)
+            {
+                Hand.Initialize();
+            }
         }
 
         private void SetDeviceIndex(int index)
@@ -228,7 +217,7 @@ namespace NewtonVR
 
         public override Collider[] SetupDefaultPhysicalColliders(Transform ModelParent)
         {
-            Collider[] Colliders = null;
+            Collider[] colliders = null;
 
             string controllerModel = GetDeviceName();
             switch (controllerModel)
@@ -244,7 +233,7 @@ namespace NewtonVR
                     if (dk1BodyCollider == null)
                         dk1BodyCollider = dk1Body.gameObject.AddComponent<BoxCollider>();
 
-                    Colliders = new Collider[] { dk1TrackhatCollider, dk1BodyCollider };
+                    colliders = new Collider[] { dk1TrackhatCollider, dk1BodyCollider };
                     break;
 
                 case "vr_controller_vive_1_5":
@@ -258,19 +247,32 @@ namespace NewtonVR
                         dk2TrackhatColliders.localScale = Vector3.one;
                     }
 
-                    Colliders = dk2TrackhatColliders.GetComponentsInChildren<Collider>();
+                    colliders = dk2TrackhatColliders.GetComponentsInChildren<Collider>();
                     break;
-                default:
+
+                case "external_controllers":
+                case "oculus_cv1_controller_left":
+                case "oculus_cv1_controller_right":
+                    colliders = AddOculusTouchPhysicalColliders(ModelParent, controllerModel);
+                    break;
+
+                default: //kindy hacky but may future proof a bit for released builds
                     Debug.LogError("[NewtonVR] NVRSteamVRInputDevice Error. Unsupported device type while trying to setup physical colliders: " + controllerModel);
+
+                    SphereCollider defaultCollider = ModelParent.gameObject.AddComponent<SphereCollider>();
+                    defaultCollider.isTrigger = false;
+                    defaultCollider.radius = 0.15f;
+
+                    colliders = new Collider[] { defaultCollider };
                     break;
             }
 
-            return Colliders;
+            return colliders;
         }
 
         public override Collider[] SetupDefaultColliders()
         {
-            Collider[] Colliders = null;
+            Collider[] colliders = null;
 
             string controllerModel = GetDeviceName();
             SteamVR_RenderModel renderModel = this.GetComponentInChildren<SteamVR_RenderModel>();
@@ -295,7 +297,7 @@ namespace NewtonVR
                         dk1TrackhatCollider.isTrigger = true;
                     }
 
-                    Colliders = new Collider[] { dk1TrackhatCollider };
+                    colliders = new Collider[] { dk1TrackhatCollider };
                     break;
 
                 case "vr_controller_vive_1_5":
@@ -322,15 +324,103 @@ namespace NewtonVR
                         dk2TrackhatCollider.isTrigger = true;
                     }
 
-                    Colliders = new Collider[] { dk2TrackhatCollider };
+                    colliders = new Collider[] { dk2TrackhatCollider };
+                    break;
+
+                case "external_controllers":
+                    colliders = AddOculusTouchTriggerCollider(renderModel.gameObject, controllerModel);
+                    break;
+
+                case "oculus_cv1_controller_left":
+                    colliders = AddOculusTouchTriggerCollider(renderModel.gameObject, controllerModel);
+                    break;
+
+                case "oculus_cv1_controller_right":
+                    colliders = AddOculusTouchTriggerCollider(renderModel.gameObject, controllerModel);
                     break;
 
                 default:
+                    SphereCollider defaultCollider = renderModel.gameObject.AddComponent<SphereCollider>();
+                    defaultCollider.isTrigger = true;
+                    defaultCollider.radius = 0.15f;
+
+                    colliders = new Collider[] { defaultCollider }; // kindy hacky but may future proof a bit
                     Debug.LogError("Error. Unsupported device type: " + controllerModel);
                     break;
             }
 
-            return Colliders;
+            return colliders;
+        }
+
+        protected static Vector3 SteamVROculusControllerPositionAddition = new Vector3(0.001f, -0.0086f, -0.0197f);
+        protected Collider[] AddOculusTouchPhysicalColliders(Transform ModelParent, string controllerModel)
+        {
+            Transform tip = ModelParent.GetChild(0);
+            if (tip != null)
+            {
+                tip = tip.Find("tip");
+                if (tip != null)
+                {
+                    tip = tip.GetChild(0);
+                }
+            }
+
+            if (tip == null)
+            {
+                tip = ModelParent;
+            }
+
+            string name = "oculusTouch";
+            if (Hand.IsLeft == true)
+            {
+                name += "Left";
+            }
+            else
+            {
+                name += "Right";
+            }
+            name += "Colliders";
+
+            Transform touchColliders = ModelParent.FindChild(name);
+            if (touchColliders == null)
+            {
+                touchColliders = GameObject.Instantiate(Resources.Load<GameObject>("TouchControllers/" + name)).transform;
+                touchColliders.parent = tip;
+                touchColliders.localPosition = SteamVROculusControllerPositionAddition;
+                touchColliders.localRotation = Quaternion.identity;
+                touchColliders.localScale = Vector3.one;
+            }
+
+            return touchColliders.GetComponentsInChildren<Collider>();
+        }
+
+        protected Collider[] AddOculusTouchTriggerCollider(GameObject renderModel, string name)
+        {
+            Transform grip = renderModel.transform.Find("grip");
+            SphereCollider oculusCollider;
+            if (grip != null)
+            {
+                Transform child = grip.GetChild(0);
+                if (child != null)
+                {
+                    oculusCollider = child.gameObject.AddComponent<SphereCollider>();
+                }
+                else
+                {
+                    oculusCollider = grip.gameObject.AddComponent<SphereCollider>();
+                }
+
+                oculusCollider.isTrigger = true;
+                oculusCollider.radius = 0.10f;
+            }
+            else
+            {
+                oculusCollider = renderModel.AddComponent<SphereCollider>();
+                oculusCollider.isTrigger = true;
+                oculusCollider.radius = 0.10f;
+            }
+
+            return new Collider[] { oculusCollider };
         }
     }
 }
