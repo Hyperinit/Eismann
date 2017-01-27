@@ -18,7 +18,7 @@ public class IceCream : MonoBehaviour {
 
 	public void SetType (IceType _newType)
 	{
-		GetComponent<Render> ().sharedMaterial = m_MaterialType [(int)_newType];
+		GetComponent<Renderer> ().sharedMaterial = m_MaterialType [(int)_newType];
 		m_Type = _newType;
 	}
 
@@ -36,11 +36,14 @@ public class IceCream : MonoBehaviour {
 
 		if (m_Time < 1.0f) {
 			SetType (IceType.Vanilla);
+            Debug.Log("Now shift to vanilla");
 		} else if (m_Time < 2.0f) {
 			SetType (IceType.Chocolate);
-		} else if (m_Time < 3.0f) {
+            Debug.Log("Now shift to chocolate");
+        } else if (m_Time < 3.0f) {
 			SetType (IceType.Strawberry);
-		} else if (m_Time > 4.0f) {
+            Debug.Log("Now shift to strawberry");
+        } else if (m_Time > 4.0f) {
 			m_Time = 0.0f;
 		}
 		

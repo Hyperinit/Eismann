@@ -135,6 +135,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\IceAttachIce.cs" />
     <Compile Include="Assets\Scripts\IceAttachWaffle.cs" />
+    <Compile Include="Assets\Scripts\IceCream.cs" />
     <Compile Include="Assets\Scripts\MovePassant.cs" />
     <Compile Include="Assets\Scripts\MoveToTheOtherSide.cs" />
     <Compile Include="Assets\Scripts\SpeechbubbleBehavior.cs" />
