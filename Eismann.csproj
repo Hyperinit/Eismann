@@ -133,6 +133,7 @@
     <Compile Include="Assets\Scripts\DroppointBehavior.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\Scripts\IceAttachIce.cs" />
     <Compile Include="Assets\Scripts\IceAttachWaffle.cs" />
     <Compile Include="Assets\Scripts\IceCream.cs" />
