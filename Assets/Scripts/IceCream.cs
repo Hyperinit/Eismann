@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class IceCream : MonoBehaviour {
 
-	// IceCream Type
-	public enum IceType
-	{
-		Vanilla,
-		Chocolate,
-		Strawberry,
-	};
-
-
-	public IceType m_Type = IceType.Vanilla;
 	public Material[] m_MaterialType;
 
-	public void SetType (IceType _newType)
+	public void SetType (IceofWaffle.IceType _newType)
 	{
 		GetComponent<Renderer> ().sharedMaterial = m_MaterialType [(int)_newType];
-		m_Type = _newType;
 	}
 
 	public void SelfDestruction(){
@@ -27,7 +16,9 @@ public class IceCream : MonoBehaviour {
 	}
 
 	// Testing variables and methods.
-	private float m_Time=0.0f; //TESTING
+	//private float m_Time=0.0f; //TESTING
+
+	/*
 	private void TestingColor(){
 		
 		m_Time += Time.deltaTime;
@@ -45,16 +36,20 @@ public class IceCream : MonoBehaviour {
 			m_Time = 0.0f;
 		}
 	}
+	*/
 
 	// Use this for initialization
 	void Start () {
-		
+
+		IceofWaffle IceofWaffleScript = GetComponent<IceofWaffle> ();
+
+		SetType (IceofWaffleScript.m_Type);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		TestingColor ();
+		//TestingColor ();
 		
 	}
 }

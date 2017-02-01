@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SteamVR/Plugins/openvr_api.cs">
     <Files>
-      <File FileName="Assets/Scripts/IceCream.cs" Line="28" Column="17" />
+      <File FileName="Assets/Scripts/IceCream.cs" Line="61" Column="1" />
       <File FileName="Assets/SteamVR/Plugins/openvr_api.cs" Line="4160" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

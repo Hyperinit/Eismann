@@ -15,3 +15,26 @@
 /Volumes/VOLUME/GitHub/Eismann/Temp/bin/Debug/Unity.CecilTools.dll
 /Volumes/VOLUME/GitHub/Eismann/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Volumes/VOLUME/GitHub/Eismann/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/obj/Debug/Assembly-CSharp.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEditor.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.PlaymodeTestsRunner.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.Analytics.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.HoloLens.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.VR.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Mono.Cecil.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Unity.DataContract.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/lkkuo/GitHub/Eismann Repo Version 2/Eismann/Temp/bin/Debug/UnityEngine.Purchasing.dll
