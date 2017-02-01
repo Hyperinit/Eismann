@@ -13,7 +13,4 @@ public class IceofWaffle : MonoBehaviour
 	};
 
 	public IceType m_Type = IceType.Vanilla;
-	public IceType m_TypeVanilla = IceType.Vanilla;
-	public IceType m_TypeChocolate = IceType.Chocolate;
-	public IceType m_TypeStrawberry = IceType.Strawberry;
 }

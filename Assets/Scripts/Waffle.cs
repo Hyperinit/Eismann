@@ -51,69 +51,19 @@ public class Waffle : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		/*if (other.gameObject.CompareTag ("Ice")) 
+		if (other.gameObject.CompareTag("Ice"))
 		{
 			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
 			Debug.Log ("Transform Tag is " + tag);
 
 			IceofWaffle IceofTypeScript = other.gameObject.GetComponent<IceofWaffle> ();
 
-			if (Scoops.Length < m_NumberOfActiveScoops) 
+			if (Scoops.Length > m_NumberOfActiveScoops) 
 			{
 				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
-
-
-				Scoops [m_NumberOfActiveScoops].SetActive (true);
-
-				m_NumberOfActiveScoops++;
-			}
-
-		} */
-		if (other.gameObject.CompareTag("IceVanilla"))
-		{
-			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
-			Debug.Log ("Transform Tag is " + tag);
-
-			IceofWaffle IceofTypeScript = other.gameObject.GetComponent<IceofWaffle> ();
-
-			if (Scoops.Length < m_NumberOfActiveScoops) 
-			{
-				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_TypeVanilla);
 				Scoops [m_NumberOfActiveScoops].SetActive (true);
 				Destroy (other.gameObject);
 
-				m_NumberOfActiveScoops++;
-			}
-			
-		}
-		else if (other.gameObject.CompareTag("IceStrawberry"))
-		{
-			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
-			Debug.Log ("Transform Tag is " + tag);
-
-			IceofWaffle IceofTypeScript = other.gameObject.GetComponent<IceofWaffle> ();
-
-			if (Scoops.Length < m_NumberOfActiveScoops) 
-			{
-				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_TypeStrawberry);
-				Scoops [m_NumberOfActiveScoops].SetActive (true);
-				Destroy (other.gameObject);
-				m_NumberOfActiveScoops++;
-			}
-			
-		}
-		else if (other.gameObject.CompareTag("IceChocolate"))
-		{
-			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
-			Debug.Log ("Transform Tag is " + tag);
-
-			IceofWaffle IceofTypeScript = other.gameObject.GetComponent<IceofWaffle> ();
-
-			if (Scoops.Length < m_NumberOfActiveScoops) 
-			{
-				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_TypeChocolate);
-				Scoops [m_NumberOfActiveScoops].SetActive (true);
-				Destroy (other.gameObject);
 				m_NumberOfActiveScoops++;
 			}
 			

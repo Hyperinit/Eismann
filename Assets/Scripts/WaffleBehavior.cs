@@ -25,7 +25,7 @@ public class WaffleBehavior : MonoBehaviour {
         order = nOrder;
     }
 
-    public int[] pullIceballs()
+    public int[] PullIceballs()
     {
         return iceballs;
     }

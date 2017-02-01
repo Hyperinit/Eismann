@@ -24,8 +24,8 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         order=gameController.getOrder();
         iceBalls = new GameObject[order.GetLength(0)];
 
-        orderPositions = new Vector3[] { new Vector3( -0.2f,0.1f,-0.05f), new Vector3( 0f,0.1f,-0.05f), new Vector3( 0.2f, 0.1f, -0.05f ),
-                                            new Vector3( -0.1f,-0.05f,-0.05f), new Vector3( 0.1f,-0.05f,-0.05f)};
+        orderPositions = new Vector3[] { new Vector3( -0.2f,0.1f,-0.1f), new Vector3( 0f,0.1f,-0.1f), new Vector3( 0.2f, 0.1f, -0.1f ),
+                                            new Vector3( -0.1f,-0.05f,-0.1f), new Vector3( 0.1f,-0.05f,-0.1f)};
         placeOrderInBubble();
     }
 	

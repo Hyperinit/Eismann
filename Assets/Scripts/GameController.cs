@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class GameController : MonoBehaviour {
 
     public GameObject passant;
@@ -187,6 +188,9 @@ public class GameController : MonoBehaviour {
         {
             order[i] = (int)Random.Range(0, iceSorten);
         }
+        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
+        System.Array.Sort(order);
+        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
     }
 
     void createWaffle()
@@ -203,10 +207,31 @@ public class GameController : MonoBehaviour {
         customerMovementScript = (CustomerMovement)customerClone.GetComponent(typeof(CustomerMovement));
     }
 
+    bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
+    {
+        return true;
+        int[] iceBalls = waffleBehaviorScript.PullIceballs();
+        if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
+        {
+            return false;
+        }
+        System.Array.Sort(iceBalls); //sortieren der Werte in iceBalls
+        Debug.Log("iceBalls" + iceBalls[0] + " " + iceBalls[1] + " " + iceBalls[2] + " " + iceBalls[3] + " " + iceBalls[4]);
+        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
+        if (IComparer.Equals(iceBalls, order)) //der eigentliche Vergleich
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void IceIsInDelivery()
     {
         Debug.Log("IceIsInDelivery()");
-        if(true)
+        if(isIceReady())
         {
             score += getScoreValue();
             //waffleClone.DestroyWaffle();

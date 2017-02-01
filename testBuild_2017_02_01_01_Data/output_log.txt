@@ -1,0 +1,276 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K6000 (ID=0x103a)
+    Vendor:   NVIDIA
+    VRAM:     12241 MB
+    Driver:   21.21.13.7563
+Begin MonoManager ReloadAssembly
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+- Completed reload, in  0.029 seconds
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: Y:\Projects\WiSe2016\GameDev\Eismann\testBuild_2017_02_01_01_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 2560x1440 59Hz; virtual: 2560x1440 at 0,0
+<RI> Initialized touch support.
+OpenVR initialized!
+ 
+(Filename:  Line: 381)
+
+UnloadTime: 0.753548 ms
+[NewtonVR] Version : 1.191. Found VRDevice: Vive MV. Using SteamVR SDK
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Connected to lighthouse:LHR-A2CE53B0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 2 2 1 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 1 2 2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 3f80 -> priority: 1 
+  Thread -> id: 1e94 -> priority: 1 
+  Thread -> id: 3364 -> priority: 1 
+  Thread -> id: 1a04 -> priority: 1 
+  Thread -> id: 2a00 -> priority: 1 
+  Thread -> id: 2ed4 -> priority: 1 
+  Thread -> id: 161c -> priority: 1 
+  Thread -> id: 33dc -> priority: 1 
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.697904 ms
+[NewtonVR] Version : 1.191. Found VRDevice: Vive MV. Using SteamVR SDK
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+
+Unloading 84 unused Assets to reduce memory usage. Loaded Objects now: 10226.
+Total: 1.924627 ms (FindLiveObjects: 0.258428 ms CreateObjectMapping: 0.186273 ms MarkObjects: 1.392373 ms  DeleteObjects: 0.086947 ms)
+
+order2 0 0 1 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 0 1 2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at NewtonVR.NVRButtonInputs.get_PressDown () [0x00000] in <filename unknown>:0 
+  at NewtonVR.NVRCanvasInput.ButtonDown (Int32 index) [0x00000] in <filename unknown>:0 
+  at NewtonVR.NVRCanvasInput.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.077893 ms
+[NewtonVR] Version : 1.191. Found VRDevice: Vive MV. Using SteamVR SDK
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+
+Unloading 80 unused Assets to reduce memory usage. Loaded Objects now: 10250.
+Total: 1.752240 ms (FindLiveObjects: 0.242729 ms CreateObjectMapping: 0.175103 ms MarkObjects: 1.250781 ms  DeleteObjects: 0.083325 ms)
+
+order2 0 2 2 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 0 2 2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at NewtonVR.NVRButtonInputs.get_PressDown () [0x00000] in <filename unknown>:0 
+  at NewtonVR.NVRCanvasInput.ButtonDown (Int32 index) [0x00000] in <filename unknown>:0 
+  at NewtonVR.NVRCanvasInput.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WaitingArea (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+anim.SetInteger (state, 1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wird aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wurde aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Compare Tag: True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Speechbubble wird zerstört
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 2 2 2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 2 2 2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WaitingArea (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+anim.SetInteger (state, 1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wird aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wurde aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Transform Tag is waffle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Speechbubble wird zerstört
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order1 2 1 2 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 1 1 2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WallLeft (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WaitingArea (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+anim.SetInteger (state, 1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wird aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wurde aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WallRight (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+IceIsInDelivery()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Speechbubble wird zerstört
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 1 0 1 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+order0 0 1 1 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WaitingArea (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+anim.SetInteger (state, 1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wird aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+serveMe() wurde aufgerufen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+WallLeft (UnityEngine.BoxCollider) Customer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 815)
+
