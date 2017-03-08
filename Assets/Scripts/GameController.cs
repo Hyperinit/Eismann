@@ -193,7 +193,7 @@ public class GameController : MonoBehaviour {
         Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
     }
 
-    void createWaffle()
+    public void createWaffle()
     {
         Vector3 position = new Vector3(0, 0.77f, 0.43f);
         waffleClone = (GameObject)Instantiate(waffle, position, transform.rotation);
