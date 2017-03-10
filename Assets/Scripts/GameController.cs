@@ -26,11 +26,15 @@ public class GameController : MonoBehaviour {
     private bool waffleIsComplete;
     private WaffleBehavior waffleBehaviorScript;
 
-    private int[] order;
-    private int orderSize;
-    private int iceSorten;
-    private int maxOrderSize;//not used yet
-    private int maxIceSorten;//not used yet
+    //difficulty
+    private float[] difficultyLevel; //gibt einen Faktor zurück, mit dem die aktuelle Schwierigkeitsstufe beschrieben wird.
+    private int difficulty; //diesen Wert in difficultyLevel[] verwenden und man sieht in welcher Schwierigkeitsstufe gerade gespielt wird D:.
+    private int[] order; //die aktuelle Order. Also welche Eiskugeln die Waffel enthalten soll.
+    private int orderSize; //größe der Order. Also aus wievielen Eiskugeln die Order bestehen soll
+    private int iceSorten; //So viele verschiedene Eissorten habe ich für die Order zur Verfügung.
+    private float orderValue; //Das ist die Order Wert.
+    private int maxOrderSize;//not used yet Maximale Anzahl an Eiskugeln, aus der eine Order bestehen darf.
+    private int maxIceSorten;//not used yet Maximale Anzahl an Eissorten aus denen gewählt werden darf.
 
     //Customer
     public GameObject customer;
@@ -39,15 +43,23 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
+        //passants
         spawnPositionsPassants = new Vector3[] { new Vector3(10f,1f,3.3f),new Vector3(10f,1f,5.3f), new Vector3(10f,1f,6.2f), new Vector3(10f, 1f, 7.4f) , new Vector3(10f, 1f, 8.6f) };//diese drei Arrays müssen die !gleiche! Länge haben
         spawnRotationPassants =new float[]{ 0f,-2.862f,0f, 0f, 0f };
         laneAssignments = new int[] { 0, 0, 0, 0, 0 };
 
+        //difficulty
+        difficulty = 0;
+        difficultyLevel = new float[] { 1, 1, 1, 1, 1 };
+
         score = 0;
         UpdateScore();
+
+        //Customer
         //StartCoroutine(SpawnPassants());
         StartCoroutine(PassantsTest());
 
+        //waffle
         waffleIsComplete = false;
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
         order = new int[0];
@@ -191,6 +203,23 @@ public class GameController : MonoBehaviour {
         Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
         System.Array.Sort(order);
         Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
+        orderValue=ValueOfOrder();
+    }
+
+    IEnumerator DecreaseValueOfOrder()
+    {
+        while (orderValue >= 0)
+        {
+            orderValue -= 0.01f*difficultyLevel[difficulty];//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
+            yield return null;//TODO
+        }
+    }
+
+    int ValueOfOrder() //Initialisiert den Wert der Order.
+    {
+        //TODO
+        //difficultyLevel[difficulty] * orderSize * iceSorten + Offset
+        return 0;
     }
 
     public void createWaffle()
@@ -243,9 +272,9 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private int getScoreValue()
+    private int getScoreValue()//gibt den Wert der aktuellen Order zurück als int.
     {
-        return 0;
+        return (int)orderValue;
     }
 
     public int[] getOrder()
