@@ -25,9 +25,13 @@ public class CustomerMovement : MonoBehaviour {
     bool speechbubbleTimerActive;
     SpeechbubbleBehavior SpeechbubbleBehaviorScript;
 
+    //gameController;
+    private GameController gameController;
 
     // Use this for initialization
     void Start () {
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        gameController = gameControllerObject.GetComponent<GameController>();
         //serveMe();
         speechbubbleTimer = 2f;
         speechbubbleTimerActive = false;
@@ -65,6 +69,7 @@ public class CustomerMovement : MonoBehaviour {
             {
                 spawnSpeechbubble();
                 speechbubbleTimerActive = false;
+                gameController.StartPointDecay();
             }
         }
 
@@ -84,6 +89,7 @@ public class CustomerMovement : MonoBehaviour {
             waitingAreaTransform = GameObject.FindGameObjectWithTag("wallRight").transform;
         }
         SpeechbubbleBehaviorScript.destroySpeechbubble();
+        gameController.StopPointDecay();
     }
 
     void OnTriggerEnter(Collider other)

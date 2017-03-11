@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour {
     private float orderValue; //Das ist die Order Wert.
     private int maxOrderSize;//not used yet Maximale Anzahl an Eiskugeln, aus der eine Order bestehen darf.
     private int maxIceSorten;//not used yet Maximale Anzahl an Eissorten aus denen gewählt werden darf.
+    private int[] difficultyMaxTime;
+    private int[] difficultyMinTime;
 
     //Customer
     public GameObject customer;
@@ -50,7 +52,9 @@ public class GameController : MonoBehaviour {
 
         //difficulty
         difficulty = 0;
-        difficultyLevel = new float[] { 1, 1, 1, 1, 1 };
+        difficultyLevel = new float[] { 1, 1, 1, 1, 1, 1, 1 };
+        difficultyMaxTime = new int[] { 20, 10, 10, 5, 3, 2, 1 };
+        difficultyMinTime = new int[] { 10, 5, 2, 1, 0, 0, 0 };
 
         score = 0;
         UpdateScore();
@@ -194,7 +198,8 @@ public class GameController : MonoBehaviour {
 
     void UpdateScore()
     {
-        text3D.text = score.ToString("00000");
+        text3D.text = orderValue.ToString("00000");//nur zum testen
+        //text3D.text = score.ToString("00000");
         scoreText.text = "Score: " + score;
     }
 
@@ -214,11 +219,22 @@ public class GameController : MonoBehaviour {
 
     IEnumerator DecreaseValueOfOrder()
     {
+        yield return new WaitForSeconds(difficultyMinTime[difficulty]);
         while (orderValue >= 0)
         {
             orderValue -= difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
             yield return null;//TODO
         }
+    }
+
+    public void StartPointDecay()
+    {
+        StartCoroutine("DecreaseValueOfOrder");
+    }
+
+    public void StopPointDecay()
+    {
+        StopCoroutine("DecreaseValueOfOrder");
     }
 
     int ValueOfOrder() //Initialisiert den Wert der Order.
