@@ -60,7 +60,14 @@ public class Waffle : MonoBehaviour
 
 			if (Scoops.Length > m_NumberOfActiveScoops) 
 			{
+				
 				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
+
+				Debug.Log ("Number of Scoops"+ Scoops.ToString());
+				Debug.Log ("Number of Active Scoops"+ m_NumberOfActiveScoops.ToString());
+				Debug.Log ("Current Index of NumberOfActiveScoops"+Scoops[m_NumberOfActiveScoops].ToString());
+				Debug.Log ("Current Ice Type"+Scoops[m_NumberOfActiveScoops].GetType().ToString());
+
 				Scoops [m_NumberOfActiveScoops].SetActive (true);
 				Destroy (other.gameObject);
 
