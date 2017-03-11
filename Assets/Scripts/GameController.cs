@@ -210,7 +210,7 @@ public class GameController : MonoBehaviour {
     {
         while (orderValue >= 0)
         {
-            orderValue -= 0.01f*difficultyLevel[difficulty];//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
+            orderValue -= 0.01f*difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
             yield return null;//TODO
         }
     }
@@ -270,6 +270,12 @@ public class GameController : MonoBehaviour {
             createCustomer();
             createOrder();//TODO diese Zeile noch testen
         }
+    }
+
+    public void TrashcanReset()
+    {
+        waffleBehaviorScript.DestroyWaffle();
+        createWaffle();
     }
 
     private int getScoreValue()//gibt den Wert der aktuellen Order zurück als int.

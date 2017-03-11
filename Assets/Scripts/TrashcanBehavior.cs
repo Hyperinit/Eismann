@@ -23,8 +23,7 @@ public class TrashcanBehavior : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("waffle"))
         {
-            gameController.createWaffle();
-            Destroy(gameObject, 0);
+            gameController.TrashcanReset();
         }
     }
 }
