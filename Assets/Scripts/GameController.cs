@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 
     public GUIText scoreText;
     private int score;
-
+    public TextMesh text3D;
     //waffle
     public GameObject waffle;
     private GameObject waffleClone;
@@ -73,13 +73,18 @@ public class GameController : MonoBehaviour {
 
     }
 
+    void Update()
+    {
+        UpdateScore();
+    }
+
     int GiveFreeLane()
     {
         int freeLane = (int)(Random.value * spawnPositionsPassants.GetLength(0)); //Startposition der Suche
         int searchedLanes = 0;
         int lanes = spawnPositionsPassants.GetLength(0);
         int run = 0;
-
+        
         while (true)//risky risky
         {
             //Debug.Log("freeLane: " + freeLane + " searchedLanes: " + searchedLanes + " lanes: " + lanes + " run: " + run);
@@ -189,6 +194,7 @@ public class GameController : MonoBehaviour {
 
     void UpdateScore()
     {
+        text3D.text = score.ToString("00000");
         scoreText.text = "Score: " + score;
     }
 
@@ -218,8 +224,8 @@ public class GameController : MonoBehaviour {
     int ValueOfOrder() //Initialisiert den Wert der Order.
     {
         //TODO
-        //difficultyLevel[difficulty] * orderSize * iceSorten + Offset
-        return 0;
+        return (int)difficultyLevel[difficulty] * orderSize * iceSorten + 1000;
+        //return 0;
     }
 
     public void createWaffle()
@@ -280,6 +286,7 @@ public class GameController : MonoBehaviour {
 
     private int getScoreValue()//gibt den Wert der aktuellen Order zurück als int.
     {
+        //return 123;//TODO diese Zeile entfernen
         return (int)orderValue;
     }
 

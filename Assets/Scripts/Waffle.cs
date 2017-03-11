@@ -7,6 +7,7 @@ public class Waffle : MonoBehaviour
 	public int m_NumberOfActiveScoops = 0;
 
 	public GameObject[] Scoops;
+	private IceofWaffle IceCreamType;
 
 	public void PrintNrandName()
 	{
@@ -56,20 +57,24 @@ public class Waffle : MonoBehaviour
 			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
 			Debug.Log ("Transform Tag is " + tag);
 
-			IceofWaffle IceofTypeScript = other.gameObject.GetComponent<IceofWaffle> ();
+			//IceofWaffle IceofTypeScript = other.gameObject.GetComponent<IceofWaffle> ();
+
+			IceCreamType = other.gameObject.GetComponent<IceofWaffle>(); // assign the IceCreamType of the current waffle to the Type of contacted Scoop.
 
 			if (Scoops.Length > m_NumberOfActiveScoops) 
 			{
 				
-				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
+				//Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
 
-				Debug.Log ("Number of Scoops"+ Scoops.ToString());
-				Debug.Log ("Number of Active Scoops"+ m_NumberOfActiveScoops.ToString());
-				Debug.Log ("Current Index of NumberOfActiveScoops"+Scoops[m_NumberOfActiveScoops].ToString());
-				Debug.Log ("Current Ice Type"+Scoops[m_NumberOfActiveScoops].GetType().ToString());
+				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType(IceCreamType.m_Type); // assign the IceCreamType to specific Scoops.
+
+				Debug.Log ("Number of Scoops "+ Scoops.Length.ToString()); 
+				Debug.Log ("Number of Active Scoops "+ m_NumberOfActiveScoops.ToString());
+				Debug.Log ("Current Index of NumberOfActiveScoops "+Scoops[m_NumberOfActiveScoops].ToString());
+				Debug.Log ("++++++Current Ice Type "+Scoops[m_NumberOfActiveScoops].GetComponent<IceofWaffle>().GetType());
 
 				Scoops [m_NumberOfActiveScoops].SetActive (true);
-				Destroy (other.gameObject);
+				Destroy (other.gameObject); // Destroy the contacted scoop
 
 				m_NumberOfActiveScoops++;
 			}
