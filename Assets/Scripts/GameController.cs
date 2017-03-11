@@ -17,9 +17,15 @@ public class GameController : MonoBehaviour {
     private float[] spawnRotationPassants;
     private int []laneAssignments;
 
+    //GUI TV
     //public GUIText scoreText;
     private int score;
-    public TextMesh text3D;
+    public TextMesh scoreTextNumber;
+    private float gameTime;
+    public TextMesh gameTimeTextNumber;
+    public TextMesh difficultyTextNumber;
+
+
     //waffle
     public GameObject waffle;
     private GameObject waffleClone;
@@ -51,13 +57,16 @@ public class GameController : MonoBehaviour {
         laneAssignments = new int[] { 0, 0, 0, 0, 0 };
 
         //difficulty
-        difficulty = 0;
+        difficulty = 4;
         difficultyLevel = new float[] { 1, 1, 1, 1, 1, 1, 1 };
         difficultyMaxTime = new int[] { 20, 10, 10, 5, 3, 2, 1 };
         difficultyMinTime = new int[] { 10, 5, 2, 1, 0, 0, 0 };
 
         score = 0;
-        UpdateScore();
+        gameTime = 60;
+        UpdateGUITV();
+
+        StartCoroutine(GameTimeContinuous());
 
         //Customer
         //StartCoroutine(SpawnPassants());
@@ -80,7 +89,7 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
-        UpdateScore();
+        UpdateGUITV();//TODO braucht es das hier?
     }
 
     int GiveFreeLane()
@@ -194,12 +203,14 @@ public class GameController : MonoBehaviour {
     public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
-        UpdateScore();
+        UpdateGUITV();
     }
 
-    void UpdateScore()
+    void UpdateGUITV()//Sammlung aller Zahlen, die im GUITV aktualisiert werden müssen
     {
-        text3D.text = orderValue.ToString("00000");//nur zum testen
+        difficultyTextNumber.text = difficulty.ToString("0");
+        gameTimeTextNumber.text = gameTime.ToString("00");
+        scoreTextNumber.text = orderValue.ToString("000");//nur zum testen
         //text3D.text = score.ToString("00000");
         //scoreText.text = "Score: " + score;
     }
@@ -284,6 +295,27 @@ public class GameController : MonoBehaviour {
         //return 0;
     }
 
+    IEnumerator GameTimeContinuous()//TODO testen GameTimeContinuous,GameTimeIncrease und Aufruf in IceIsInDelivery
+    {//verringert in jedem Frame die verbleibende Spielzeit
+        while(gameTime>0)
+        {
+            gameTime -= Time.deltaTime;
+            yield return null;
+        }
+        GameOver();
+        yield return null;
+    }
+
+    private void GameTimeIncrease(int plusTime)//erhöht die Spielzeit
+    {
+        gameTime += plusTime;
+    }
+
+    private void GameOver()//leider ist das Spiel vorbei. Es wird eine Rangliste angezeigt
+    {
+
+    }
+
     public void createWaffle()
     {
         Vector3 position = new Vector3(0, 0.77f, 0.43f);
@@ -325,6 +357,7 @@ public class GameController : MonoBehaviour {
         if(isIceReady())
         {
             score += getScoreValue();
+            GameTimeIncrease(20);
             //waffleClone.DestroyWaffle();
             waffleBehaviorScript.DestroyWaffle();
             customerMovementScript.setServed();
