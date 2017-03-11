@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
     private float[] spawnRotationPassants;
     private int []laneAssignments;
 
-    public GUIText scoreText;
+    //public GUIText scoreText;
     private int score;
     public TextMesh text3D;
     //waffle
@@ -69,7 +69,8 @@ public class GameController : MonoBehaviour {
         order = new int[0];
         orderSize = 5;
         iceSorten = 3;
-        
+        maxOrderSize = 5;
+        maxIceSorten = 3;
 
         createOrder();
         createWaffle();
@@ -200,7 +201,7 @@ public class GameController : MonoBehaviour {
     {
         text3D.text = orderValue.ToString("00000");//nur zum testen
         //text3D.text = score.ToString("00000");
-        scoreText.text = "Score: " + score;
+        //scoreText.text = "Score: " + score;
     }
 
     void createOrder()
@@ -220,9 +221,12 @@ public class GameController : MonoBehaviour {
     IEnumerator DecreaseValueOfOrder()
     {
         yield return new WaitForSeconds(difficultyMinTime[difficulty]);
-        while (orderValue >= 0)
+        int decreaseWindow = difficultyMaxTime[difficulty] - difficultyMinTime[difficulty];
+        float decreaseValue = orderValue / decreaseWindow;
+        while (orderValue >= 10)
         {
-            orderValue -= difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
+            orderValue -= decreaseValue*Time.deltaTime;
+            //orderValue -= difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
             yield return null;//TODO
         }
     }
@@ -237,10 +241,46 @@ public class GameController : MonoBehaviour {
         StopCoroutine("DecreaseValueOfOrder");
     }
 
+    public void IncreaseDifficulty()
+    {
+        if (orderSize < maxOrderSize)
+        {
+            if((orderSize-iceSorten)<1 && iceSorten < maxIceSorten)
+            {
+                orderSize++;
+                Debug.Log("new orderSize " + orderSize);
+            }
+            else
+            {
+                iceSorten++;
+                Debug.Log("new iceSorten "+iceSorten);
+            }
+        }
+        else
+        {
+            if(iceSorten < maxIceSorten)
+            {
+                iceSorten++;
+                Debug.Log("new iceSorten2 " + iceSorten);
+            }
+            else
+            {
+                difficulty++;
+                orderSize = 2;
+                iceSorten = 2;
+            }
+        }
+    }
+
+    public void DecreaseDifficulty()
+    {
+
+    }
+
     int ValueOfOrder() //Initialisiert den Wert der Order.
     {
         //TODO
-        return (int)difficultyLevel[difficulty] * orderSize * iceSorten + 100;
+        return (int)difficultyLevel[difficulty] * ((orderSize*10) + (iceSorten*5));
         //return 0;
     }
 

@@ -43,9 +43,10 @@ public class IceCream : MonoBehaviour {
 	void Start () {
 
 		IceofWaffle IceofWaffleScript = GetComponent<IceofWaffle> ();
-
+        Debug.Log("before setting Ice Material "+IceofWaffleScript.m_Type.ToString());
 		SetType (IceofWaffleScript.m_Type);
-	}
+        Debug.Log("after setting Ice Material " + IceofWaffleScript.m_Type.ToString());
+    }
 	
 	// Update is called once per frame
 	void Update () {
