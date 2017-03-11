@@ -216,7 +216,7 @@ public class GameController : MonoBehaviour {
     {
         while (orderValue >= 0)
         {
-            orderValue -= 0.01f*difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
+            orderValue -= difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
             yield return null;//TODO
         }
     }
@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour {
     int ValueOfOrder() //Initialisiert den Wert der Order.
     {
         //TODO
-        return (int)difficultyLevel[difficulty] * orderSize * iceSorten + 1000;
+        return (int)difficultyLevel[difficulty] * orderSize * iceSorten + 100;
         //return 0;
     }
 

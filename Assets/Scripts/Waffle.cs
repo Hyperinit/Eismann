@@ -61,7 +61,8 @@ public class Waffle : MonoBehaviour
 
 			IceCreamType = other.gameObject.GetComponent<IceofWaffle>(); // assign the IceCreamType of the current waffle to the Type of contacted Scoop.
 
-			if (Scoops.Length > m_NumberOfActiveScoops) 
+            Debug.Log("++++++ set Current Ice Type " + IceCreamType.m_Type.ToString());
+            if (Scoops.Length > m_NumberOfActiveScoops) 
 			{
 				
 				//Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
@@ -71,7 +72,7 @@ public class Waffle : MonoBehaviour
 				Debug.Log ("Number of Scoops "+ Scoops.Length.ToString()); 
 				Debug.Log ("Number of Active Scoops "+ m_NumberOfActiveScoops.ToString());
 				Debug.Log ("Current Index of NumberOfActiveScoops "+Scoops[m_NumberOfActiveScoops].ToString());
-				Debug.Log ("++++++Current Ice Type "+Scoops[m_NumberOfActiveScoops].GetComponent<IceofWaffle>().GetType());
+				Debug.Log ("++++++Current Ice Type "+Scoops[m_NumberOfActiveScoops].GetComponent<IceofWaffle>().m_Type.ToString());
 
 				Scoops [m_NumberOfActiveScoops].SetActive (true);
 				Destroy (other.gameObject); // Destroy the contacted scoop
