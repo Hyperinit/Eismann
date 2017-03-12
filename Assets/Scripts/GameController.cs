@@ -24,7 +24,8 @@ public class GameController : MonoBehaviour {
     private float gameTime;
     public TextMesh gameTimeTextNumber;
     public TextMesh difficultyTextNumber;
-
+    //scoreboard
+    public ScoreManager scoreboard;
 
     //waffle
     public GameObject waffle;
@@ -49,6 +50,7 @@ public class GameController : MonoBehaviour {
     private GameObject customerClone;
     private CustomerMovement customerMovementScript;
 
+
     void Start()
     {
         //passants
@@ -57,10 +59,10 @@ public class GameController : MonoBehaviour {
         laneAssignments = new int[] { 0, 0, 0, 0, 0 };
 
         //difficulty
-        difficulty = 4;
+        difficulty = 0;
         difficultyLevel = new float[] { 1, 1, 1, 1, 1, 1, 1 };
-        difficultyMaxTime = new int[] { 20, 10, 10, 5, 3, 2, 1 };
-        difficultyMinTime = new int[] { 10, 5, 2, 1, 0, 0, 0 };
+        difficultyMaxTime = new int[] { 20, 10, 10, 8, 6, 4, 2 };
+        difficultyMinTime = new int[] { 10, 5, 2, 1, 1, 1, 1 };
 
         score = 0;
         gameTime = 60;
@@ -85,6 +87,9 @@ public class GameController : MonoBehaviour {
         createWaffle();
         createCustomer();
 
+
+        //scoreboard
+        scoreboard.LoadScore();
     }
 
     void Update()
@@ -210,8 +215,8 @@ public class GameController : MonoBehaviour {
     {
         difficultyTextNumber.text = difficulty.ToString("0");
         gameTimeTextNumber.text = gameTime.ToString("00");
-        scoreTextNumber.text = orderValue.ToString("000");//nur zum testen
-        //text3D.text = score.ToString("00000");
+        scoreTextNumber.text = orderValue.ToString("0000");//nur zum testen
+        //scoreTextNumber.text = score.ToString("0000");
         //scoreText.text = "Score: " + score;
     }
 
@@ -313,7 +318,8 @@ public class GameController : MonoBehaviour {
 
     private void GameOver()//leider ist das Spiel vorbei. Es wird eine Rangliste angezeigt
     {
-
+        scoreboard.NewScore(score);
+        scoreboard.SaveScore();
     }
 
     public void createWaffle()
