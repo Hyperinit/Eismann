@@ -40,7 +40,7 @@ public class IceCream : MonoBehaviour {
 	
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 		IceofWaffle IceofWaffleScript = GetComponent<IceofWaffle> ();
         Debug.Log("before setting Ice Material "+IceofWaffleScript.m_Type.ToString());
