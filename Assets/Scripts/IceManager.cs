@@ -21,7 +21,7 @@ public class IceManager : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-
+        Debug.Log(other.gameObject.GetType() == myController.GetType());
 		if (other.gameObject.GetType () == myController.GetType ()) {
 			Rigidbody IceCreamInstance1;
 			//Rigidbody IceCreamInstance2;

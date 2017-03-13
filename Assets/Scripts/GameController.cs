@@ -327,7 +327,7 @@ public class GameController : MonoBehaviour {
 
     public void createWaffle()
     {
-        Vector3 position = new Vector3(0.3041534f, 1.394555f, 0.4840665f);
+        Vector3 position = new Vector3(0.313f, 1.3859f, 0.4840664f);
         waffleClone = (GameObject)Instantiate(waffle, position, transform.rotation);
         waffleBehaviorScript = (WaffleBehavior)waffleClone.GetComponent(typeof(WaffleBehavior));
     }
