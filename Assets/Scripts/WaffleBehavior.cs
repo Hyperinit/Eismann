@@ -5,6 +5,9 @@ public class WaffleBehavior : MonoBehaviour {
     int[] order;
     int[] iceballs;
 
+	private Waffle myWaffle;
+
+
 	// Use this for initialization
 	void Start () {
         transform.RotateAround(transform.position, transform.up, 180f);//rotate y-axis 180 at spawn
@@ -27,6 +30,8 @@ public class WaffleBehavior : MonoBehaviour {
 
     public int[] PullIceballs()
     {
+		myWaffle = GetComponent<Waffle> ();
+		iceballs = myWaffle.IceOrder;
         return iceballs;
     }
 }

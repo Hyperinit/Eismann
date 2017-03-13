@@ -8,6 +8,16 @@ public class Waffle : MonoBehaviour
 
 	public GameObject[] Scoops;
 	private IceofWaffle IceCreamType;
+	private int[] iceOrder;
+	private int IceOrderNr;
+
+	public int[] IceOrder {
+		
+		get
+		{
+			return iceOrder;
+		}
+	}
 
 	public void PrintNrandName()
 	{
@@ -68,6 +78,7 @@ public class Waffle : MonoBehaviour
 				//Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
 
 				Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType(IceCreamType.m_Type); // assign the IceCreamType to specific Scoops.
+				iceOrder[IceOrderNr]=(int)IceCreamType.m_Type; // converting the IceCreamType to an integer and store it into an array for further comparison.
 
 				Debug.Log ("Number of Scoops "+ Scoops.Length.ToString()); 
 				Debug.Log ("Number of Active Scoops "+ m_NumberOfActiveScoops.ToString());
@@ -78,6 +89,7 @@ public class Waffle : MonoBehaviour
 				Destroy (other.gameObject); // Destroy the contacted scoop
 
 				m_NumberOfActiveScoops++;
+				IceOrderNr++;
 			}
 			
 		}
