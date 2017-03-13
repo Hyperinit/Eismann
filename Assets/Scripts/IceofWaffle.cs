@@ -10,6 +10,8 @@ public class IceofWaffle : MonoBehaviour
 		Vanilla = 1,
 		Chocolate =2,
 		Strawberry = 0,
+		Waldmeister = 3,
+		Zitrone = 4
 	};
 
 	public IceType m_Type = IceType.Vanilla;
