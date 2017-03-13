@@ -7,11 +7,13 @@ using UnityEngine;
 public class TrashcanBehavior : MonoBehaviour {
 
     private GameController gameController;
+    private AudioSource destroySoundWaffle;
 
     void Start()
     {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         gameController = gameControllerObject.GetComponent<GameController>();
+        destroySoundWaffle = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -23,6 +25,7 @@ public class TrashcanBehavior : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("waffle"))
         {
+            destroySoundWaffle.Play();
             gameController.TrashcanReset();
         }
     }

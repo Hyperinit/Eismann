@@ -3,12 +3,14 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
     private Dictionary<string,int> scoreDic;
-    public TextMesh player1;
-    public TextMesh score1;
+    public GameObject Scoreboard;
+    public Text player1;
+    public Text score1;
     //private List<Tuple<int,string>> tupleList;
 
     // Use this for initialization
@@ -16,7 +18,8 @@ public class ScoreManager : MonoBehaviour {
         scoreDic = new Dictionary<string, int>();
         NewScore(55);
         ConvertDictionary(scoreDic);
-        
+        score1.text = "1234";
+        Scoreboard.SetActive(true);
     }
 	
 	// Update is called once per frame
