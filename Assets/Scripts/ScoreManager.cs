@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour {
         NewScore(55);
         ConvertDictionary(scoreDic);
         score1.text = "1234";
-        Scoreboard.SetActive(true);
+       // Scoreboard.SetActive(true);
     }
 	
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour {
 
     public void LoadScore()
     {
-        scoreDic = GetDict("f");
+        scoreDic = GetDict("dict.txt");
     }
 
     public void SaveScore()
@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour {
 
     public void NewScore(int scorePoints)
     {
-        scoreDic.Add(DateTime.Now.ToString("HH.mm.ss"), scorePoints);
+        scoreDic.Add(DateTime.Now.ToString("yyyy/MM/dd-HH.mm"), scorePoints);
     }
 
     public Dictionary<string, int> GiveDic()

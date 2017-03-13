@@ -7,9 +7,9 @@ public class IceofWaffle : MonoBehaviour
 	// IceCream Type
 	public enum IceType
 	{
-		Vanilla,
-		Chocolate,
-		Strawberry,
+		Vanilla = 0,
+		Chocolate =1,
+		Strawberry = 2,
 	};
 
 	public IceType m_Type = IceType.Vanilla;

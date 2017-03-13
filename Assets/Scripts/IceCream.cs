@@ -5,12 +5,7 @@ using UnityEngine;
 public class IceCream : MonoBehaviour {
 
 	public Material[] m_MaterialType;
-   
-
-	public void SetType (IceofWaffle.IceType _newType)
-	{
-		GetComponent<Renderer> ().sharedMaterial = m_MaterialType [(int)_newType];
-	}
+    private Renderer m_Renderer;
 
 	public void SelfDestruction(){
 		Destroy (gameObject);
@@ -23,7 +18,7 @@ public class IceCream : MonoBehaviour {
 	private void TestingColor(){
 		
 		m_Time += Time.deltaTime;
-
+/*
 		if (m_Time < 1.0f) {
 			SetType (IceofWaffle.IceType.Vanilla);
 			Debug.Log("Now shift to vanilla");
@@ -36,6 +31,7 @@ public class IceCream : MonoBehaviour {
 		} else if (m_Time > 3.0f) {
 			m_Time = 0.0f;
 		}
+    */
 	}
 	
 
@@ -44,14 +40,20 @@ public class IceCream : MonoBehaviour {
 
 		IceofWaffle IceofWaffleScript = GetComponent<IceofWaffle> ();
         Debug.Log("before setting Ice Material "+IceofWaffleScript.m_Type.ToString());
-		SetType (IceofWaffleScript.m_Type);
+		// SetType (IceofWaffleScript.m_Type);
         Debug.Log("after setting Ice Material " + IceofWaffleScript.m_Type.ToString());
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-		//TestingColor ();
-		
-	}
+    private void Start()
+    {
+        m_Renderer = GetComponent<Renderer>();
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        int Test = (int)gameObject.GetComponent<IceofWaffle>().m_Type;
+
+        GetComponent<Renderer>().sharedMaterial = m_MaterialType[Test];
+    }
 }
