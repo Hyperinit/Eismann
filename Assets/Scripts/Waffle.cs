@@ -8,8 +8,10 @@ public class Waffle : MonoBehaviour
 
 	public GameObject[] Scoops;
 	private IceofWaffle IceCreamType;
-	private int[] iceOrder;
-	private int IceOrderNr;
+	private int[] iceOrder = new int[] { -1,-1,-1,-1};
+	private int IceOrderNr = 0;
+	private int MaxIceOrderNr = 4;
+
 
 	public int[] IceOrder {
 		
@@ -62,7 +64,7 @@ public class Waffle : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Ice"))
+		if (other.gameObject.CompareTag("Ice")&&!(m_NumberOfActiveScoops==MaxIceOrderNr))
 		{
 			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
 			Debug.Log ("Transform Tag is " + tag);
@@ -79,7 +81,7 @@ public class Waffle : MonoBehaviour
                 //Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType (IceofTypeScript.m_Type);
 
                 //Scoops [m_NumberOfActiveScoops].GetComponent<IceCream>().SetType(IceCreamType.m_Type); // assign the IceCreamType to specific Scoops.
-                // iceOrder[IceOrderNr]=(int)IceCreamType.m_Type; // converting the IceCreamType to an integer and store it into an array for further comparison.
+                iceOrder[IceOrderNr]=(int)IceCreamType.m_Type; // converting the IceCreamType to an integer and store it into an array for further comparison.
 
                 Debug.Log ("Number of Scoops "+ Scoops.Length.ToString()); 
 				Debug.Log ("Number of Active Scoops "+ m_NumberOfActiveScoops.ToString());
@@ -89,8 +91,15 @@ public class Waffle : MonoBehaviour
 				Scoops [m_NumberOfActiveScoops].SetActive (true);
 				Destroy (other.gameObject); // Destroy the contacted scoop
 
+
 				m_NumberOfActiveScoops++;
-				IceOrderNr++;
+
+
+				if (IceOrderNr < MaxIceOrderNr) {
+					IceOrderNr++;
+				} else {
+					Debug.Log ("The Waffle is full.");
+				}
 			}
 			
 		}

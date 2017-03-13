@@ -81,8 +81,8 @@ public class GameController : MonoBehaviour {
         waffleIsComplete = false;
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
         order = new int[0];
-        orderSize = 5;
-        iceSorten = 3;
+        orderSize = 4;
+        iceSorten = 1;
         maxOrderSize = 5;
         maxIceSorten = 3;
 
@@ -231,9 +231,9 @@ public class GameController : MonoBehaviour {
         {
             order[i] = (int)Random.Range(0, iceSorten);
         }
-        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
+        //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
         System.Array.Sort(order);
-        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
+        //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
         orderValue=ValueOfOrder();
     }
 
@@ -341,23 +341,17 @@ public class GameController : MonoBehaviour {
 
     bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
     {
-        return true;
+        //return true;
         int[] iceBalls = waffleBehaviorScript.PullIceballs();
         if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
         {
             return false;
         }
         System.Array.Sort(iceBalls); //sortieren der Werte in iceBalls
-        Debug.Log("iceBalls" + iceBalls[0] + " " + iceBalls[1] + " " + iceBalls[2] + " " + iceBalls[3] + " " + iceBalls[4]);
-        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
-        if (IComparer.Equals(iceBalls, order)) //der eigentliche Vergleich
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        Debug.Log("iceBalls" + iceBalls[0] + " " + iceBalls[1] + " " + iceBalls[2] + " " + iceBalls[3]);
+        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3]);
+        Debug.Log(IComparer.Equals(iceBalls, order));
+        return IComparer.Equals(iceBalls, order); //der eigentliche Vergleich
     }
 
     public void IceIsInDelivery()
