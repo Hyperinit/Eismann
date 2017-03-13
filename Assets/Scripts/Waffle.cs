@@ -8,9 +8,9 @@ public class Waffle : MonoBehaviour
 
 	public GameObject[] Scoops;
 	private IceofWaffle IceCreamType;
-	private int[] iceOrder = new int[] { -1,-1,-1,-1};
+	private int[] iceOrder = new int[] { -1,-1,-1,-1,-1};
 	private int IceOrderNr = 0;
-	private int MaxIceOrderNr = 4;
+	private int MaxIceOrderNr = 5;
 
 
 	public int[] IceOrder {

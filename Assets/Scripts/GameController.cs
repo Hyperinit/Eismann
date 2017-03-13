@@ -327,7 +327,7 @@ public class GameController : MonoBehaviour {
 
     public void createWaffle()
     {
-        Vector3 position = new Vector3(0, 0.77f, 0.43f);
+        Vector3 position = new Vector3(0.3041534f, 1.394555f, 0.4840665f);
         waffleClone = (GameObject)Instantiate(waffle, position, transform.rotation);
         waffleBehaviorScript = (WaffleBehavior)waffleClone.GetComponent(typeof(WaffleBehavior));
     }
@@ -348,10 +348,17 @@ public class GameController : MonoBehaviour {
             return false;
         }
         System.Array.Sort(iceBalls); //sortieren der Werte in iceBalls
-        Debug.Log("iceBalls" + iceBalls[0] + " " + iceBalls[1] + " " + iceBalls[2] + " " + iceBalls[3]);
-        Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3]);
-        Debug.Log(IComparer.Equals(iceBalls, order));
-        return IComparer.Equals(iceBalls, order); //der eigentliche Vergleich
+        bool areEqual = true;
+        for (int i=0;i<order.GetLength(0);i++)
+        {
+            if(order[i]!=iceBalls[i])
+            {
+                areEqual = false;
+            }
+        }
+        //Debug.Log("iceBalls" + iceBalls[0] + " " + iceBalls[1] + " " + iceBalls[2] + " " + iceBalls[3]);
+        //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3]);
+        return areEqual;
     }
 
     public void IceIsInDelivery()

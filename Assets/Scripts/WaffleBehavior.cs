@@ -10,7 +10,8 @@ public class WaffleBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        transform.RotateAround(transform.position, transform.up, 180f);//rotate y-axis 180 at spawn
+        
+        transform.RotateAround(transform.position,new Vector3(-90f,0f,0f), 180f);//rotate y-axis 180 at spawn
         iceballs = new int[] { 0,0,0,0,0}; // z.b 0 = white, 1= red...
     }
 	
