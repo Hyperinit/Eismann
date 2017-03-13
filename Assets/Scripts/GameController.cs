@@ -50,6 +50,9 @@ public class GameController : MonoBehaviour {
     private GameObject customerClone;
     private CustomerMovement customerMovementScript;
 
+    //tutorial
+    public GameObject tutorial;
+
 
     void Start()
     {
@@ -362,6 +365,7 @@ public class GameController : MonoBehaviour {
         Debug.Log("IceIsInDelivery()");
         if(isIceReady())
         {
+            tutorial.SetActive(false);
             score += getScoreValue();
             GameTimeIncrease(20);
             //waffleClone.DestroyWaffle();
