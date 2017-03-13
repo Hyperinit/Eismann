@@ -5,7 +5,7 @@ using NewtonVR;
 
 public class IceManager : MonoBehaviour {
 
-	private NVRHand Hand;
+	private NVRPhysicalController myController;
 
 	public Rigidbody IceCreamVanilla;
 	public Transform IceCreamVanillaPos1;
@@ -17,19 +17,19 @@ public class IceManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Hand = GetComponent<NVRHand> ();
+		myController = GetComponent<NVRPhysicalController> ();
 	}
 
 	void OnTriggerEnter(Collider other){
 
-		if (other.gameObject.GetType () == Hand.GetType ()) {
+		if (other.gameObject.GetType () == myController.GetType ()) {
 			Rigidbody IceCreamInstance1;
-			Rigidbody IceCreamInstance2;
-			Rigidbody IceCreamInstance3;
+			//Rigidbody IceCreamInstance2;
+			//Rigidbody IceCreamInstance3;
 
-			IceCreamInstance1 = Instantiate (IceCream,IceCreamVanillaPos1.position,IceCreamVanillaPos1.rotation);
-			IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
-			IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
+			IceCreamInstance1 = Instantiate (IceCreamVanilla,myController.transform.position,myController.transform.rotation);
+			//IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
+			//IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
 		}
 	}
 	
