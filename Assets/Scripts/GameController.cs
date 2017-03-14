@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour {
         difficultyMinTime = new int[] { 10, 5, 2, 1, 1, 1, 1 };
 
         score = 0;
-        gameTime = 10;
+        gameTime = 60;
         UpdateGUITV();
 
         StartCoroutine(GameTimeContinuous());
@@ -361,7 +361,7 @@ public class GameController : MonoBehaviour {
         return areEqual;
     }
 
-    public void IceIsInDelivery()
+    public bool IceIsInDelivery()
     {
         Debug.Log("IceIsInDelivery()");
         if(isIceReady())
@@ -375,7 +375,9 @@ public class GameController : MonoBehaviour {
             createWaffle();
             createCustomer();
             createOrder();//TODO diese Zeile noch testen
+            return true;
         }
+        return false;
     }
 
     public void TrashcanReset()

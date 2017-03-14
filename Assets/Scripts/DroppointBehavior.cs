@@ -4,6 +4,9 @@ using System.Collections;
 public class DroppointBehavior : MonoBehaviour {
 
     private GameController gameController;
+    public AudioSource orderCorrect;
+    public AudioSource orderWrong;
+
 
     void Start()
     {
@@ -19,7 +22,15 @@ public class DroppointBehavior : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("waffle"))
         {
-            gameController.IceIsInDelivery();
+            if(gameController.IceIsInDelivery())
+            {
+                orderCorrect.Play();
+            }
+            else
+            {
+                orderWrong.Play();
+            }
         }
     }
+
 }

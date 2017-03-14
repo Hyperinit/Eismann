@@ -11,6 +11,8 @@ public class SpeechbubbleBehavior : MonoBehaviour {
     private int[] order;
     private Vector3[] orderPositions;
     private GameObject[] iceBalls;
+    public AudioSource popSound;
+
 
     //Fadeing out Speed
     float fadePerSec = 0.5f;
@@ -73,6 +75,7 @@ public class SpeechbubbleBehavior : MonoBehaviour {
 
     public void destroySpeechbubble() //bye bye Speechbubbles we will miss you :'(
     {
+        popSound.Play();
         fadeOutbool = true;  //enable fadeOut() in Update()
         Destroy(gameObject, 5); //destroy this gameObject and it childs after time
         Debug.Log("Speechbubble wird zerstört");

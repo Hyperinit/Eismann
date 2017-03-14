@@ -28,6 +28,11 @@ public class CustomerMovement : MonoBehaviour {
     //gameController;
     private GameController gameController;
 
+    //audio
+    public AudioSource hi;
+    public AudioSource nom;
+    public AudioSource oh;
+
     // Use this for initialization
     void Start () {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -67,6 +72,7 @@ public class CustomerMovement : MonoBehaviour {
             speechbubbleTimer -= Time.deltaTime;
             if(speechbubbleTimer<=0)
             {
+                hi.Play();
                 spawnSpeechbubble();
                 speechbubbleTimerActive = false;
                 gameController.StartPointDecay();
@@ -79,7 +85,8 @@ public class CustomerMovement : MonoBehaviour {
     {
         served = true;
         allowDisappear = true;
-        anim.SetInteger("state", 0);
+        StartCoroutine(servedCoroutine());
+        /*anim.SetInteger("state", 0);
         if (Random.value>0.5f)
         {
             waitingAreaTransform = GameObject.FindGameObjectWithTag("wallLeft").transform;
@@ -87,9 +94,25 @@ public class CustomerMovement : MonoBehaviour {
         else
         {
             waitingAreaTransform = GameObject.FindGameObjectWithTag("wallRight").transform;
-        }
+        }*/
         SpeechbubbleBehaviorScript.destroySpeechbubble();
         gameController.StopPointDecay();
+    }
+
+    IEnumerator servedCoroutine()
+    {
+        anim.SetInteger("state", 2);
+        nom.Play();
+        yield return new WaitForSeconds(2.0f);
+        anim.SetInteger("state", 0);
+        if (Random.value > 0.5f)
+        {
+            waitingAreaTransform = GameObject.FindGameObjectWithTag("wallLeft").transform;
+        }
+        else
+        {
+            waitingAreaTransform = GameObject.FindGameObjectWithTag("wallRight").transform;
+        }
     }
 
     void OnTriggerEnter(Collider other)
