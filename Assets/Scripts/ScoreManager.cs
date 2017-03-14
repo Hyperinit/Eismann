@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ScoreManager : MonoBehaviour {
 
@@ -11,28 +12,65 @@ public class ScoreManager : MonoBehaviour {
     public GameObject Scoreboard;
     public Text player1;
     public Text score1;
+    public Text player2;
+    public Text score2;
+    public Text player3;
+    public Text score3;
+    public Text player4;
+    public Text score4;
+
     //private List<Tuple<int,string>> tupleList;
+    private string[] playerNameArray;
+    private int[] scoreArray;
+
 
     // Use this for initialization
     void Start () {
-        scoreDic = new Dictionary<string, int>();
-        NewScore(55);
-        ConvertDictionary(scoreDic);
-        score1.text = "1234";
-       // Scoreboard.SetActive(true);
+        LoadScore();
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+    
+    public void GameOver(int score)
+    {
+        NewScore(score);
+        TransDicInArrays();
+        int scorePos = scoreArray.ToList().IndexOf(scoreArray.Max());
+        player1.text = playerNameArray[scorePos];
+        score1.text = scoreArray[scorePos].ToString();
+        scoreArray[scorePos] = -1;
 
-    public void LoadScore()
+        scorePos = scoreArray.ToList().IndexOf(scoreArray.Max());
+        player2.text = playerNameArray[scorePos];
+        score2.text = scoreArray[scorePos].ToString();
+        scoreArray[scorePos] = -1;
+
+        scorePos = scoreArray.ToList().IndexOf(scoreArray.Max());
+        player3.text = playerNameArray[scorePos];
+        score3.text = scoreArray[scorePos].ToString();
+        scoreArray[scorePos] = -1;
+
+        scorePos = scoreArray.ToList().IndexOf(scoreArray.Max());
+        player4.text = playerNameArray[scorePos];
+        score4.text = scoreArray[scorePos].ToString();
+        scoreArray[scorePos] = -1;
+
+        scorePos = scoreArray.ToList().IndexOf(scoreArray.Max());
+        scoreDic.Remove(playerNameArray[scorePos]);
+
+        Scoreboard.SetActive(true);
+
+        SaveScore();
+    }
+    void LoadScore()
     {
         scoreDic = GetDict("dict.txt");
     }
 
-    public void SaveScore()
+    void SaveScore()
     {
         ConvertDictionary(scoreDic);
     }
@@ -52,6 +90,16 @@ public class ScoreManager : MonoBehaviour {
         //return System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         return System.DateTime.Now.ToString("HH:mm:ss");
     }
+
+    private void TransDicInArrays()
+    {
+        Debug.Log("What is in the Dic?:");
+        playerNameArray = scoreDic.Keys.ToArray();
+        scoreArray = scoreDic.Values.ToArray();
+        //for (int i = 0; i < playerNameArray.GetLength(0); i++) //Debug
+        //    Debug.Log(playerNameArray[i]+":"+scoreArray[i]);
+    }
+
 
     //ab hier https://www.dotnetperls.com/convert-dictionary-string
     Dictionary<string, int> _dictionary = new Dictionary<string, int>()

@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour {
         difficultyMinTime = new int[] { 10, 5, 2, 1, 1, 1, 1 };
 
         score = 0;
-        gameTime = 60;
+        gameTime = 10;
         UpdateGUITV();
 
         StartCoroutine(GameTimeContinuous());
@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour {
 
 
         //scoreboard
-        scoreboard.LoadScore();
+        //scoreboard.LoadScore();
     }
 
     void Update()
@@ -321,8 +321,8 @@ public class GameController : MonoBehaviour {
 
     private void GameOver()//leider ist das Spiel vorbei. Es wird eine Rangliste angezeigt
     {
-        scoreboard.NewScore(score);
-        scoreboard.SaveScore();
+        scoreboard.GameOver(score);
+        StopAllCoroutines();
     }
 
     public void createWaffle()
