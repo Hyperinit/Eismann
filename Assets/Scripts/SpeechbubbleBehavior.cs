@@ -6,8 +6,10 @@ public class SpeechbubbleBehavior : MonoBehaviour {
 
     private GameController gameController;
     public GameObject erdbeere;
-    public GameObject schoko;
     public GameObject vanille;
+    public GameObject schoko;
+    public GameObject waldmeister;
+    public GameObject zitrone;
     private int[] order;
     private Vector3[] orderPositions;
     private GameObject[] iceBalls;
@@ -54,12 +56,22 @@ public class SpeechbubbleBehavior : MonoBehaviour {
             }
             else if(order[i] == 1)
             {
-                iceBalls[i] = Instantiate(schoko, transform.position + orderPositions[i], transform.rotation);
+                iceBalls[i] = Instantiate(vanille, transform.position + orderPositions[i], transform.rotation);
                 iceBalls[i].transform.parent = transform;
             }
             else if (order[i] == 2)
             {
-                iceBalls[i] = Instantiate(vanille, transform.position + orderPositions[i], transform.rotation);
+                iceBalls[i] = Instantiate(schoko, transform.position + orderPositions[i], transform.rotation);
+                iceBalls[i].transform.parent = transform;
+            }
+            else if (order[i] == 3)
+            {
+                iceBalls[i] = Instantiate(waldmeister, transform.position + orderPositions[i], transform.rotation);
+                iceBalls[i].transform.parent = transform;
+            }
+            else if (order[i] == 4)
+            {
+                iceBalls[i] = Instantiate(zitrone, transform.position + orderPositions[i], transform.rotation);
                 iceBalls[i].transform.parent = transform;
             }
         }

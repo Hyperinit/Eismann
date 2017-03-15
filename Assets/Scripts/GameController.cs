@@ -344,7 +344,7 @@ public class GameController : MonoBehaviour {
 
     bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
     {
-        return true;
+        //return true;
         int[] iceBalls = waffleBehaviorScript.PullIceballs();
         if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
         {

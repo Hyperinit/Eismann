@@ -11,7 +11,9 @@ public class IceManager : MonoBehaviour {
     private GameObject controllerObject;
 
 	public Rigidbody IceCreamVanilla;
-	public Transform IceCreamVanillaPos1;
+  
+
+    public Transform IceCreamVanillaPos1;
 	public Transform IceCreamVanillaPos2;
 	public Transform IceCreamVanillaPos3;
 
@@ -61,19 +63,25 @@ public class IceManager : MonoBehaviour {
     }*/
 
 	void OnTriggerStay(Collider other){
-		// don't forget to set the boxcollider to "is trigger"
-		Debug.Log("BoxCollider hit by a controller  "+ other.gameObject.GetType().ToString());
-		Debug.Log("controller position "+ other.gameObject.transform.position.ToString());
-		Debug.Log("controller rotation"+ other.gameObject.transform.rotation.ToString());
+        // don't forget to set the boxcollider to "is trigger"
 
 
-		//Debug.Log("what is the type of the object entering the box collider ? "+ other.gameObject.GetType().ToString());
-		//Debug.Log(Controller.GetType().ToString());
 
-		//if (hit.GetType () == myHand.GetType ()) {
-		if(Hand.UseButtonDown==true)
+        //Debug.Log("what is the type of the object entering the box collider ? "+ other.gameObject.GetType().ToString());
+        //Debug.Log(Controller.GetType().ToString());
+
+        //if (hit.GetType () == myHand.GetType ()) {
+       
+       
+
+       if (Hand.UseButtonDown==true)
 		{
-		Rigidbody IceCreamInstance1;
+            Debug.Log("UseButton " + Hand.UseButton.ToString());
+            Debug.Log("BoxCollider hit by a controller  " + other.gameObject.GetType().ToString());
+            Debug.Log("controller position " + other.gameObject.transform.position.ToString());
+            Debug.Log("controller rotation" + other.gameObject.transform.rotation.ToString());
+
+            Rigidbody IceCreamInstance1;
 		//Rigidbody IceCreamInstance2;
 		//Rigidbody IceCreamInstance3;
 

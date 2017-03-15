@@ -1,10 +1,18 @@
 fileFormatVersion: 2
 guid: c3acca22840cca5468512152d1427698
-timeCreated: 1479875582
+timeCreated: 1489580283
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - passant: {instanceID: 0}
+  - scoreTextNumber: {instanceID: 0}
+  - gameTimeTextNumber: {instanceID: 0}
+  - difficultyTextNumber: {instanceID: 0}
+  - scoreboard: {instanceID: 0}
+  - waffle: {instanceID: 0}
+  - customer: {instanceID: 0}
+  - tutorial: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
