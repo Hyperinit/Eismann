@@ -13,6 +13,9 @@ public class Waffle : MonoBehaviour
 	private int MaxIceOrderNr = 5;
 
 
+
+
+
 	public int[] IceOrder {
 		
 		get
@@ -26,7 +29,20 @@ public class Waffle : MonoBehaviour
 		for (int i = 0; i < Scoops.Length; i++) {
 			Debug.Log ("Ice Number"+i+"Ice Name"+Scoops[i].name);
 		}
-		
+
+		int NumberOfScoops = m_NumberOfActiveScoops;
+
+		/*for (int IndexOfScoop = 0; IndexOfScoop < NumberOfScoops; ++IndexOfScoop)
+		{
+			IceofWaffle Script = Scoops [IndexOfScoop].GetComponent<IceofWaffle> ();
+
+			switch (Script.m_Type) {
+			case IceofWaffle.IceType.Strawberry:
+
+				break;
+
+			};
+		}*/
 	}
 
 	/*public void CheckIceType(GameObject[] Scoops)

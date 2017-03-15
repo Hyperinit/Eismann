@@ -78,6 +78,21 @@ public class IceManager : MonoBehaviour {
 
        if ((LeftHand.UseButtonDown==true  || RightHand.UseButtonDown==true) && canIScoop)
 		{
+			NVRHand hand=GetComponent<NVRHand>();
+
+			if (LeftHand.UseButtonDown == true) 
+			{
+				hand = LeftHand;
+			} 
+			else if (RightHand.UseButtonDown == true) 
+			{
+				hand = RightHand;
+			} 
+			else 
+			{
+				Debug.Log ("hand is not assgined.");
+			}
+				
             Debug.Log("UseButton " + LeftHand.UseButton.ToString());
             Debug.Log("BoxCollider hit by a controller  " + other.gameObject.GetType().ToString());
             Debug.Log("controller position " + other.gameObject.transform.position.ToString());
@@ -91,6 +106,8 @@ public class IceManager : MonoBehaviour {
             //IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
             //IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
             //}
+			IceCreamInstance1.transform.SetParent(hand.transform);
+
             canIScoop = false;
             StartCoroutine(ScoopSoon());
 		}
