@@ -39,7 +39,7 @@ public class IceManager : MonoBehaviour {
     
 
 
-	void OnTriggerEnter(Collider other){
+	/*void OnTriggerEnter(Collider other){
 		// don't forget to set the boxcollider to "is trigger"
         Debug.Log("BoxCollider hit by a controller  "+ other.gameObject.GetType().ToString());
         Debug.Log("controller position "+ other.gameObject.transform.position.ToString());
@@ -58,7 +58,31 @@ public class IceManager : MonoBehaviour {
         //IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
         //IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
         //}
-    }
+    }*/
+
+	void OnTriggerStay(Collider other){
+		// don't forget to set the boxcollider to "is trigger"
+		Debug.Log("BoxCollider hit by a controller  "+ other.gameObject.GetType().ToString());
+		Debug.Log("controller position "+ other.gameObject.transform.position.ToString());
+		Debug.Log("controller rotation"+ other.gameObject.transform.rotation.ToString());
+
+
+		//Debug.Log("what is the type of the object entering the box collider ? "+ other.gameObject.GetType().ToString());
+		//Debug.Log(Controller.GetType().ToString());
+
+		//if (hit.GetType () == myHand.GetType ()) {
+		if(Hand.UseButtonDown==true)
+		{
+		Rigidbody IceCreamInstance1;
+		//Rigidbody IceCreamInstance2;
+		//Rigidbody IceCreamInstance3;
+
+		IceCreamInstance1 = Instantiate (IceCreamVanilla,other.gameObject.transform.position,other.gameObject.transform.rotation);
+		//IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
+		//IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
+		//}
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
