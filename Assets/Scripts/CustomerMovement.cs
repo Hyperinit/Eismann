@@ -38,7 +38,7 @@ public class CustomerMovement : MonoBehaviour {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         gameController = gameControllerObject.GetComponent<GameController>();
         //serveMe();
-        speechbubbleTimer = 2f;
+        speechbubbleTimer = 1.5f;
         speechbubbleTimerActive = false;
     }
 
@@ -95,7 +95,8 @@ public class CustomerMovement : MonoBehaviour {
         {
             waitingAreaTransform = GameObject.FindGameObjectWithTag("wallRight").transform;
         }*/
-        SpeechbubbleBehaviorScript.destroySpeechbubble();
+        try { SpeechbubbleBehaviorScript.destroySpeechbubble(); }
+        catch { }
         gameController.StopPointDecay();
     }
 

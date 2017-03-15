@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour {
         succesfullOrdersInThisLevel = 0;
 
 
-    score = 0;
+        score = 0;
         gameTime = 60;
         UpdateGUITV();
 
@@ -324,6 +324,7 @@ public class GameController : MonoBehaviour {
 
     private void GameOver()//leider ist das Spiel vorbei. Es wird eine Rangliste angezeigt
     {
+        customerMovementScript.setServed();
         scoreboard.GameOver(score);
         StopAllCoroutines();
     }
@@ -337,14 +338,14 @@ public class GameController : MonoBehaviour {
 
     void createCustomer()
     {
-        Vector3 position = new Vector3(0.09f, 1.0f, 10.0f);
+        Vector3 position = new Vector3(0.09f, 1.0f, 8.0f);
         customerClone = (GameObject)Instantiate(customer, position, transform.rotation);
         customerMovementScript = (CustomerMovement)customerClone.GetComponent(typeof(CustomerMovement));
     }
 
     bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
     {
-        //return true;
+        return true;
         int[] iceBalls = waffleBehaviorScript.PullIceballs();
         if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
         {

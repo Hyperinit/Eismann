@@ -98,7 +98,7 @@ public class IceManager : MonoBehaviour {
 
     IEnumerator ScoopSoon()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         canIScoop = true;
     }
 	
