@@ -143,5 +143,11 @@ public class CustomerMovement : MonoBehaviour {
         Vector3 offset = new Vector3(-0.79f, 1.52f, 0f);//SpawnPosition der Speechbubble in relation zu Customer
         speechbubbleClone = (GameObject)Instantiate(speechbubble, transform.position + offset, transform.rotation);
         SpeechbubbleBehaviorScript = (SpeechbubbleBehavior)speechbubbleClone.GetComponent(typeof(SpeechbubbleBehavior));
+
+    }
+
+    public void makeOhSound()
+    {
+        oh.Play();
     }
 }

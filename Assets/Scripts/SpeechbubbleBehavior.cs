@@ -12,7 +12,9 @@ public class SpeechbubbleBehavior : MonoBehaviour {
     private Vector3[] orderPositions;
     private GameObject[] iceBalls;
     public AudioSource popSound;
+    //public AudioSource newOrderSound;//Sound1
 
+    float timeTillDestroy;
 
     //Fadeing out Speed
     float fadePerSec = 0.5f;
@@ -24,11 +26,15 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         gameController = gameControllerObject.GetComponent<GameController>();
         order=gameController.getOrder();
+        timeTillDestroy = gameController.SpeechbubbleDestroyTime();
+        StartCoroutine(TimeTillDestroy());
         iceBalls = new GameObject[order.GetLength(0)];
 
         orderPositions = new Vector3[] { new Vector3( -0.2f,0.1f,-0.1f), new Vector3( 0f,0.1f,-0.1f), new Vector3( 0.2f, 0.1f, -0.1f ),
                                             new Vector3( -0.1f,-0.05f,-0.1f), new Vector3( 0.1f,-0.05f,-0.1f)};
         placeOrderInBubble();
+        //newOrderSound.Play();//Sound1
+
     }
 	
 	// Update is called once per frame
@@ -71,6 +77,12 @@ public class SpeechbubbleBehavior : MonoBehaviour {
             material.color = new Color(color.r, color.g, color.b, color.a - (fadePerSec * Time.deltaTime));
         }
         
+    }
+
+    IEnumerator TimeTillDestroy()
+    {
+        yield return new WaitForSeconds(timeTillDestroy);
+        destroySpeechbubble();
     }
 
     public void destroySpeechbubble() //bye bye Speechbubbles we will miss you :'(
