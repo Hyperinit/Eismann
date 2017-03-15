@@ -5,8 +5,8 @@ using NewtonVR;
 
 public class IceManager : MonoBehaviour {
 
-	private NVRHand Hand;
-    private NVRPhysicalController Controller;
+	public NVRHand Hand; // use insepctor to link the NVRHand left or right.
+    public NVRPhysicalController Controller;
     private GameObject handObject;
     private GameObject controllerObject;
 
@@ -20,19 +20,19 @@ public class IceManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Hand = GetComponent<NVRHand> ();
-        Controller = GetComponent<NVRPhysicalController>();
+		//Hand = GetComponent<NVRHand> (); // not needing this one,  because no HVRHand script is attached to the current object. enable this will result overwritten feld of Hand.
+        //Controller = GetComponent<NVRPhysicalController>();
 
-        handObject = Hand.gameObject;
+       // handObject = Hand.gameObject;
 
-        Debug.Log("what is the type of handobject? "+ handObject.GetType());
+        //Debug.Log("what is the type of handobject? "+ handObject.GetType());
         //controllerObject = controller;
 
 
 	}
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log("hit by the controller" + hit.gameObject.ToString());
+       // Debug.Log("hit by the controller" + hit.gameObject.ToString());
     }
 
 
@@ -40,15 +40,21 @@ public class IceManager : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
+		// don't forget to set the boxcollider to "is trigger"
+        Debug.Log("BoxCollider hit by a controller  "+ other.gameObject.GetType().ToString());
+        Debug.Log("controller position "+ other.gameObject.transform.position.ToString());
+        Debug.Log("controller rotation"+ other.gameObject.transform.rotation.ToString());
+
+
         //Debug.Log("what is the type of the object entering the box collider ? "+ other.gameObject.GetType().ToString());
         //Debug.Log(Controller.GetType().ToString());
         
         //if (hit.GetType () == myHand.GetType ()) {
-        //Rigidbody IceCreamInstance1;
+        Rigidbody IceCreamInstance1;
         //Rigidbody IceCreamInstance2;
         //Rigidbody IceCreamInstance3;
 
-        //IceCreamInstance1 = Instantiate (IceCreamVanilla,myHand.transform.position,myHand.transform.rotation);
+		IceCreamInstance1 = Instantiate (IceCreamVanilla,other.gameObject.transform.position,other.gameObject.transform.rotation);
         //IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
         //IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
         //}

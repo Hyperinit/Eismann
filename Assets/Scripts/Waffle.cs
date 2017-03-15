@@ -64,7 +64,7 @@ public class Waffle : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Ice")&&!(m_NumberOfActiveScoops==MaxIceOrderNr))
+		if (other.gameObject.CompareTag("Ice") && m_NumberOfActiveScoops < MaxIceOrderNr - 1)
 		{
 			Debug.Log ("Compare Tag: " + other.gameObject.CompareTag (other.tag).ToString ());
 			Debug.Log ("Transform Tag is " + tag);
