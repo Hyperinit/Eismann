@@ -49,6 +49,8 @@ public class GameController : MonoBehaviour {
     private int[] diffcultyOrderSize;
     private int[] succesfullOrdersTillNextLevel;
     private int succesfullOrdersInThisLevel;
+    private bool gameOver;
+
 
     //Customer
     public GameObject customer;
@@ -74,13 +76,14 @@ public class GameController : MonoBehaviour {
         difficultySpeechBubbledisappear = new float [] { 10f, 8f, 6f, 5f, 4f, 3f, 2f }; ;
         difficultyIceSorten = new int[] { 1, 2, 2, 3, 4, 5, 5 };
         diffcultyOrderSize = new int[] { 2, 2, 3, 3, 3, 4, 5 };
-        succesfullOrdersTillNextLevel = new int[] { 1, 2, 3, 3, 3, 3, 100 };
+        succesfullOrdersTillNextLevel = new int[] { 1, 2, 2, 2, 2, 2, 100 };
         succesfullOrdersInThisLevel = 0;
 
 
         score = 0;
         gameTime = 60;
         UpdateGUITV();
+        gameOver = false;
 
         StartCoroutine(GameTimeContinuous());
 
@@ -327,6 +330,7 @@ public class GameController : MonoBehaviour {
         customerMovementScript.setServed();
         scoreboard.GameOver(score);
         StopAllCoroutines();
+        gameOver = true;
     }
 
     public void createWaffle()
@@ -345,7 +349,7 @@ public class GameController : MonoBehaviour {
 
     bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
     {
-        return true;
+        //return true;
         int[] iceBalls = waffleBehaviorScript.PullIceballs();
         if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
         {
@@ -368,13 +372,13 @@ public class GameController : MonoBehaviour {
     public bool IceIsInDelivery()
     {
         Debug.Log("IceIsInDelivery()");
-        if(isIceReady())
+        if(isIceReady() && !gameOver)
         {
             succesfullOrdersInThisLevel++;
             SetRightDifficulty();
             tutorial.SetActive(false);
             score += getScoreValue();
-            GameTimeIncrease(20);
+            GameTimeIncrease(10-difficulty);
             //waffleClone.DestroyWaffle();
             waffleBehaviorScript.DestroyWaffle();
             customerMovementScript.setServed();

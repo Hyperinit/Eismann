@@ -110,6 +110,11 @@ public class IceManager : MonoBehaviour {
 
             canIScoop = false;
             StartCoroutine(ScoopSoon());
+
+            /*if (hand.HoldButtonDown == true)
+            {
+                IceCreamInstance1.transform.parent = null;
+            }*/
 		}
 	}
 
