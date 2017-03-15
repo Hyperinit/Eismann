@@ -93,7 +93,7 @@ public class ScoreManager : MonoBehaviour {
 
     private void TransDicInArrays()
     {
-        Debug.Log("What is in the Dic?:");
+        //Debug.Log("What is in the Dic?:");
         playerNameArray = scoreDic.Keys.ToArray();
         scoreArray = scoreDic.Values.ToArray();
         //for (int i = 0; i < playerNameArray.GetLength(0); i++) //Debug

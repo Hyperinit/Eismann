@@ -44,6 +44,11 @@ public class GameController : MonoBehaviour {
     private int maxIceSorten;//not used yet Maximale Anzahl an Eissorten aus denen gewählt werden darf.
     private int[] difficultyMaxTime;
     private int[] difficultyMinTime;
+    private float[] difficultySpeechBubbledisappear;
+    private int[] difficultyIceSorten;
+    private int[] diffcultyOrderSize;
+    private int[] succesfullOrdersTillNextLevel;
+    private int succesfullOrdersInThisLevel;
 
     //Customer
     public GameObject customer;
@@ -58,16 +63,22 @@ public class GameController : MonoBehaviour {
     {
         //passants
         spawnPositionsPassants = new Vector3[] { new Vector3(10f,1f,3.3f),new Vector3(10f,1f,5.3f), new Vector3(10f,1f,6.2f), new Vector3(10f, 1f, 7.4f) , new Vector3(10f, 1f, 8.6f) };//diese drei Arrays müssen die !gleiche! Länge haben
-        spawnRotationPassants =new float[]{ 0f,-2.862f,0f, 0f, 0f };
+        spawnRotationPassants =new float[]{ 0f,0f,0f, 0f, 0f };
         laneAssignments = new int[] { 0, 0, 0, 0, 0 };
 
         //difficulty
         difficulty = 0;
         difficultyLevel = new float[] { 1, 1, 1, 1, 1, 1, 1 };
-        difficultyMaxTime = new int[] { 20, 10, 10, 8, 6, 4, 2 };
+        difficultyMaxTime = new int[] { 40, 30, 20, 10, 8, 6, 4 };
         difficultyMinTime = new int[] { 10, 5, 2, 1, 1, 1, 1 };
+        difficultySpeechBubbledisappear = new float [] { 10f, 8f, 6f, 5f, 4f, 3f, 2f }; ;
+        difficultyIceSorten = new int[] { 1, 2, 2, 3, 4, 5, 5 };
+        diffcultyOrderSize = new int[] { 2, 2, 3, 3, 3, 4, 5 };
+        succesfullOrdersTillNextLevel = new int[] { 1, 2, 3, 3, 3, 3, 100 };
+        succesfullOrdersInThisLevel = 0;
 
-        score = 0;
+
+    score = 0;
         gameTime = 60;
         UpdateGUITV();
 
@@ -81,10 +92,11 @@ public class GameController : MonoBehaviour {
         waffleIsComplete = false;
         //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
         order = new int[0];
-        orderSize = 4;
-        iceSorten = 1;
+        //orderSize = 4;
+        //iceSorten = 1;
         maxOrderSize = 5;
         maxIceSorten = 3;
+        SetRightDifficulty();
 
         createOrder();
         createWaffle();
@@ -218,8 +230,8 @@ public class GameController : MonoBehaviour {
     {
         difficultyTextNumber.text = difficulty.ToString("0");
         gameTimeTextNumber.text = gameTime.ToString("00");
-        scoreTextNumber.text = orderValue.ToString("0000");//nur zum testen
-        //scoreTextNumber.text = score.ToString("0000");
+        //scoreTextNumber.text = orderValue.ToString("0000");//nur zum testen
+        scoreTextNumber.text = score.ToString("0000");
         //scoreText.text = "Score: " + score;
     }
 
@@ -235,6 +247,11 @@ public class GameController : MonoBehaviour {
         System.Array.Sort(order);
         //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
         orderValue=ValueOfOrder();
+    }
+
+    public float SpeechbubbleDestroyTime()
+    {
+        return difficultySpeechBubbledisappear[difficulty];
     }
 
     IEnumerator DecreaseValueOfOrder()
@@ -260,40 +277,26 @@ public class GameController : MonoBehaviour {
         StopCoroutine("DecreaseValueOfOrder");
     }
 
-    public void IncreaseDifficulty()
+    public void SetRightDifficulty()
     {
-        if (orderSize < maxOrderSize)
+        if(succesfullOrdersInThisLevel>=succesfullOrdersTillNextLevel[difficulty])
         {
-            if((orderSize-iceSorten)<1 && iceSorten < maxIceSorten)
-            {
-                orderSize++;
-                Debug.Log("new orderSize " + orderSize);
-            }
-            else
-            {
-                iceSorten++;
-                Debug.Log("new iceSorten "+iceSorten);
-            }
+            IncreseDifficulty();
         }
-        else
-        {
-            if(iceSorten < maxIceSorten)
-            {
-                iceSorten++;
-                Debug.Log("new iceSorten2 " + iceSorten);
-            }
-            else
-            {
-                difficulty++;
-                orderSize = 2;
-                iceSorten = 2;
-            }
-        }
+        orderSize = diffcultyOrderSize[difficulty];
+        iceSorten = difficultyIceSorten[difficulty];
+    }
+
+    public void IncreseDifficulty()
+    {
+        difficulty++;
+        succesfullOrdersInThisLevel = 0;
     }
 
     public void DecreaseDifficulty()
     {
-
+        difficulty--;
+        succesfullOrdersInThisLevel = 0;
     }
 
     int ValueOfOrder() //Initialisiert den Wert der Order.
@@ -341,7 +344,7 @@ public class GameController : MonoBehaviour {
 
     bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
     {
-        //return true;
+        return true;
         int[] iceBalls = waffleBehaviorScript.PullIceballs();
         if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
         {
@@ -366,6 +369,8 @@ public class GameController : MonoBehaviour {
         Debug.Log("IceIsInDelivery()");
         if(isIceReady())
         {
+            succesfullOrdersInThisLevel++;
+            SetRightDifficulty();
             tutorial.SetActive(false);
             score += getScoreValue();
             GameTimeIncrease(20);
@@ -377,6 +382,7 @@ public class GameController : MonoBehaviour {
             createOrder();//TODO diese Zeile noch testen
             return true;
         }
+        customerMovementScript.makeOhSound();
         return false;
     }
 
