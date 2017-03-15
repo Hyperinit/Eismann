@@ -84,9 +84,12 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         material.color = new Color(color.r, color.g, color.b, color.a - (fadePerSec * Time.deltaTime));
         for (int i = 0;i < iceBalls.GetLength(0);i++)
         {
-            material = iceBalls[i].GetComponent<Renderer>().material;
-            color = material.color;
-            material.color = new Color(color.r, color.g, color.b, color.a - (fadePerSec * Time.deltaTime));
+            if (order[i] >= 0)
+            {
+                material = iceBalls[i].GetComponent<Renderer>().material;
+                color = material.color;
+                material.color = new Color(color.r, color.g, color.b, color.a - (fadePerSec * Time.deltaTime));
+            }
         }
         
     }
