@@ -238,7 +238,7 @@ public class GameController : MonoBehaviour {
     void createOrder()
     {
         order = new int[0];//Array leeren
-        order = new int[orderSize];//Array auf die aktuelle Autragsgroesse anpassen
+        order = new int[5] { -1, -1, -1, -1, -1 };//Array auf die aktuelle Autragsgroesse anpassen
         for (int i=0;i<orderSize;i++)
         {
             order[i] = (int)Random.Range(0, iceSorten);
