@@ -12,7 +12,7 @@ public class SpeechbubbleBehavior : MonoBehaviour {
     private Vector3[] orderPositions;
     private GameObject[] iceBalls;
     public AudioSource popSound;
-    //public AudioSource newOrderSound;//Sound1
+    public AudioSource newOrderSound;//Sound1
 
     float timeTillDestroy;
 
@@ -33,7 +33,7 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         orderPositions = new Vector3[] { new Vector3( -0.2f,0.1f,-0.1f), new Vector3( 0f,0.1f,-0.1f), new Vector3( 0.2f, 0.1f, -0.1f ),
                                             new Vector3( -0.1f,-0.05f,-0.1f), new Vector3( 0.1f,-0.05f,-0.1f)};
         placeOrderInBubble();
-        //newOrderSound.Play();//Sound1
+        newOrderSound.Play();//Sound1
 
     }
 	
