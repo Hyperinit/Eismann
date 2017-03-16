@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class SpeechbubbleBehavior : MonoBehaviour {
 
-    private GameController gameController;
-    public GameObject erdbeere;
-    public GameObject vanille;
-    public GameObject schoko;
-    public GameObject waldmeister;
-    public GameObject zitrone;
-    private int[] order;
-    private Vector3[] orderPositions;
-    private GameObject[] iceBalls;
-    public AudioSource popSound;
-    public AudioSource newOrderSound;//Sound1
+    private GameController gameController; //GameController
+    public GameObject erdbeere; // strawberry sprite
+    public GameObject vanille; // vanilla sprite
+    public GameObject schoko; // chocolate sprite
+    public GameObject waldmeister; // waldmeister sprite
+    public GameObject zitrone; // zitrone sprite
+    private int[] order; // the order to be displayed
+    private Vector3[] orderPositions; // positions where the sprites should be displayed
+    private GameObject[] iceBalls; // this array contains all generated ice sprites
+    public AudioSource popSound; // pop sound
+    public AudioSource newOrderSound; // new order sound
 
-    float timeTillDestroy;
+    float timeTillDestroy; //after this time the speechbubble + ice sprites will be destroyed
 
-    //Fadeing out Speed
-    float fadePerSec = 0.5f;
-    bool fadeOutbool;
+    float fadePerSec = 0.5f;//Fadeing out Speed
+    bool fadeOutbool; //if true speechbubble + ice sprites will fade out
 
     // Use this for initialization
     void Start () {
@@ -35,7 +34,7 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         orderPositions = new Vector3[] { new Vector3( -0.2f,0.1f,-0.1f), new Vector3( 0f,0.1f,-0.1f), new Vector3( 0.2f, 0.1f, -0.1f ),
                                             new Vector3( -0.1f,-0.05f,-0.1f), new Vector3( 0.1f,-0.05f,-0.1f)};
         placeOrderInBubble();
-        newOrderSound.Play();//Sound1
+        newOrderSound.Play();
 
     }
 	
@@ -45,6 +44,7 @@ public class SpeechbubbleBehavior : MonoBehaviour {
             fadeOut();
     }
 
+    //places the order as ice sprites in the speechbubble. 
     void placeOrderInBubble() //switch could be used here
     {
         for(int i=0;i<order.GetLength(0);i++)
@@ -77,7 +77,8 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         }
     }
 
-    void fadeOut() //will make the object and all iceballs slowly disappear IT WONT DESTROY THEM just working with the color
+    //will make the object and all iceballs slowly disappear IT WONT DESTROY THEM just working with the color
+    void fadeOut() 
     {
         var material = GetComponent<Renderer>().material;
         var color = material.color;
@@ -94,17 +95,18 @@ public class SpeechbubbleBehavior : MonoBehaviour {
         
     }
 
+    //cals destroy function destroySpeechbubble() after timeTillDestroy
     IEnumerator TimeTillDestroy()
     {
         yield return new WaitForSeconds(timeTillDestroy);
         destroySpeechbubble();
     }
 
-    public void destroySpeechbubble() //bye bye Speechbubbles we will miss you :'(
+    //destroy speechbubble and it childs. plays a sound while doing this
+    public void destroySpeechbubble()
     {
         popSound.Play();
         fadeOutbool = true;  //enable fadeOut() in Update()
         Destroy(gameObject, 5); //destroy this gameObject and it childs after time
-        Debug.Log("Speechbubble wird zerstört");
     }
 }

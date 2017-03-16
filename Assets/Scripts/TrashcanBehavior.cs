@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class TrashcanBehavior : MonoBehaviour {
 
-    private GameController gameController;
-    private AudioSource destroySoundWaffle;
+    private GameController gameController; //GameController
+    private AudioSource destroySoundWaffle; //destroy sound
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class TrashcanBehavior : MonoBehaviour {
 
     }
 
+    //if a waffle enters the trigger collider, destroy it, play a sound and tell the GameController what happened
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("waffle"))

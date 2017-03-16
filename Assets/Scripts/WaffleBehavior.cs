@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//interface between waffle.cs and GameController.cs
 public class WaffleBehavior : MonoBehaviour {
-    int[] order;
-    int[] iceballs;
+    int[] iceballs; //contains ice flavors as int
 
 	private Waffle myWaffle;
 
@@ -11,25 +11,23 @@ public class WaffleBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         
-        transform.RotateAround(transform.position, transform.up, 180f);//rotate y-axis 180 at spawn
+        transform.RotateAround(transform.position, transform.up, 180f);
         transform.Rotate(-90, 0, 0);
-        iceballs = new int[] { 0,0,0,0,0}; // z.b 0 = white, 1= red...
+        iceballs = new int[] { 0,0,0,0,0};
     }
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    //destroy the waffle
     public void DestroyWaffle()
     {
         Destroy(gameObject,0);
     }
 
-    public void GiveOrder(int[] nOrder)
-    {
-        order = nOrder;
-    }
-
+    //called by GameController to recieve which components are in the waffle
     public int[] PullIceballs()
     {
 		myWaffle = GetComponent<Waffle> ();

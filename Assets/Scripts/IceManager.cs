@@ -1,123 +1,76 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NewtonVR;
 
 public class IceManager : MonoBehaviour {
 
-	public NVRHand LeftHand; // use insepctor to link the NVRHand left or right.
-    public NVRHand RightHand;
-    public NVRPhysicalController Controller;
-    private GameObject handObject;
-    private GameObject controllerObject;
-
+	// NewtonVR Variables
+	public NVRHand LeftHand; // using the left controller through newton vr.
+    public NVRHand RightHand; // using the right controller through newton vr.
+ 	
+	// Prefab Object
 	public Rigidbody IceCream;
 
+	// Coroutine Variable
     private bool canIScoop;
-
-    public Transform IceCreamVanillaPos1;
-	public Transform IceCreamVanillaPos2;
-	public Transform IceCreamVanillaPos3;
-
-	public int IceCreamNrOnTray = 1;
-	public int MaxIceCreamNrOnTray=4;
 
 	// Use this for initialization
 	void Start () {
-        //Hand = GetComponent<NVRHand> (); // not needing this one,  because no HVRHand script is attached to the current object. enable this will result overwritten feld of Hand.
-        //Controller = GetComponent<NVRPhysicalController>();
-        canIScoop = true;
-       // handObject = Hand.gameObject;
 
-        //Debug.Log("what is the type of handobject? "+ handObject.GetType());
-        //controllerObject = controller;
-
+        canIScoop = true; // Ice scoop is allowed to be generated.
 
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-       // Debug.Log("hit by the controller" + hit.gameObject.ToString());
-    }
-
-
+ 
     
-
-
-	/*void OnTriggerEnter(Collider other){
-		// don't forget to set the boxcollider to "is trigger"
-        Debug.Log("BoxCollider hit by a controller  "+ other.gameObject.GetType().ToString());
-        Debug.Log("controller position "+ other.gameObject.transform.position.ToString());
-        Debug.Log("controller rotation"+ other.gameObject.transform.rotation.ToString());
-
-
-        //Debug.Log("what is the type of the object entering the box collider ? "+ other.gameObject.GetType().ToString());
-        //Debug.Log(Controller.GetType().ToString());
-        
-        //if (hit.GetType () == myHand.GetType ()) {
-        Rigidbody IceCreamInstance1;
-        //Rigidbody IceCreamInstance2;
-        //Rigidbody IceCreamInstance3;
-
-		IceCreamInstance1 = Instantiate (IceCreamVanilla,other.gameObject.transform.position,other.gameObject.transform.rotation);
-        //IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
-        //IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
-        //}
-    }*/
+	// When a controller comes into a boxcollider of the object, which has the "IceManager.cs" script, and when the 
+	// trigger button is pressed down, a scoop ice will be created.
 
 	void OnTriggerStay(Collider other){
-        // don't forget to set the boxcollider to "is trigger"
-
-
-
-        //Debug.Log("what is the type of the object entering the box collider ? "+ other.gameObject.GetType().ToString());
-        //Debug.Log(Controller.GetType().ToString());
-
-        //if (hit.GetType () == myHand.GetType ()) {
-       
-       
-
+   
+		// check the trigger button of which controller is pressed down, also if it is allowed to generated a scoop of ice
+		//the canIScoop variable is used for preventing creating multiple scoops at one time.
        if ((LeftHand.UseButtonDown==true  || RightHand.UseButtonDown==true) && canIScoop)
 		{
+			// since we can only know which controller will be the right and left hand after initialization, 
+			// we need a reference to point to either one of the controller to make sure that the following things
+			// will happen when either of the trigger button of one of the controller is pressed.
+
 			NVRHand hand=GetComponent<NVRHand>();
 
 			if (LeftHand.UseButtonDown == true) 
 			{
-				hand = LeftHand;
+				hand = LeftHand; // when the left controller enters the box collider and the trigger button is pressed down.
 			} 
 			else if (RightHand.UseButtonDown == true) 
 			{
-				hand = RightHand;
+				hand = RightHand; // when the right controller enters the box collider and the trigger button is pressed down.
 			} 
 			else 
 			{
-				Debug.Log ("hand is not assgined.");
+				Debug.Log ("hand is not assgined.");  // nothing happens.
 			}
-				
-            Debug.Log("UseButton " + LeftHand.UseButton.ToString());
-            Debug.Log("BoxCollider hit by a controller  " + other.gameObject.GetType().ToString());
-            Debug.Log("controller position " + other.gameObject.transform.position.ToString());
-            Debug.Log("controller rotation" + other.gameObject.transform.rotation.ToString());
-
-            Rigidbody IceCreamInstance1;
-		//Rigidbody IceCreamInstance2;
-		//Rigidbody IceCreamInstance3;
-
-		IceCreamInstance1 = Instantiate (IceCream,other.gameObject.transform.position,other.gameObject.transform.rotation);
-            //IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
-            //IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
-            //}
+	
+            Rigidbody IceCreamInstance1; // the clone object of the scoop of ice.
+		
+			// creating the clone object of the scoop of ice at the position where a controller is in the box collider
+			// and the trigger button is pressed down.
+			IceCreamInstance1 = Instantiate (IceCream,other.gameObject.transform.position,other.gameObject.transform.rotation);
+          
+			// after the ice is created, it is automatically attached to the controller, which creates it.
 			IceCreamInstance1.transform.SetParent(hand.transform);
 
+			// when a scoop of ice is created, set the variable for coroutine to be false,
+			// meaning, it is not allowed to create another scoop of ice at this time.
             canIScoop = false;
+
+			// Start Coroutine here.
             StartCoroutine(ScoopSoon());
 
-            /*if (hand.HoldButtonDown == true)
-            {
-                IceCreamInstance1.transform.parent = null;
-            }*/
 		}
 	}
 
+	// make the 0.5 second delay. 
     IEnumerator ScoopSoon()
     {
         yield return new WaitForSeconds(0.5f);
@@ -127,18 +80,6 @@ public class IceManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		/*if (IceCreamNrOnTray<MaxIceCreamNrOnTray) {
-			Rigidbody IceCreamInstance1;
-			Rigidbody IceCreamInstance2;
-			Rigidbody IceCreamInstance3;
-
-			IceCreamInstance1 = Instantiate (IceCream,IceCreamVanillaPos1.position,IceCreamVanillaPos1.rotation);
-			IceCreamInstance2 = Instantiate (IceCream,IceCreamVanillaPos2.position,IceCreamVanillaPos2.rotation);
-			IceCreamInstance3 = Instantiate (IceCream,IceCreamVanillaPos3.position,IceCreamVanillaPos3.rotation);
-
-			IceCreamNrOnTray++;
-
-		}*/
-		
+	
 	}
 }

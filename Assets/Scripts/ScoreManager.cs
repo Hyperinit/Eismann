@@ -8,20 +8,19 @@ using System.Linq;
 
 public class ScoreManager : MonoBehaviour {
 
-    private Dictionary<string,int> scoreDic;
-    public GameObject Scoreboard;
-    public Text player1;
-    public Text score1;
-    public Text player2;
-    public Text score2;
-    public Text player3;
-    public Text score3;
-    public Text player4;
-    public Text score4;
+    private Dictionary<string,int> scoreDic; //our current scorerboard saved in as <timestampe,score>
+    public GameObject Scoreboard; //scoreboard GameObject
+    public Text player1; //timestamp alias the player name displayed on the left side at the scoreboard
+    public Text score1; //score reached by player1. Dispayed on the right side at the scoreboard
+    public Text player2; //timestamp alias the player name displayed on the left side at the scoreboard
+    public Text score2; //score reached by player2. Dispayed on the right side at the scoreboard
+    public Text player3; //timestamp alias the player name displayed on the left side at the scoreboard
+    public Text score3; //score reached by player3. Dispayed on the right side at the scoreboard
+    public Text player4;//timestamp alias the player name displayed on the left side at the scoreboard
+    public Text score4; //score reached by player4. Dispayed on the right side at the scoreboard
 
-    //private List<Tuple<int,string>> tupleList;
-    private string[] playerNameArray;
-    private int[] scoreArray;
+    private string[] playerNameArray; //array with all stored highscore names + current player
+    private int[] scoreArray; //array with all stored highscore scores + current score
 
 
     // Use this for initialization
@@ -34,6 +33,7 @@ public class ScoreManager : MonoBehaviour {
 		
 	}
     
+    //call this function when the game is over. It will build a scoreboard by adding the current score and then transform the dictionary to arrays for easier access to the max values. It will then proceed to put the scores in the right order and delete the lowest score in the dictionary. Displayes the scoreboard in the world. Saves the top 4 scores.
     public void GameOver(int score)
     {
         NewScore(score);
@@ -65,43 +65,34 @@ public class ScoreManager : MonoBehaviour {
 
         SaveScore();
     }
+
+    //load saved scores
     void LoadScore()
     {
         scoreDic = GetDict("dict.txt");
     }
 
+    //save scores
     void SaveScore()
     {
         ConvertDictionary(scoreDic);
     }
-
+    
+    // adds a new score in the dictionary. Format is <timestamp,score>
     public void NewScore(int scorePoints)
     {
         scoreDic.Add(DateTime.Now.ToString("yyyy/MM/dd-HH.mm"), scorePoints);
     }
 
-    public Dictionary<string, int> GiveDic()
-    {
-        return scoreDic;
-    }
-
-    private string NewDate()
-    {
-        //return System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-        return System.DateTime.Now.ToString("HH:mm:ss");
-    }
-
+    // transforms the dictionary<string,int> to two arrays. Will be used to find the max value
     private void TransDicInArrays()
     {
-        //Debug.Log("What is in the Dic?:");
         playerNameArray = scoreDic.Keys.ToArray();
         scoreArray = scoreDic.Values.ToArray();
-        //for (int i = 0; i < playerNameArray.GetLength(0); i++) //Debug
-        //    Debug.Log(playerNameArray[i]+":"+scoreArray[i]);
     }
 
 
-    //ab hier https://www.dotnetperls.com/convert-dictionary-string
+    //source https://www.dotnetperls.com/convert-dictionary-string further explanation is there
     Dictionary<string, int> _dictionary = new Dictionary<string, int>()
     {
         {"salmon", 5},

@@ -4,56 +4,24 @@ using UnityEngine;
 
 public class IceCream : MonoBehaviour {
 
-	public Material[] m_MaterialType;
-    private Renderer m_Renderer;
-
-	public void SelfDestruction(){
-		Destroy (gameObject);
-	}
-
-	// Testing variables and methods.
-	private float m_Time=0.0f; //TESTING
-
-	
-	private void TestingColor(){
-		
-		m_Time += Time.deltaTime;
-/*
-		if (m_Time < 1.0f) {
-			SetType (IceofWaffle.IceType.Vanilla);
-			Debug.Log("Now shift to vanilla");
-		} else if (m_Time < 2.0f) {
-			SetType (IceofWaffle.IceType.Chocolate);
-			Debug.Log("Now shift to chocolate");
-		} else if (m_Time < 3.0f) {
-			SetType (IceofWaffle.IceType.Strawberry);
-			Debug.Log("Now shift to strawberry");
-		} else if (m_Time > 3.0f) {
-			m_Time = 0.0f;
-		}
-    */
-	}
-	
-
+	// Material Variables
+	public Material[] m_MaterialType; // creating an array holding the materials for the ice type.
+									  // e.g. element0=strawberry, element1= vanilla...
+    
 	// Use this for initialization
 	void Awake () {
-
-		IceofWaffle IceofWaffleScript = GetComponent<IceofWaffle> ();
-        Debug.Log("before setting Ice Material "+IceofWaffleScript.m_Type.ToString());
-		// SetType (IceofWaffleScript.m_Type);
-        Debug.Log("after setting Ice Material " + IceofWaffleScript.m_Type.ToString());
-    }
-
-    private void Start()
-    {
-        m_Renderer = GetComponent<Renderer>();
+ 
     }
 
     // Update is called once per frame
     void Update ()
     {
-        int Test = (int)gameObject.GetComponent<IceofWaffle>().m_Type;
+		// to prevent the problem, that when the type of ice is assigned by other scripts (e.g. Waffle.cs)
+		// and the change doesn't work because inspector always overwrites the inital setting to the change.
+		// we need to put sharedMaterial here. Moreover, sharedMaterial updates in each frame.
 
-        GetComponent<Renderer>().sharedMaterial = m_MaterialType[Test];
+        int Set = (int)gameObject.GetComponent<IceofWaffle>().m_Type; // converting the type to an integer value and stored in Set.
+        GetComponent<Renderer>().sharedMaterial = m_MaterialType[Set]; // assigning the converted value to the correseponding array poistion in the material array.
+																       // e.g. m_MaterialType[0] is strawberry, then when we have a converted value 0, then we have strawberry material.
     }
 }

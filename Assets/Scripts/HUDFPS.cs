@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//source http://wiki.unity3d.com/index.php?title=FramesPerSecond
 [AddComponentMenu("Utilities/HUDFPS")]
 public class HUDFPS : MonoBehaviour
 {

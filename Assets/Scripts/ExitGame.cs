@@ -12,6 +12,8 @@ public class ExitGame : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    //if called the game will close
     public void ExitGameCall()
     {
         Application.Quit();
