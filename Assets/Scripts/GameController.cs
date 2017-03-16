@@ -4,71 +4,73 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
-    public GameObject passant;
-    public Vector3 spawnValues;
-    public Vector3 spawnRange;
+    //passants LEGACY CODE
+    public GameObject passant; //passant prefab. We need this to generate new ones. LEGACY CODE
+    public Vector3 spawnValues; //gives a start position for passant. LEGACY CODE
+    public Vector3 spawnRange; //Spawn area for passants. LEGACY CODE
 
     //passants
-    public float spawnWait;
-    public float startWait;
-    public int maxPassants;
-    private int counterPassants;
-    private Vector3[] spawnPositionsPassants;
-    private float[] spawnRotationPassants;
-    private int []laneAssignments;
+    public float startWait; //after this time first passant will spawn
+    public float spawnWait; //after this time the next passant will spawn
+    public int maxPassants; //only this amount of passants are allowed to wander simultaneously
+    private int counterPassants; //current number of active passants
+    private Vector3[] spawnPositionsPassants; //possible positions a passant could spawn
+    private float[] spawnRotationPassants; //give the passant a rotation, so that they won't walke all parallel
+    private int []laneAssignments; // saves the number of passants on each lane
 
     //GUI TV
-    //public GUIText scoreText;
-    private int score;
-    public TextMesh scoreTextNumber;
-    private float gameTime;
-    public TextMesh gameTimeTextNumber;
-    public TextMesh difficultyTextNumber;
+    private int score; //points scored by a player in the current game
+    public TextMesh scoreTextNumber; //interface to see the score in GUITV
+    private float gameTime; //time left to play
+    public TextMesh gameTimeTextNumber; //interface to see the time left in GUITV
+    public TextMesh difficultyTextNumber; //interface to see current level in GUITV
     //scoreboard
-    public ScoreManager scoreboard;
+    public ScoreManager scoreboard; //interface to administrate scoreboard
 
     //waffle
-    public GameObject waffle;
-    private GameObject waffleClone;
-    private bool waffleIsComplete;
-    private WaffleBehavior waffleBehaviorScript;
+    public GameObject waffle; //waffle prefab. We need this to generate new ones
+    private GameObject waffleClone; //our spawned waffle. This one will always spawn in the waffleholder on the right side. We need this variable to track our waffle.
+    private WaffleBehavior waffleBehaviorScript; //better save waffleClones script for easier access
+    private int[] order; //the current order. So which ice balls the waffle should contain
 
-    //difficulty
-    private float[] difficultyLevel; //gibt einen Faktor zurück, mit dem die aktuelle Schwierigkeitsstufe beschrieben wird.
-    private int difficulty; //diesen Wert in difficultyLevel[] verwenden und man sieht in welcher Schwierigkeitsstufe gerade gespielt wird D:.
-    private int[] order; //die aktuelle Order. Also welche Eiskugeln die Waffel enthalten soll.
-    private int orderSize; //größe der Order. Also aus wievielen Eiskugeln die Order bestehen soll
-    private int iceSorten; //So viele verschiedene Eissorten habe ich für die Order zur Verfügung.
-    private float orderValue; //Das ist die Order Wert.
-    private int maxOrderSize;//not used yet Maximale Anzahl an Eiskugeln, aus der eine Order bestehen darf.
-    private int maxIceSorten;//not used yet Maximale Anzahl an Eissorten aus denen gewählt werden darf.
-    private int[] difficultyMaxTime;
-    private int[] difficultyMinTime;
-    private float[] difficultySpeechBubbledisappear;
-    private int[] difficultyIceSorten;
-    private int[] diffcultyOrderSize;
-    private int[] succesfullOrdersTillNextLevel;
-    private int succesfullOrdersInThisLevel;
-    private bool gameOver;
+    //difficulty = difficulty level = level --- these variables are used to implement some kind of function to increase difficulty
+    private int difficulty; //current difficulty level
+    private int orderSize; //Size of the order. So how many ice balls the order should exist
+    private int iceSorten; //So many different ice cream flavors I have for ordering.
+    private float orderValue; //This is the order value. The more it is worth, the more points you get
+    //use like this : variableName[difficulty]
+    private float[] difficultyLevel; //Returns a factor that describes the current difficulty level.
+    private int[] difficultyMaxTime; //after this time you only get the minium points for your correct order :(
+    private int[] difficultyMinTime; //bevore this time you get the maxium points for your correct order :)
+    private float[] difficultySpeechBubbledisappear; //after this time the speechbubble will disappear 
+    private int[] difficultyIceSorten; //number of different ice cream flavors that are used
+    private int[] diffcultyOrderSize; //number of scoops that are ordered
+    private int[] succesfullOrdersTillNextLevel; //amount of succesfull orders needed till next level
+    private int succesfullOrdersInThisLevel; // succesfull orders submitted in this level
 
 
     //Customer
-    public GameObject customer;
-    private GameObject customerClone;
-    private CustomerMovement customerMovementScript;
+    public GameObject customer; //customer prefab. We need this to generate new ones
+    private GameObject customerClone; //our spawned customer. Keep this for easy tracking 
+    private CustomerMovement customerMovementScript; // better save customers script for easier access
 
     //tutorial
-    public GameObject tutorial;
+    public GameObject tutorial; //GameObjects we need to show tutorial, actually we use this to deactivate the tutorial
+
+    //gameOver
+    private bool gameOver; //if true the game is over and no new customer, waffles and orders will spawn
 
 
     void Start()
     {
         //passants
-        spawnPositionsPassants = new Vector3[] { new Vector3(10f,1f,3.3f),new Vector3(10f,1f,5.3f), new Vector3(10f,1f,6.2f), new Vector3(10f, 1f, 7.4f) , new Vector3(10f, 1f, 8.6f) };//diese drei Arrays müssen die !gleiche! Länge haben
+        //These three arrays must have the same length
+        spawnPositionsPassants = new Vector3[] { new Vector3(10f,1f,3.3f),new Vector3(10f,1f,5.3f), new Vector3(10f,1f,6.2f), new Vector3(10f, 1f, 7.4f) , new Vector3(10f, 1f, 8.6f) };
         spawnRotationPassants =new float[]{ 0f,0f,0f, 0f, 0f };
         laneAssignments = new int[] { 0, 0, 0, 0, 0 };
 
         //difficulty
+        //These seven arrays must have the same length
         difficulty = 0;
         difficultyLevel = new float[] { 1, 1, 1, 1, 1, 1, 1 };
         difficultyMaxTime = new int[] { 40, 30, 20, 10, 8, 6, 4 };
@@ -88,56 +90,43 @@ public class GameController : MonoBehaviour {
         StartCoroutine(GameTimeContinuous());
 
         //Customer
-        //StartCoroutine(SpawnPassants());
+        //StartCoroutine(SpawnPassants()); //use this if you prefer the legacy code instead of the following line
         StartCoroutine(PassantsTest());
 
         //waffle
-        waffleIsComplete = false;
-        //waffleBehaviorScript = waffleClone.GetComponent(WaffleBehavior);
         order = new int[0];
-        //orderSize = 4;
-        //iceSorten = 1;
-        maxOrderSize = 5;
-        maxIceSorten = 3;
+
         SetRightDifficulty();
 
         createOrder();
         createWaffle();
         createCustomer();
-
-
-        //scoreboard
-        //scoreboard.LoadScore();
     }
 
     void Update()
     {
-        UpdateGUITV();//TODO braucht es das hier?
+        UpdateGUITV();
     }
 
+    //finds a lane with as few as possible passants 
     int GiveFreeLane()
     {
-        int freeLane = (int)(Random.value * spawnPositionsPassants.GetLength(0)); //Startposition der Suche
+        int freeLane = (int)(Random.value * spawnPositionsPassants.GetLength(0)); //start search position
         int searchedLanes = 0;
         int lanes = spawnPositionsPassants.GetLength(0);
         int run = 0;
         
         while (true)//risky risky
         {
-            //Debug.Log("freeLane: " + freeLane + " searchedLanes: " + searchedLanes + " lanes: " + lanes + " run: " + run);
-            //Debug.Log("GiveFreeLane while");
             for(;searchedLanes<lanes;searchedLanes++)
             {
-                if(freeLane==lanes) //wir zählen nicht beginnend bei 0, daher überprüfen, ob wir noch im gültigen Bereich sind
+                if(freeLane==lanes) //we do not count starting at 0, so check if we are still in the valid range
                 {
-                    //Debug.Log("GiveFreeLane if 1");
                     freeLane = 0;
                 }
 
                 if (laneAssignments[freeLane]==run)
                 {
-                    //Debug.Log("GiveFreeLane if 2");
-                    //Debug.Log("return " + freeLane);
                     return freeLane;
                 }
                 else
@@ -146,12 +135,12 @@ public class GameController : MonoBehaviour {
                 }
             }
             searchedLanes = 0;
-            run++;//wenn es nicht anders geht, dann setzen wir halt mehr als einen Passanten auf eine Lane
+            run++;//if there is no other way, then we put more than one passant on a lane
         }
-        //Debug.Log("return -1");
         return 0;//this should not happen
     }
 
+    //spawns passants over time. Uses GiveFreeLane() to find a free lane. This function spawns int maxPassants
     IEnumerator PassantsTest()
     {
         yield return new WaitForSeconds(startWait);
@@ -159,11 +148,11 @@ public class GameController : MonoBehaviour {
         {
             if (maxPassants > counterPassants)
             {
-                int freeLane = GiveFreeLane();//Auf welcher Lane ist gerade wenig los?
+                int freeLane = GiveFreeLane();//on which lane is little going on?
 
-                if (Random.value > 0.5)//Entscheidung, ob Passant links oder rechts startet
+                if (Random.value > 0.5)//decide whether the passant starts on the left or right
                 {
-                    spawnPositionsPassants[freeLane].x *= -1;//ob die if Abfrage true oder false ist, definiert nicht, ob der Passant links oder rechts spawnt, sondern nur ob er an der gleichen Stelle wie der vorherige oder auf der anderen Seite spawnt
+                    spawnPositionsPassants[freeLane].x *= -1;//whether the if query is true or false does not define whether the passant spawns left or right, but whether it spawns on the same side as the previous
                     spawnRotationPassants[freeLane] = 180 - spawnRotationPassants[freeLane];
                 }
 
@@ -173,31 +162,14 @@ public class GameController : MonoBehaviour {
 
                 MovePassantScript.AddLaneDescription(freeLane);
                 counterPassants++;
-                laneAssignments[freeLane]++;//jetzt ist einer mehr unterwegs :)
+                laneAssignments[freeLane]++;//now one is more on the road
             }
-            yield return new WaitForSeconds(startWait);//TODO ersetzen durch spawnWait
-
+            yield return new WaitForSeconds(spawnWait);
         }
-
-        /*for (int i = 0; i < spawnPositionsPassants.GetLength(0); i++)
-        {
-            if (Random.value > 0.5)
-            {
-                spawnPositionsPassants[i].x *= -1;
-                spawnRotationPassants[i] = 180 - spawnRotationPassants[i];
-            }
-            Quaternion spawnRotation = Quaternion.identity;
-
-            var tempPassant = (GameObject)Instantiate(passant, spawnPositionsPassants[i], Quaternion.identity);
-            MovePassant MovePassantScript = (MovePassant)tempPassant.GetComponent(typeof(MovePassant));
-            MovePassantScript.AddRotation(spawnRotationPassants[i]);
-            //MovePassantScript.path = i;
-            //yield return new WaitForSeconds(startWait);
-            yield return new WaitForSeconds(0.5f);
-        }
-        //yield return null;*/
     }
 
+    //LEGACY CODE
+    //This function works similar to PassantsTest, but is way quicker. It determines lanes to passants and spawns passants, but the collision avoidance is in PassantsTest() way better
     IEnumerator SpawnPassants()
     {
         yield return new WaitForSeconds(startWait);
@@ -216,47 +188,48 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void ReduceCounterPassants(int lane) //Der Passant kann dem GameController sagen, dass er "verschwunden" ist.
+    //Gets called by passant to tell GameController he disappeared
+    public void ReduceCounterPassants(int lane)
     {
         counterPassants--;
         laneAssignments[lane]--;
         Debug.Log("Passantenanzahl: " + counterPassants);
     }
 
+    //increase score by newScoreValue
     public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
-        UpdateGUITV();
     }
 
-    void UpdateGUITV()//Sammlung aller Zahlen, die im GUITV aktualisiert werden müssen
+    //Updates all numbers in GUITC
+    void UpdateGUITV()
     {
         difficultyTextNumber.text = difficulty.ToString("0");
         gameTimeTextNumber.text = gameTime.ToString("00");
-        //scoreTextNumber.text = orderValue.ToString("0000");//nur zum testen
         scoreTextNumber.text = score.ToString("0000");
-        //scoreText.text = "Score: " + score;
     }
 
+    //Creates a new Order. Max length is 5.
     void createOrder()
     {
-        order = new int[0];//Array leeren
-        order = new int[5] { -1, -1, -1, -1, -1 };//Array auf die aktuelle Autragsgroesse anpassen
+        order = new int[0];//clear
+        order = new int[5] { -1, -1, -1, -1, -1 };
         for (int i=0;i<orderSize;i++)
         {
             order[i] = (int)Random.Range(0, iceSorten);
         }
-        //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
-        System.Array.Sort(order);
-        //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4]);
-        orderValue=ValueOfOrder();
+        System.Array.Sort(order);//we need a sorted array later in isIceReady()
+        orderValue = ValueOfOrder();
     }
 
+    //gets called by Speechbubble to determine when it has to delete itself
     public float SpeechbubbleDestroyTime()
     {
         return difficultySpeechBubbledisappear[difficulty];
     }
 
+    //after some time the value of an order will get decreased.
     IEnumerator DecreaseValueOfOrder()
     {
         yield return new WaitForSeconds(difficultyMinTime[difficulty]);
@@ -265,52 +238,56 @@ public class GameController : MonoBehaviour {
         while (orderValue >= 10)
         {
             orderValue -= decreaseValue*Time.deltaTime;
-            //orderValue -= difficultyLevel[difficulty]*Time.deltaTime;//Faktor ist noch frei gewählt, vielleicht Time.time mitverwenden
             yield return null;//TODO
         }
     }
 
+    //gets called by customer to start coroutine DecreaseValueOfOrder()
     public void StartPointDecay()
     {
         StartCoroutine("DecreaseValueOfOrder");
     }
 
+    //gets called by customer to stop coroutine DecreaseValueOfOrder()
     public void StopPointDecay()
     {
         StopCoroutine("DecreaseValueOfOrder");
     }
 
+    //determines difficulty and changes necessary variables
     public void SetRightDifficulty()
     {
         if(succesfullOrdersInThisLevel>=succesfullOrdersTillNextLevel[difficulty])
         {
-            IncreseDifficulty();
+            IncreaseDifficulty();
         }
         orderSize = diffcultyOrderSize[difficulty];
         iceSorten = difficultyIceSorten[difficulty];
     }
 
-    public void IncreseDifficulty()
+    //increase difficulty
+    public void IncreaseDifficulty()
     {
         difficulty++;
         succesfullOrdersInThisLevel = 0;
     }
 
+    //decrease difficulty
     public void DecreaseDifficulty()
     {
         difficulty--;
         succesfullOrdersInThisLevel = 0;
     }
 
-    int ValueOfOrder() //Initialisiert den Wert der Order.
+    //Initializes the value of an order
+    int ValueOfOrder()
     {
-        //TODO
         return (int)difficultyLevel[difficulty] * ((orderSize*10) + (iceSorten*5));
-        //return 0;
     }
 
-    IEnumerator GameTimeContinuous()//TODO testen GameTimeContinuous,GameTimeIncrease und Aufruf in IceIsInDelivery
-    {//verringert in jedem Frame die verbleibende Spielzeit
+    //Reduces the remaining game time in each frame. Calls GameOver if no time is left
+    IEnumerator GameTimeContinuous()
+    {
         while(gameTime>0)
         {
             gameTime -= Time.deltaTime;
@@ -320,12 +297,14 @@ public class GameController : MonoBehaviour {
         yield return null;
     }
 
-    private void GameTimeIncrease(int plusTime)//erhöht die Spielzeit
+    //Increase gameTime
+    private void GameTimeIncrease(int plusTime)
     {
         gameTime += plusTime;
     }
 
-    private void GameOver()//leider ist das Spiel vorbei. Es wird eine Rangliste angezeigt
+    //Game is over. Clears the field, show scoreboard and stops all coroutines
+    private void GameOver()
     {
         customerMovementScript.setServed();
         scoreboard.GameOver(score);
@@ -333,6 +312,7 @@ public class GameController : MonoBehaviour {
         gameOver = true;
     }
 
+    //creates a new Waffle for player
     public void createWaffle()
     {
         Vector3 position = new Vector3(0.313f, 1.3859f, 0.4840664f);
@@ -340,6 +320,7 @@ public class GameController : MonoBehaviour {
         waffleBehaviorScript = (WaffleBehavior)waffleClone.GetComponent(typeof(WaffleBehavior));
     }
 
+    //creates a new Customer. Will approach the van
     void createCustomer()
     {
         Vector3 position = new Vector3(0.09f, 1.0f, 8.0f);
@@ -347,15 +328,15 @@ public class GameController : MonoBehaviour {
         customerMovementScript = (CustomerMovement)customerClone.GetComponent(typeof(CustomerMovement));
     }
 
-    bool isIceReady()//TODO testen. Wird zusammen mit der Eiskugel an Waffel kleben Mechanik getestet
+    //Checks whether the waffle contains the order
+    bool isIceReady()
     {
-        //return true;
         int[] iceBalls = waffleBehaviorScript.PullIceballs();
-        if(iceBalls.GetLength(0)!=order.GetLength(0)) //ist in der Waffel exakt die Anzahl der gewünschten Kugeln enthalten?
+        if(iceBalls.GetLength(0)!=order.GetLength(0))
         {
             return false;
         }
-        System.Array.Sort(iceBalls); //sortieren der Werte in iceBalls
+        System.Array.Sort(iceBalls);
         bool areEqual = true;
         for (int i=0;i<order.GetLength(0);i++)
         {
@@ -364,11 +345,10 @@ public class GameController : MonoBehaviour {
                 areEqual = false;
             }
         }
-        //Debug.Log("iceBalls" + iceBalls[0] + " " + iceBalls[1] + " " + iceBalls[2] + " " + iceBalls[3]);
-        //Debug.Log("order" + order[0] + " " + order[1] + " " + order[2] + " " + order[3]);
         return areEqual;
     }
 
+    //gets called by the droppoint, when the player tries to serve the customer. Checks if the waffle is correct with isIceReady(). Then restores a playable state. Bool is need for droppoint so it can play the appropriate sound
     public bool IceIsInDelivery()
     {
         Debug.Log("IceIsInDelivery()");
@@ -379,30 +359,31 @@ public class GameController : MonoBehaviour {
             tutorial.SetActive(false);
             score += getScoreValue();
             GameTimeIncrease(10-difficulty);
-            //waffleClone.DestroyWaffle();
             waffleBehaviorScript.DestroyWaffle();
             customerMovementScript.setServed();
             createWaffle();
             createCustomer();
-            createOrder();//TODO diese Zeile noch testen
+            createOrder();
             return true;
         }
         customerMovementScript.makeOhSound();
         return false;
     }
 
+    //gets called if the trashcan is used. Destroys the waffle and creates a new one
     public void TrashcanReset()
     {
         waffleBehaviorScript.DestroyWaffle();
         createWaffle();
     }
 
-    private int getScoreValue()//gibt den Wert der aktuellen Order zurück als int.
+    //returns the current score as an int
+    private int getScoreValue()
     {
-        //return 123;//TODO diese Zeile entfernen
         return (int)orderValue;
     }
 
+    //used by speechbubble to get current order
     public int[] getOrder()
     {
         return order;

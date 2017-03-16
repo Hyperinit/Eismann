@@ -2,36 +2,34 @@
 using System.Collections;
 
 public class CustomerMovement : MonoBehaviour {
-    //DIESES SCRIPT IST NICHT GETESTET
-    //Es fehlt insbesondere die Naviagation und das hochhalten des Schildes, sowie der Input des Schildes.
 
     //navigation
-    Transform waitingAreaTransform;
-    Transform disengageWall;
-    UnityEngine.AI.NavMeshAgent nav;
+    Transform waitingAreaTransform; //a place near the counter to order ice cream
+    Transform disengageWall; //a place to head to, if you want to leave
+    UnityEngine.AI.NavMeshAgent nav; //the NavMeshAgent
 
 	//animator
-	Animator anim;
+	Animator anim; //the animator
 
     //gamemechanics
-    bool served;
-    bool allowDisappear;
-    bool walking;
+    bool served; //true the customer is served
+    bool allowDisappear; //if true the customer can disappear
+    bool walking; //is the customer walking?
 
     //speechbubble
-    public GameObject speechbubble;
-    GameObject speechbubbleClone;
-    float speechbubbleTimer;
-    bool speechbubbleTimerActive;
-    SpeechbubbleBehavior SpeechbubbleBehaviorScript;
+    public GameObject speechbubble; //speechbubble prototype
+    GameObject speechbubbleClone; //the acutally speechbubble
+    float speechbubbleTimer; //after reaching the counter, wait this amount of time till showing your speechbubble
+    bool speechbubbleTimerActive; //have i already shown my speechbubble?
+    SpeechbubbleBehavior SpeechbubbleBehaviorScript; //save the script for easier access later
 
     //gameController;
-    private GameController gameController;
+    private GameController gameController; //Game Controller
 
     //audio
-    public AudioSource hi;
-    public AudioSource nom;
-    public AudioSource oh;
+    public AudioSource hi; //Hi sound
+    public AudioSource nom; //Nom sound
+    public AudioSource oh; //Oh sound
 
     // Use this for initialization
     void Start () {
@@ -54,11 +52,11 @@ public class CustomerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (walking) //läuft bis TriggerEvent
+        if (walking) //runs till trigger event
         {
             nav.SetDestination(waitingAreaTransform.position);
         }
-        else if (!served) //walking wurde durch trigger auf false gestellt. Bei served=false wartet der Kunde an der Theke. Bei true verlässt er das Spiel
+        else if (!served)
         {
 
 		}
@@ -67,7 +65,7 @@ public class CustomerMovement : MonoBehaviour {
             walking = true;
         }
 
-        if(speechbubbleTimerActive) //wird mit serveMe() gestartet. Nach speechbubbleTimer wird die Speechbubble erzeugt 
+        if(speechbubbleTimerActive) //set true with serveMe(). After speechbubbleTimer hits 0 the speechbubble gets generated 
         {
             speechbubbleTimer -= Time.deltaTime;
             if(speechbubbleTimer<=0)
@@ -81,25 +79,18 @@ public class CustomerMovement : MonoBehaviour {
 
     }
 
+    //called by GameController. If called the customer is served and will try to wander off and disappar
     public void setServed()
     {
         served = true;
         allowDisappear = true;
         StartCoroutine(servedCoroutine());
-        /*anim.SetInteger("state", 0);
-        if (Random.value>0.5f)
-        {
-            waitingAreaTransform = GameObject.FindGameObjectWithTag("wallLeft").transform;
-        }
-        else
-        {
-            waitingAreaTransform = GameObject.FindGameObjectWithTag("wallRight").transform;
-        }*/
         try { SpeechbubbleBehaviorScript.destroySpeechbubble(); }
         catch { }
         gameController.StopPointDecay();
     }
 
+    //plays the served animation and determines exit route
     IEnumerator servedCoroutine()
     {
         anim.SetInteger("state", 2);
@@ -116,37 +107,37 @@ public class CustomerMovement : MonoBehaviour {
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other + " Customer");
-        if (other.gameObject.CompareTag("waitingArea")) //Kunde erreicht die Theke und wartet, bis er bedient wird.
+        if (other.gameObject.CompareTag("waitingArea")) //customer reaches the counter and waits until he is served.
         {
             walking = false;
-            Debug.Log("anim.SetInteger (state, 1)");
             anim.SetInteger ("state", 1);
-            Debug.Log("serveMe() wird aufgerufen");
             serveMe();
         }
-        if ((other.gameObject.CompareTag("wallLeft")|| other.gameObject.CompareTag("wallRight")) && allowDisappear) //Kunde darf das Spiel verlassen und verschwindet, sobald er mit einer der Spielgrenzen kollidiert
+        if ((other.gameObject.CompareTag("wallLeft")|| other.gameObject.CompareTag("wallRight")) && allowDisappear) //customer may leave the game and disappear as soon as he collides with one of the game limits
         {
             Destroy(gameObject, 0);
         }
     }
 
-    void serveMe() //wird aufgerufen, wenn Kunde die Theke erreicht.
+    //is called when the customer reaches the counter.
+    void serveMe()
     {
-        Debug.Log("serveMe() wurde aufgerufen");
-        speechbubbleTimerActive = true;//starte Timer, damit die Speechbubble erzeugt und angezeigt wird.
+        speechbubbleTimerActive = true;
     }
 
+    //spawns a speechbubble
     void spawnSpeechbubble()
     {
-        Vector3 offset = new Vector3(-0.79f, 1.52f, 0f);//SpawnPosition der Speechbubble in relation zu Customer
+        Vector3 offset = new Vector3(-0.79f, 1.52f, 0f);//SpawnPosition in relation to customer
         speechbubbleClone = (GameObject)Instantiate(speechbubble, transform.position + offset, transform.rotation);
         SpeechbubbleBehaviorScript = (SpeechbubbleBehavior)speechbubbleClone.GetComponent(typeof(SpeechbubbleBehavior));
 
     }
 
+    //plays the oh sound
     public void makeOhSound()
     {
         oh.Play();
